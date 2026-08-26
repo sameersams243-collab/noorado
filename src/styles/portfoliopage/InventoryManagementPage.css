@@ -1,0 +1,349 @@
+﻿/* ========================================
+   INVENTORY MANAGEMENT PROJECT PAGE
+======================================== */
+
+.inventory-management-page {
+  width: 100%;
+  background: #ffffff;
+}
+
+.inventory-management-page * {
+  box-sizing: border-box;
+}
+
+.inventory-management-page .project-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.inventory-management-page .project-hero {
+  position: relative;
+  min-height: 395px;
+  width: 100%;
+  padding: 110px 20px 85px;
+  padding-top: 105px;
+  text-align: center;
+
+  background: #0f172a;
+  color: #ffffff;
+}
+
+.inventory-management-page .project-hero .project-container {
+  max-width: 900px;
+}
+
+.inventory-management-page .project-category {
+  display: block;
+  margin-bottom: 18px;
+
+  color: #60a5fa;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.inventory-management-page .project-hero h1 {
+  margin: 0 auto 20px;
+
+  color: #ffffff;
+  font-size: 52px;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.inventory-management-page .project-hero p {
+  max-width: 700px;
+  margin: 0 auto;
+
+  color: #cbd5e1;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   PROJECT OVERVIEW
+======================================== */
+
+.inventory-management-page .project-overview {
+  width: 100%;
+  padding: 100px 20px;
+
+  background: #ffffff;
+}
+
+.inventory-management-page .project-overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.inventory-management-page .project-label {
+  display: block;
+
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.inventory-management-page .project-overview h2 {
+  margin: 15px 0 0;
+
+  color: #111827;
+  font-size: 36px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.inventory-management-page .project-overview p {
+  margin: 0 0 16px;
+
+  color: #64748b;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+
+/* ========================================
+   CHALLENGE + SOLUTION
+======================================== */
+
+.inventory-management-page .project-challenge {
+  width: 100%;
+  padding: 100px 20px;
+
+  background: #f8fafc;
+}
+
+.inventory-management-page .challenge-grid {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+
+  align-items: stretch;
+}
+
+.inventory-management-page .challenge-card,
+.inventory-management-page .solution-card {
+  width: 100%;
+  min-height: 380px;
+  padding: 45px;
+
+  border-radius: 24px;
+}
+
+.inventory-management-page .challenge-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+.inventory-management-page .solution-card {
+  background: #0f172a;
+  color: #ffffff;
+
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+}
+
+.inventory-management-page .challenge-card h2,
+.inventory-management-page .solution-card h2 {
+  margin: 18px 0;
+
+  font-size: 30px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.inventory-management-page .challenge-card p,
+.inventory-management-page .solution-card p {
+  margin: 0 0 18px;
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.inventory-management-page .challenge-card p {
+  color: #64748b;
+}
+
+.inventory-management-page .solution-card p {
+  color: #cbd5e1;
+}
+
+.inventory-management-page .solution-card .project-label {
+  color: #60a5fa;
+}
+
+
+/* ========================================
+   KEY FEATURES
+======================================== */
+
+.inventory-management-page .project-features {
+  width: 100%;
+  padding: 100px 20px;
+
+  background: #ffffff;
+}
+
+.inventory-management-page .features-heading {
+  width: 100%;
+  max-width: 700px;
+
+  margin: 0 auto 50px;
+
+  text-align: center;
+}
+
+.inventory-management-page .features-heading h2 {
+  margin: 15px 0 0;
+
+  color: #111827;
+  font-size: 40px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.inventory-management-page .features-grid {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.inventory-management-page .feature-card {
+  width: 100%;
+  min-height: 200px;
+
+  padding: 30px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.inventory-management-page .feature-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.08);
+}
+
+.inventory-management-page .feature-card h3 {
+  margin: 0 0 12px;
+
+  color: #111827;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.inventory-management-page .feature-card p {
+  margin: 0;
+
+  color: #64748b;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+  .inventory-management-page .project-hero h1 {
+    font-size: 44px;
+  }
+
+  .inventory-management-page .project-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .inventory-management-page .challenge-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inventory-management-page .features-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+  .inventory-management-page .project-hero {
+    padding: 90px 20px 70px;
+  }
+
+  .inventory-management-page .project-hero h1 {
+    font-size: 36px;
+  }
+
+  .inventory-management-page .project-hero p {
+    font-size: 16px;
+  }
+
+  .inventory-management-page .project-overview {
+    padding: 70px 20px;
+  }
+
+  .inventory-management-page .project-overview h2 {
+    font-size: 30px;
+  }
+
+  .inventory-management-page .project-challenge {
+    padding: 70px 20px;
+  }
+
+  .inventory-management-page .challenge-card,
+  .inventory-management-page .solution-card {
+    min-height: auto;
+    padding: 30px;
+  }
+
+  .inventory-management-page .challenge-card h2,
+  .inventory-management-page .solution-card h2 {
+    font-size: 27px;
+  }
+
+  .inventory-management-page .project-features {
+    padding: 70px 20px;
+  }
+
+  .inventory-management-page .features-heading h2 {
+    font-size: 32px;
+  }
+
+  .inventory-management-page .features-grid {
+    grid-template-columns: 1fr;
+  }
+}

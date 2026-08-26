@@ -1,0 +1,69 @@
+.tool-recommendation {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	margin-top: 20px;
+	padding: 22px 24px;
+	box-sizing: border-box;
+	justify-content: space-between;
+	gap: 20px;
+	border: 1px solid #dbe4ec;
+	border-radius: 14px;
+	background: #ffffff;
+	box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+.tool-recommendation-content {
+	min-width: 0;
+}
+
+.tool-recommendation-label {
+	display: block;
+	margin-bottom: 6px;
+	color: #0f766e;
+	font-size: 10px;
+	font-weight: 800;
+	letter-spacing: 0.12em;
+}
+
+.tool-recommendation-content h3 {
+	margin: 0 0 6px;
+	color: #172033;
+	font-size: 18px;
+	line-height: 1.3;
+}
+
+.tool-recommendation-content p {
+	margin: 0;
+	color: #64748b;
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+.tool-recommendation-button {
+	flex-shrink: 0;
+	padding: 11px 17px;
+	border-radius: 7px;
+	background: #0f766e;
+	color: #ffffff;
+	font-size: 13px;
+	font-weight: 800;
+	text-decoration: none;
+	transition: background 0.15s ease;
+}
+
+.tool-recommendation-button:hover {
+	background: #115e59;
+}
+
+@media (max-width: 650px) {
+	.tool-recommendation {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.tool-recommendation-button {
+		width: 100%;
+		text-align: center;
+	}
+}

@@ -1,0 +1,382 @@
+/* ========================================
+   NOORADO TOOLS PAGE
+======================================== */
+
+.tools-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.tools-page * {
+  box-sizing: border-box;
+}
+
+.tools-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.tools-hero {
+  padding: 100px 20px 90px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.tools-hero .tools-container {
+  max-width: 800px;
+}
+
+.tools-label {
+  display: block;
+  margin-bottom: 18px;
+
+  color: #2563eb;
+
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.tools-hero h1 {
+  margin: 0 0 22px;
+
+  color: #0f172a;
+
+  font-size: 52px;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+
+.tools-hero p {
+  max-width: 650px;
+  margin: 0 auto;
+
+  color: #64748b;
+
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   TOOLS SECTION
+======================================== */
+
+.tools-section {
+  padding: 70px 20px 100px;
+}
+
+
+/* ========================================
+   SEARCH
+======================================== */
+
+.tools-search {
+  max-width: 700px;
+  margin: 0 auto 25px;
+}
+
+.tools-search input {
+  width: 100%;
+  height: 54px;
+
+  padding: 0 20px;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  color: #0f172a;
+
+  font-size: 16px;
+
+  outline: none;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.tools-search input:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+/* ========================================
+   CATEGORIES
+======================================== */
+
+.tools-categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin-bottom: 45px;
+}
+
+.tools-categories button {
+  padding: 9px 18px;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+
+  background: #ffffff;
+
+  color: #475569;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.tools-categories button:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.tools-categories button.active {
+  border-color: #2563eb;
+  background: #2563eb;
+  color: #ffffff;
+}
+
+
+/* ========================================
+   TOOL GRID
+======================================== */
+
+.tools-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.tool-card {
+  min-height: 250px;
+
+  padding: 28px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.tool-card:hover {
+  border-color: #bfdbfe;
+
+  box-shadow:
+    0 8px 24px rgba(15, 23, 42, 0.07);
+}
+
+/* ========================================
+   TOOL CARD TOP
+======================================== */
+
+.tool-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.tool-category {
+  color: #2563eb;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   AVAILABLE BADGE
+======================================== */
+
+.tool-available {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #f0fdf4;
+  color: #16a34a;
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.tool-available::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #16a34a;
+}
+
+.tool-card h2 {
+  margin: 0 0 12px;
+
+  color: #0f172a;
+
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.tool-card p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.tool-button {
+  width: fit-content;
+
+  margin-top: auto;
+  padding-top: 25px;
+
+  color: #2563eb;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.tool-button:hover {
+  color: #1d4ed8;
+}
+
+
+/* ========================================
+   COMING SOON
+======================================== */
+
+.tool-card.coming-soon {
+  background: #f8fafc;
+}
+
+.tool-card.coming-soon h2 {
+  color: #475569;
+}
+
+.tool-coming-soon {
+  width: fit-content;
+
+  margin-top: auto;
+  padding-top: 25px;
+
+  color: #94a3b8;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+
+/* ========================================
+   EMPTY STATE
+======================================== */
+
+.tools-empty {
+  padding: 70px 20px;
+
+  text-align: center;
+}
+
+.tools-empty h2 {
+  margin: 0 0 10px;
+
+  font-size: 24px;
+}
+
+.tools-empty p {
+  margin: 0;
+
+  color: #64748b;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+  .tools-hero h1 {
+    font-size: 44px;
+  }
+
+  .tools-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+  .tools-hero {
+    padding: 75px 20px 65px;
+  }
+
+  .tools-hero h1 {
+    font-size: 36px;
+  }
+
+  .tools-hero p {
+    font-size: 16px;
+  }
+
+  .tools-section {
+    padding: 50px 20px 70px;
+  }
+
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-card {
+    min-height: 220px;
+    padding: 24px;
+  }
+
+  .tool-card-top {
+    align-items: flex-start;
+  }
+}

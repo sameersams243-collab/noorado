@@ -1,0 +1,74 @@
+<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+
+  <!-- sheet shell -->
+
+  <!-- toolbar -->
+  <rect x="110" y="70" width="580" height="30" rx="10" fill="#107c41"/>
+  <g stroke="#ffffff" stroke-width="1.6" fill="none" stroke-linejoin="round">
+    <rect x="128" y="79" width="12" height="12" rx="2"/>
+    <line x1="131" y1="83" x2="137" y2="83"/>
+    <line x1="131" y1="87" x2="137" y2="87"/>
+  </g>
+  <text x="150" y="88" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#ffffff">AutoSave</text>
+
+  <!-- formula bar -->
+  <rect x="110" y="100" width="580" height="24" fill="#f3f4f6"/>
+  <text x="132" y="116" font-family="Arial, sans-serif" font-size="10" fill="#6b7280">D3</text>
+  <rect x="170" y="106" width="220" height="12" rx="2" fill="#ffffff"/>
+  <text x="176" y="116" font-family="Arial, monospace" font-size="10" fill="#374151">=SUM(D2:D8)</text>
+
+  <!-- column headers -->
+  <rect x="110" y="124" width="580" height="20" fill="#e5e7eb"/>
+  <rect x="150" y="124" width="90" height="20" fill="#d1d5db"/>
+  <rect x="240" y="124" width="90" height="20" fill="#e5e7eb"/>
+  <rect x="330" y="124" width="90" height="20" fill="#e5e7eb"/>
+  <rect x="420" y="124" width="90" height="20" fill="#e5e7eb"/>
+  <rect x="510" y="124" width="90" height="20" fill="#e5e7eb"/>
+  <rect x="600" y="124" width="90" height="20" fill="#e5e7eb"/>
+  <text x="195" y="138" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#374151" text-anchor="middle">Item</text>
+  <text x="285" y="138" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#374151" text-anchor="middle">Qty</text>
+  <text x="375" y="138" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#374151" text-anchor="middle">Price</text>
+  <text x="465" y="138" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#374151" text-anchor="middle">Total</text>
+  <text x="555" y="138" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#374151" text-anchor="middle">Status</text>
+  <text x="645" y="138" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#374151" text-anchor="middle">Date</text>
+  <!-- rows -->
+  <g stroke="#e5e7eb" stroke-width="1">
+    <rect x="110" y="144" width="580" height="26" fill="#ffffff"/>
+    <rect x="110" y="170" width="580" height="26" fill="#f9fafb"/>
+    <rect x="110" y="196" width="580" height="26" fill="#ffffff"/>
+    <rect x="110" y="222" width="580" height="26" fill="#f9fafb"/>
+    <rect x="110" y="248" width="580" height="26" fill="#ffffff"/>
+    <rect x="110" y="274" width="580" height="26" fill="#f9fafb"/>
+    <rect x="110" y="300" width="580" height="26" fill="#ffffff"/>
+    <rect x="110" y="326" width="580" height="26" fill="#f9fafb"/>
+  </g>
+
+  <!-- cell content bars -->
+  <g fill="#9ca3af">
+    <rect x="160" y="153" width="60" height="8" rx="2"/>
+    <rect x="250" y="153" width="50" height="8" rx="2"/>
+    <rect x="340" y="153" width="50" height="8" rx="2"/>
+    <rect x="160" y="179" width="55" height="8" rx="2"/>
+    <rect x="250" y="179" width="45" height="8" rx="2"/>
+    <rect x="340" y="179" width="60" height="8" rx="2"/>
+    <rect x="160" y="205" width="50" height="8" rx="2"/>
+    <rect x="250" y="205" width="55" height="8" rx="2"/>
+  </g>
+
+  <!-- highlighted formula cell -->
+  <rect x="420" y="196" width="90" height="26" fill="#d1fae5" stroke="#10b981" stroke-width="1.5"/>
+  <g stroke="#059669" stroke-width="1.6" fill="none" stroke-linecap="round">
+    <path d="M429 203 Q429 200 433 200 M429 203 L429 213 M427 208 L432 208"/>
+  </g>
+  <text x="440" y="213" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#059669">$4,280</text>
+
+  <!-- chart widget overlay -->
+  <rect x="480" y="240" width="180" height="100" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <polyline points="495,320 520,300 545,310 570,270 595,285 620,255 645,265" fill="none" stroke="#7c3aed" stroke-width="2.5"/>
+</svg>

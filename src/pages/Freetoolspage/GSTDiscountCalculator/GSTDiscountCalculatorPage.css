@@ -1,0 +1,493 @@
+/* ========================================
+   GST DISCOUNT CALCULATOR
+======================================== */
+
+.gst-discount-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  color: #111111;
+}
+
+.gst-discount-page * {
+  box-sizing: border-box;
+}
+
+
+/* ========================================
+   CONTAINER
+======================================== */
+
+.gst-discount-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.gst-discount-hero {
+  padding: 70px 0 60px;
+  background: #f7f7f7;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.gst-discount-back-link {
+  display: inline-block;
+  margin-bottom: 35px;
+  color: #555555;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.gst-discount-back-link:hover {
+  color: #111111;
+}
+
+.gst-discount-label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #777777;
+}
+
+.gst-discount-hero h1 {
+  margin: 0;
+  font-size: clamp(36px, 5vw, 58px);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+
+.gst-discount-hero p {
+  max-width: 620px;
+  margin: 20px 0 0;
+  color: #666666;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   CALCULATOR SECTION
+======================================== */
+
+.gst-discount-section {
+  padding: 70px 0 90px;
+}
+
+.gst-discount-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.gst-discount-result-column {
+  min-width: 0;
+}
+
+
+/* ========================================
+   INPUT CARD
+======================================== */
+
+.gst-discount-card {
+  padding: 34px;
+  background: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+}
+
+.gst-discount-card-header {
+  margin-bottom: 30px;
+}
+
+.gst-discount-card-header span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #777777;
+}
+
+.gst-discount-card-header h2 {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+
+/* ========================================
+   FORM
+======================================== */
+
+.gst-discount-form-group {
+  margin-bottom: 22px;
+}
+
+.gst-discount-form-group label {
+  display: block;
+  margin-bottom: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #222222;
+}
+
+.gst-discount-input-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  background: #ffffff;
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.gst-discount-input-wrapper:focus-within {
+  border-color: #111111;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.gst-discount-input-wrapper span {
+  padding: 0 15px;
+  color: #666666;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.gst-discount-input-wrapper input {
+  width: 100%;
+  min-width: 0;
+  height: 50px;
+  padding: 0 15px;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #111111;
+  font-size: 15px;
+}
+
+.gst-discount-input-wrapper input::placeholder {
+  color: #999999;
+}
+
+
+/* Remove number input arrows */
+
+.gst-discount-input-wrapper input::-webkit-outer-spin-button,
+.gst-discount-input-wrapper input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.gst-discount-input-wrapper input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+
+/* ========================================
+   SELECT
+======================================== */
+
+.gst-discount-form-group select {
+  width: 100%;
+  height: 52px;
+  padding: 0 15px;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  outline: none;
+  background: #ffffff;
+  color: #111111;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.gst-discount-form-group select:focus {
+  border-color: #111111;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ========================================
+   GST TYPE
+======================================== */
+
+.gst-discount-mode-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.gst-discount-mode-options button {
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #555555;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.gst-discount-mode-options button:hover {
+  border-color: #999999;
+}
+
+.gst-discount-mode-options button.active {
+  border-color: #111111;
+  background: #111111;
+  color: #ffffff;
+}
+
+
+/* ========================================
+   CLEAR BUTTON
+======================================== */
+
+.gst-discount-clear-button {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 5px;
+  border: 1px solid #d5d5d5;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #222222;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.gst-discount-clear-button:hover {
+  background: #f5f5f5;
+  border-color: #aaaaaa;
+}
+
+
+/* ========================================
+   RESULT CARD
+======================================== */
+
+.gst-discount-result-card {
+  padding: 34px;
+  border-radius: 18px;
+  background: #111111;
+  color: #ffffff;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+.gst-discount-result-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #aaaaaa;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.gst-discount-result-card h2 {
+  margin: 0 0 28px;
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+
+/* ========================================
+   RESULT LIST
+======================================== */
+
+.gst-discount-result-list {
+  border-top: 1px solid #333333;
+}
+
+.gst-discount-result-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 56px;
+  border-bottom: 1px solid #333333;
+}
+
+.gst-discount-result-row span {
+  color: #bdbdbd;
+  font-size: 14px;
+}
+
+.gst-discount-result-row strong {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: right;
+}
+
+
+/* ========================================
+   FINAL TOTAL
+======================================== */
+
+.gst-discount-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 25px;
+  padding: 20px;
+  border: 1px solid #333333;
+  border-radius: 12px;
+  background: #1b1b1b;
+}
+
+.gst-discount-total span {
+  color: #cccccc;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.gst-discount-total strong {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+
+/* ========================================
+   INFORMATION
+======================================== */
+
+.gst-discount-info {
+  max-width: 800px;
+  margin: 70px auto 0;
+  padding-top: 40px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.gst-discount-info > span {
+  display: block;
+  margin-bottom: 10px;
+  color: #777777;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.gst-discount-info h2 {
+  margin: 0 0 18px;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.gst-discount-info p {
+  margin: 0 0 14px;
+  color: #666666;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 850px) {
+
+  .gst-discount-layout {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+  .gst-discount-container {
+    padding: 0 16px;
+  }
+
+  .gst-discount-hero {
+    padding: 45px 0 45px;
+  }
+
+  .gst-discount-back-link {
+    margin-bottom: 28px;
+  }
+
+  .gst-discount-hero h1 {
+    font-size: 38px;
+    letter-spacing: -1.5px;
+  }
+
+  .gst-discount-hero p {
+    font-size: 15px;
+  }
+
+  .gst-discount-section {
+    padding: 45px 0 65px;
+  }
+
+  .gst-discount-card,
+  .gst-discount-result-card {
+    padding: 24px;
+    border-radius: 14px;
+  }
+
+  .gst-discount-card-header h2,
+  .gst-discount-result-card h2 {
+    font-size: 22px;
+  }
+
+  .gst-discount-result-row {
+    min-height: 52px;
+  }
+
+  .gst-discount-result-row span {
+    font-size: 13px;
+  }
+
+  .gst-discount-result-row strong {
+    font-size: 13px;
+  }
+
+  .gst-discount-total {
+    padding: 17px;
+  }
+
+  .gst-discount-total strong {
+    font-size: 20px;
+  }
+
+  .gst-discount-info {
+    margin-top: 50px;
+  }
+
+  .gst-discount-info h2 {
+    font-size: 24px;
+  }
+
+}

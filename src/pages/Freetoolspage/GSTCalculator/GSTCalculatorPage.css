@@ -1,0 +1,422 @@
+/* ========================================
+   NOORADO GST CALCULATOR
+======================================== */
+
+.gst-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.gst-page * {
+  box-sizing: border-box;
+}
+
+.gst-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.gst-hero {
+  padding: 55px 20px 70px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.gst-back-link {
+  display: inline-block;
+  margin-bottom: 35px;
+
+  color: #64748b;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+.gst-back-link:hover {
+  color: #2563eb;
+}
+
+.gst-label {
+  display: block;
+  margin-bottom: 15px;
+
+  color: #2563eb;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.gst-hero h1 {
+  margin: 0 0 15px;
+
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.gst-hero p {
+  max-width: 650px;
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   SECTION
+======================================== */
+
+.gst-section {
+  padding: 70px 20px 100px;
+}
+
+.gst-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  align-items: stretch;
+}
+
+.gst-result-column {
+  min-width: 0;
+}
+
+
+/* ========================================
+   CARDS
+======================================== */
+
+.gst-card,
+.gst-result-card {
+  padding: 35px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+
+  background: #ffffff;
+}
+
+.gst-card-header {
+  margin-bottom: 30px;
+}
+
+.gst-card-header > span,
+.gst-result-label {
+  color: #2563eb;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.gst-card-header h2,
+.gst-result-card h2 {
+  margin: 8px 0 0;
+
+  font-size: 25px;
+}
+
+
+/* ========================================
+   FORM
+======================================== */
+
+.gst-form-group {
+  margin-bottom: 24px;
+}
+
+.gst-form-group label {
+  display: block;
+  margin-bottom: 9px;
+
+  color: #334155;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.gst-input-wrapper {
+  display: flex;
+  align-items: center;
+
+  height: 52px;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  overflow: hidden;
+}
+
+.gst-input-wrapper > span {
+  padding-left: 15px;
+
+  color: #64748b;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.gst-input-wrapper input {
+  width: 100%;
+  height: 100%;
+
+  padding: 0 15px;
+
+  border: 0;
+  outline: 0;
+
+  color: #0f172a;
+
+  font-size: 16px;
+}
+
+.gst-form-group select {
+  width: 100%;
+  height: 52px;
+
+  padding: 0 15px;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  color: #0f172a;
+
+  font-size: 16px;
+
+  outline: none;
+}
+
+
+/* ========================================
+   MODE
+======================================== */
+
+.gst-mode-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.gst-mode-options button {
+  min-height: 48px;
+
+  padding: 10px;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  color: #475569;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.gst-mode-options button.active {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+
+/* ========================================
+   CLEAR
+======================================== */
+
+.gst-clear-button {
+  width: 100%;
+  height: 48px;
+
+  margin-top: 5px;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  color: #475569;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.gst-clear-button:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+
+
+/* ========================================
+   RESULTS
+======================================== */
+
+.gst-result-card {
+  background: #0f172a;
+  color: #ffffff;
+}
+
+.gst-result-card h2 {
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+.gst-result-label {
+  color: #93c5fd;
+}
+
+.gst-result-list {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.gst-result-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 17px 0;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.gst-result-row span {
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.gst-result-row strong {
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.gst-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  margin-top: 25px;
+  padding: 22px;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  color: #0f172a;
+}
+
+.gst-total span {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.gst-total strong {
+  font-size: 22px;
+}
+
+
+/* ========================================
+   INFORMATION
+======================================== */
+
+.gst-info {
+  max-width: 800px;
+
+  margin: 70px auto 0;
+  padding-top: 50px;
+
+  border-top: 1px solid #e2e8f0;
+}
+
+.gst-info > span {
+  color: #2563eb;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.gst-info h2 {
+  margin: 12px 0 18px;
+
+  font-size: 30px;
+}
+
+.gst-info p {
+  margin: 0 0 14px;
+
+  color: #64748b;
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 800px) {
+
+  .gst-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .gst-hero h1 {
+    font-size: 40px;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .gst-hero {
+    padding: 40px 20px 55px;
+  }
+
+  .gst-section {
+    padding: 50px 20px 70px;
+  }
+
+  .gst-card,
+  .gst-result-card {
+    padding: 25px;
+  }
+
+  .gst-hero h1 {
+    font-size: 34px;
+  }
+
+  .gst-mode-options {
+    grid-template-columns: 1fr;
+  }
+
+  .gst-total {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+}

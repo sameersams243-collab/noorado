@@ -1,0 +1,349 @@
+﻿/* ========================================
+   EXCEL AUTOMATION PROJECT PAGE
+======================================== */
+
+.excel-automation-page {
+  width: 100%;
+  background: #ffffff;
+}
+
+.excel-automation-page * {
+  box-sizing: border-box;
+}
+
+.excel-automation-page .project-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.excel-automation-page .project-hero {
+  position: relative;
+  min-height: 395px;
+  width: 100%;
+  padding: 110px 20px 85px;
+  padding-top: 105px;
+  text-align: center;
+
+  background: #0f172a;
+  color: #ffffff;
+}
+
+.excel-automation-page .project-hero .project-container {
+  max-width: 900px;
+}
+
+.excel-automation-page .project-category {
+  display: block;
+  margin-bottom: 18px;
+
+  color: #60a5fa;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.excel-automation-page .project-hero h1 {
+  margin: 0 auto 20px;
+
+  color: #ffffff;
+  font-size: 52px;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.excel-automation-page .project-hero p {
+  max-width: 700px;
+  margin: 0 auto;
+
+  color: #cbd5e1;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   PROJECT OVERVIEW
+======================================== */
+
+.excel-automation-page .project-overview {
+  width: 100%;
+  padding: 100px 20px;
+
+  background: #ffffff;
+}
+
+.excel-automation-page .project-overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.excel-automation-page .project-label {
+  display: block;
+
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.excel-automation-page .project-overview h2 {
+  margin: 15px 0 0;
+
+  color: #111827;
+  font-size: 36px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.excel-automation-page .project-overview p {
+  margin: 0 0 16px;
+
+  color: #64748b;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+
+/* ========================================
+   CHALLENGE + SOLUTION
+======================================== */
+
+.excel-automation-page .project-challenge {
+  width: 100%;
+  padding: 100px 20px;
+
+  background: #f8fafc;
+}
+
+.excel-automation-page .challenge-grid {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+
+  align-items: stretch;
+}
+
+.excel-automation-page .challenge-card,
+.excel-automation-page .solution-card {
+  width: 100%;
+  min-height: 380px;
+  padding: 45px;
+
+  border-radius: 24px;
+}
+
+.excel-automation-page .challenge-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+.excel-automation-page .solution-card {
+  background: #0f172a;
+  color: #ffffff;
+
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+}
+
+.excel-automation-page .challenge-card h2,
+.excel-automation-page .solution-card h2 {
+  margin: 18px 0;
+
+  font-size: 30px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.excel-automation-page .challenge-card p,
+.excel-automation-page .solution-card p {
+  margin: 0 0 18px;
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.excel-automation-page .challenge-card p {
+  color: #64748b;
+}
+
+.excel-automation-page .solution-card p {
+  color: #cbd5e1;
+}
+
+.excel-automation-page .solution-card .project-label {
+  color: #60a5fa;
+}
+
+
+/* ========================================
+   KEY FEATURES
+======================================== */
+
+.excel-automation-page .project-features {
+  width: 100%;
+  padding: 100px 20px;
+
+  background: #ffffff;
+}
+
+.excel-automation-page .features-heading {
+  width: 100%;
+  max-width: 700px;
+
+  margin: 0 auto 50px;
+
+  text-align: center;
+}
+
+.excel-automation-page .features-heading h2 {
+  margin: 15px 0 0;
+
+  color: #111827;
+  font-size: 40px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.excel-automation-page .features-grid {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.excel-automation-page .feature-card {
+  width: 100%;
+  min-height: 200px;
+
+  padding: 30px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.excel-automation-page .feature-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.08);
+}
+
+.excel-automation-page .feature-card h3 {
+  margin: 0 0 12px;
+
+  color: #111827;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.excel-automation-page .feature-card p {
+  margin: 0;
+
+  color: #64748b;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+  .excel-automation-page .project-hero h1 {
+    font-size: 44px;
+  }
+
+  .excel-automation-page .project-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .excel-automation-page .challenge-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .excel-automation-page .features-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+  .excel-automation-page .project-hero {
+    padding: 90px 20px 70px;
+  }
+
+  .excel-automation-page .project-hero h1 {
+    font-size: 36px;
+  }
+
+  .excel-automation-page .project-hero p {
+    font-size: 16px;
+  }
+
+  .excel-automation-page .project-overview {
+    padding: 70px 20px;
+  }
+
+  .excel-automation-page .project-overview h2 {
+    font-size: 30px;
+  }
+
+  .excel-automation-page .project-challenge {
+    padding: 70px 20px;
+  }
+
+  .excel-automation-page .challenge-card,
+  .excel-automation-page .solution-card {
+    min-height: auto;
+    padding: 30px;
+  }
+
+  .excel-automation-page .challenge-card h2,
+  .excel-automation-page .solution-card h2 {
+    font-size: 27px;
+  }
+
+  .excel-automation-page .project-features {
+    padding: 70px 20px;
+  }
+
+  .excel-automation-page .features-heading h2 {
+    font-size: 32px;
+  }
+
+  .excel-automation-page .features-grid {
+    grid-template-columns: 1fr;
+  }
+}

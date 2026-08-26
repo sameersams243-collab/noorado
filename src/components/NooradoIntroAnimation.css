@@ -1,0 +1,248 @@
+.noorado-intro {
+  position: relative;
+  width: min(100%, 560px);
+  min-height: 430px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.noorado-intro::before,
+.noorado-intro::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(37, 99, 235, 0.16);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.noorado-intro::before {
+  width: 390px;
+  height: 390px;
+}
+
+.noorado-intro::after {
+  width: 470px;
+  height: 470px;
+  border-color: rgba(6, 182, 212, 0.12);
+}
+
+.noorado-intro-orbit {
+  position: absolute;
+  z-index: -1;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2563eb;
+  box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.1);
+}
+
+.noorado-intro-orbit-one {
+  top: 17%;
+  left: 18%;
+}
+
+.noorado-intro-orbit-two {
+  right: 16%;
+  bottom: 20%;
+  background: #06b6d4;
+  box-shadow: 0 0 0 6px rgba(6, 182, 212, 0.1);
+}
+
+.noorado-intro-panel {
+  position: relative;
+  width: min(100%, 370px);
+  min-height: 330px;
+  padding: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.13);
+  animation: noorado-intro-panel-in 0.4s ease-out both;
+}
+
+.noorado-intro-panel-topline,
+.noorado-intro-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.noorado-intro-status,
+.noorado-intro-footer {
+  color: #64748b;
+  font-family: "Sora", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.noorado-intro-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #16a34a;
+  box-shadow: 0 0 0 5px rgba(22, 163, 74, 0.1);
+}
+
+.noorado-intro-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.noorado-intro-brand-mark {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 12px;
+  background: #0f172a;
+  color: #ffffff;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.noorado-intro-brand strong,
+.noorado-intro-brand span {
+  display: block;
+}
+
+.noorado-intro-brand strong {
+  color: #0f172a;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 21px;
+  letter-spacing: 0.04em;
+}
+
+.noorado-intro-brand div span {
+  margin-top: 2px;
+  color: #2563eb;
+  font-family: "Sora", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.noorado-intro-divider {
+  height: 1px;
+  margin: 22px 0;
+  background: #e2e8f0;
+}
+
+.noorado-intro-message > span {
+  color: #2563eb;
+  font-family: "Sora", sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.noorado-intro-message h2 {
+  margin: 8px 0 20px;
+  color: #0f172a;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 29px;
+  line-height: 1.05;
+}
+
+.noorado-intro-services {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.noorado-intro-service {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 9px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  color: #334155;
+  font-family: "Sora", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  animation: noorado-intro-service-in 0.35s ease-out both;
+}
+
+.noorado-intro-service:nth-child(2) {
+  animation-delay: 0.05s;
+}
+
+.noorado-intro-service:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+.noorado-intro-service:nth-child(4) {
+  animation-delay: 0.15s;
+}
+
+.noorado-intro-service-mark {
+  color: #06b6d4;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.noorado-intro-footer {
+  margin-top: 21px;
+}
+
+.noorado-intro-footer-line {
+  flex: 1;
+  height: 1px;
+  margin: 0 10px;
+  background: #e2e8f0;
+}
+
+@keyframes noorado-intro-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes noorado-intro-service-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 700px) {
+  .noorado-intro {
+    min-height: 360px;
+  }
+
+  .noorado-intro::before {
+    width: 310px;
+    height: 310px;
+  }
+
+  .noorado-intro::after {
+    width: 370px;
+    height: 370px;
+  }
+
+  .noorado-intro-panel {
+    width: min(100%, 340px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .noorado-intro-panel,
+  .noorado-intro-service {
+    animation: none;
+  }
+}

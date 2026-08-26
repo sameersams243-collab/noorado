@@ -1,0 +1,570 @@
+/* ==================================================
+   GST INVOICE TEMPLATE SELECTOR
+================================================== */
+
+.gst-invoice-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  color: #172033;
+}
+
+.gst-invoice-hero {
+  padding: 72px 20px 64px;
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 52%, #99f6e4 100%);
+  color: #ffffff;
+}
+
+.gst-invoice-container {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+}
+
+.gst-invoice-back-link {
+  display: inline-block;
+  margin-bottom: 28px;
+  color: #ecfeff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.gst-invoice-hero h1 {
+  max-width: 720px;
+  margin: 0;
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.05;
+}
+
+.gst-invoice-hero p {
+  max-width: 620px;
+  margin: 18px 0 0;
+  color: #ccfbf1;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.gst-invoice-section {
+  padding: 48px 20px 80px;
+}
+
+.gst-invoice-card,
+.gst-invoice-summary-card {
+  margin-bottom: 24px;
+  padding: 30px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.06);
+}
+
+.gst-invoice-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.gst-invoice-card-header > span {
+  display: grid;
+  flex: 0 0 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 50%;
+  background: #ccfbf1;
+  color: #0f766e;
+  font-weight: 800;
+}
+
+.gst-invoice-card-header small,
+.gst-invoice-summary-card > span {
+  color: #0f766e;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.gst-invoice-card h2,
+.gst-invoice-summary-card h2 {
+  margin: 5px 0 0;
+  color: #172033;
+  font-size: 25px;
+}
+
+.gst-invoice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.gst-invoice-form-group {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gst-invoice-form-group label {
+  color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.gst-invoice-form-group input,
+.gst-invoice-form-group textarea,
+.gst-invoice-form-group select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #172033;
+  font: inherit;
+}
+
+.gst-invoice-form-group textarea {
+  resize: vertical;
+}
+
+.gst-invoice-form-group input:focus,
+.gst-invoice-form-group textarea:focus,
+.gst-invoice-form-group select:focus {
+  outline: 3px solid rgba(20, 184, 166, 0.18);
+  border-color: #14b8a6;
+}
+
+.gst-invoice-full {
+  grid-column: 1 / -1;
+}
+
+.gst-invoice-item {
+  margin-bottom: 18px;
+  padding: 20px;
+  border: 1px solid #dbe4ec;
+  border-radius: 7px;
+  background: #f8fafc;
+}
+
+.gst-invoice-item-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.gst-invoice-item-title button,
+.gst-invoice-add-item {
+  border: 0;
+  background: transparent;
+  color: #0f766e;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.gst-invoice-item-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 34px;
+  margin-top: 18px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.gst-invoice-item-summary span {
+  display: flex;
+  gap: 7px;
+}
+
+.gst-invoice-item-summary strong {
+  color: #172033;
+}
+
+.gst-invoice-add-item {
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.gst-invoice-logo-upload {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.gst-invoice-logo-upload-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 5px;
+  background: #0f766e;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.gst-invoice-logo-upload-button:hover {
+  background: #115e59;
+}
+
+.gst-invoice-logo-upload p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.gst-invoice-logo-preview {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.gst-invoice-logo-preview img {
+  width: 96px;
+  height: 64px;
+  object-fit: contain;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  background: #f8fafc;
+}
+
+.gst-invoice-logo-preview button {
+  padding: 9px 12px;
+  border: 1px solid #fecaca;
+  border-radius: 5px;
+  background: #fff1f2;
+  color: #be123c;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.gst-invoice-summary-card {
+  max-width: 560px;
+  margin-left: auto;
+}
+
+.gst-invoice-summary-list > div,
+.gst-invoice-grand-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.gst-invoice-summary-list {
+  display: grid;
+  gap: 13px;
+  margin-top: 24px;
+  color: #64748b;
+}
+
+.gst-invoice-summary-list strong {
+  color: #172033;
+}
+
+.gst-invoice-grand-total {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid #cbd5e1;
+  color: #172033;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.gst-invoice-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 26px;
+}
+
+.gst-invoice-actions button {
+  padding: 13px 22px;
+  border: 0;
+  border-radius: 5px;
+  background: #0f766e;
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+}
+
+.gst-invoice-actions button:hover {
+  background: #115e59;
+}
+
+.gst-invoice-template-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.68);
+}
+
+.gst-invoice-template-modal {
+  position: relative;
+  width: min(900px, 100%);
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 30px;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.28);
+}
+
+.gst-invoice-template-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 25px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.gst-invoice-template-close:hover {
+  background: #e2e8f0;
+}
+
+.gst-invoice-template-label {
+  display: block;
+  margin-bottom: 7px;
+  color: #14b8a6;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.gst-invoice-template-modal > h2 {
+  margin: 0;
+  padding-right: 45px;
+  color: #111827;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.gst-invoice-template-modal > p {
+  margin: 8px 0 24px;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.gst-invoice-template-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.gst-invoice-template-options > button {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  text-align: left;
+  border: 2px solid #e5e7eb;
+  border-radius: 18px;
+  background: #ffffff;
+  color: #111827;
+  cursor: pointer;
+}
+
+.gst-invoice-template-options > button:hover {
+  border-color: #99f6e4;
+}
+
+.gst-invoice-template-options > button.active {
+  border-color: #14b8a6;
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.12);
+}
+
+.gst-invoice-template-options > button strong {
+  display: block;
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.gst-invoice-template-options > button > span {
+  display: block;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.gst-invoice-template-options > button em {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #f0fdfa;
+  color: #0f766e;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.gst-invoice-template-preview {
+  width: 100%;
+  height: 230px;
+  box-sizing: border-box;
+  padding: 16px;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #f8fafc;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.8);
+}
+
+.gst-invoice-template-preview.short-preview {
+  width: 62%;
+  min-width: 190px;
+  margin: 0 auto;
+}
+
+.preview-title {
+  margin-bottom: 12px;
+  text-align: center;
+  color: #111827;
+  font-size: 9px;
+  font-weight: 900;
+}
+
+.preview-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.preview-lines span {
+  display: block;
+  width: 65%;
+  height: 6px;
+  border-radius: 3px;
+  background: #cbd5e1;
+}
+
+.preview-lines span:nth-child(2) {
+  width: 48%;
+}
+
+.preview-lines span:nth-child(3) {
+  width: 55%;
+}
+
+.preview-table {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 9px;
+}
+
+.preview-table span {
+  display: block;
+  width: 100%;
+  height: 9px;
+  border: 1px solid #cbd5e1;
+  border-radius: 2px;
+  background: #ffffff;
+}
+
+.preview-total {
+  width: 45%;
+  height: 25px;
+  margin-top: 10px;
+  margin-left: auto;
+  border: 1px solid #94a3b8;
+  background: #ffffff;
+}
+
+@media (max-width: 700px) {
+  .gst-invoice-template-overlay {
+    padding: 10px;
+  }
+
+  .gst-invoice-template-modal {
+    max-height: 94vh;
+    padding: 22px 18px;
+    border-radius: 17px;
+  }
+
+  .gst-invoice-template-modal > h2 {
+    font-size: 23px;
+  }
+
+  .gst-invoice-template-options {
+    grid-template-columns: 1fr;
+  }
+
+  .gst-invoice-template-preview {
+    height: 190px;
+  }
+
+  .gst-invoice-template-preview.short-preview {
+    width: 55%;
+    min-width: 160px;
+  }
+}
+
+@media (max-width: 420px) {
+  .gst-invoice-hero h1 {
+    font-size: 36px;
+  }
+
+  .gst-invoice-card,
+  .gst-invoice-summary-card {
+    padding: 20px 16px;
+  }
+
+  .gst-invoice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gst-invoice-full {
+    grid-column: auto;
+  }
+
+  .gst-invoice-template-preview.short-preview {
+    width: 68%;
+  }
+}
+.gst-invoice-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  color: #ecfeff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.gst-invoice-back-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.gst-invoice-back-link:hover {
+  opacity: 0.9;
+}

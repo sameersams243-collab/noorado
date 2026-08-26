@@ -1,0 +1,74 @@
+<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+
+  <!-- dashboard shell -->
+
+  <!-- sidebar -->
+  <rect x="100" y="60" width="140" height="340" rx="10" fill="#f3f4f6"/>
+  <text x="122" y="98" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2937">StockFlow</text>
+  <rect x="122" y="130" width="96" height="18" rx="4" fill="#dbeafe"/>
+  <g stroke="#2563eb" stroke-width="1.6" fill="none" stroke-linejoin="round">
+    <path d="M129 135 L134 132 L139 135 L139 141 L134 144 L129 141 Z"/>
+  </g>
+  <text x="147" y="143" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#1e40af">Dashboard</text>
+  <rect x="122" y="160" width="96" height="18" rx="4" fill="transparent"/>
+  <g stroke="#9ca3af" stroke-width="1.4" fill="none" stroke-linejoin="round">
+    <rect x="129" y="163" width="10" height="9" rx="1"/>
+  </g>
+  <text x="147" y="172" font-family="Arial, sans-serif" font-size="10" fill="#6b7280">Inventory</text>
+  <g stroke="#9ca3af" stroke-width="1.4" fill="none">
+    <circle cx="134" cy="198" r="5"/>
+    <line x1="138" y1="202" x2="141" y2="205"/>
+  </g>
+  <text x="147" y="202" font-family="Arial, sans-serif" font-size="10" fill="#6b7280">Reports</text>
+  <g stroke="#9ca3af" stroke-width="1.4" fill="none" stroke-linejoin="round">
+    <path d="M129 224 L139 224 L136 232 L132 232 Z"/>
+  </g>
+  <text x="147" y="232" font-family="Arial, sans-serif" font-size="10" fill="#6b7280">Suppliers</text>
+
+  <!-- top stats -->
+  <rect x="260" y="84" width="130" height="60" rx="6" fill="#eef2ff"/>
+  <g stroke="#6366f1" stroke-width="1.6" fill="none" stroke-linejoin="round">
+    <path d="M366 96 L376 96 L376 106 L371 111 L366 106 Z"/>
+  </g>
+  <text x="280" y="107" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#4338ca">In stock</text>
+  <text x="280" y="130" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#1f2937">2,481</text>
+
+  <rect x="410" y="84" width="130" height="60" rx="6" fill="#f0fdf4"/>
+  <g stroke="#16a34a" stroke-width="1.6" fill="none" stroke-linecap="round">
+    <polyline points="516,110 519,104 522,107 526,99"/>
+  </g>
+  <text x="430" y="107" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#15803d">Restocked</text>
+  <text x="430" y="130" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#1f2937">312</text>
+
+  <rect x="560" y="84" width="120" height="60" rx="6" fill="#fef2f2"/>
+  <g stroke="#dc2626" stroke-width="1.6" fill="none" stroke-linecap="round">
+    <path d="M660 98 L660 106 M660 110 L660 111"/>
+    <circle cx="660" cy="105" r="8"/>
+  </g>
+  <text x="580" y="107" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#b91c1c">Low stock</text>
+  <text x="580" y="130" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#1f2937">18</text>
+
+  <!-- bar chart -->
+  <rect x="260" y="170" width="260" height="130" rx="6" fill="#f9fafb"/>
+  <rect x="280" y="230" width="20" height="50" fill="#93c5fd"/>
+  <rect x="310" y="210" width="20" height="70" fill="#6366f1"/>
+  <rect x="340" y="245" width="20" height="35" fill="#93c5fd"/>
+  <rect x="370" y="200" width="20" height="80" fill="#6366f1"/>
+  <rect x="400" y="220" width="20" height="60" fill="#93c5fd"/>
+  <rect x="430" y="190" width="20" height="90" fill="#6366f1"/>
+  <rect x="460" y="235" width="20" height="45" fill="#93c5fd"/>
+
+  <!-- table -->
+  <rect x="540" y="170" width="140" height="130" rx="6" fill="#f9fafb"/>
+  <rect x="554" y="184" width="112" height="8" rx="2" fill="#9ca3af"/>
+  <rect x="554" y="204" width="112" height="16" rx="3" fill="#e5e7eb"/>
+  <rect x="554" y="226" width="112" height="16" rx="3" fill="#e5e7eb"/>
+  <rect x="554" y="248" width="112" height="16" rx="3" fill="#e5e7eb"/>
+  <rect x="554" y="270" width="112" height="16" rx="3" fill="#e5e7eb"/>
+</svg>

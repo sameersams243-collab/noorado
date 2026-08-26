@@ -1,0 +1,376 @@
+﻿/* ========================================
+   BUSINESS TOOLS PROJECT PAGE
+======================================== */
+
+.business-tools-page {
+  width: 100%;
+  background: #ffffff;
+}
+
+.business-tools-page * {
+  box-sizing: border-box;
+}
+
+.business-tools-page .project-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.business-tools-page .project-hero {
+  position: relative;
+  min-height: 395px;
+  width: 100%;
+  padding: 110px 20px 85px;
+  padding-top: 105px;
+
+  text-align: center;
+
+  background: #0f172a;
+  color: #ffffff;
+}
+
+.business-tools-page .project-category {
+  display: block;
+
+  margin-bottom: 18px;
+
+  color: #60a5fa;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.business-tools-page .project-hero h1 {
+  margin: 0 auto 20px;
+
+  color: #ffffff;
+
+  font-size: 52px;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.business-tools-page .project-hero p {
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  color: #cbd5e1;
+
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   PROJECT OVERVIEW
+======================================== */
+
+.business-tools-page .project-overview {
+  width: 100%;
+
+  padding: 90px 20px;
+
+  background: #ffffff;
+}
+
+.business-tools-page .project-overview-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 70px;
+
+  align-items: center;
+}
+
+.business-tools-page .project-label {
+  display: block;
+
+  color: #2563eb;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+}
+
+.business-tools-page .project-overview h2 {
+  margin: 15px 0 0;
+
+  color: #111827;
+
+  font-size: 36px;
+  line-height: 1.3;
+}
+
+.business-tools-page .project-overview p {
+  margin: 0 0 16px;
+
+  color: #64748b;
+
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+
+/* ========================================
+   CHALLENGE + SOLUTION
+======================================== */
+
+.business-tools-page .project-challenge {
+  width: 100%;
+
+  padding: 90px 20px;
+
+  background: #f8fafc;
+}
+
+.business-tools-page .challenge-grid {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 30px;
+}
+
+.business-tools-page .challenge-card,
+.business-tools-page .solution-card {
+  box-sizing: border-box;
+
+  padding: 45px;
+
+  min-height: 380px;
+
+  border-radius: 24px;
+}
+
+
+/* Challenge */
+
+.business-tools-page .challenge-card {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+
+/* Solution */
+
+.business-tools-page .solution-card {
+  background: #0f172a;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.12);
+}
+
+
+.business-tools-page .challenge-card h2,
+.business-tools-page .solution-card h2 {
+  margin: 18px 0;
+
+  font-size: 30px;
+  line-height: 1.35;
+}
+
+.business-tools-page .challenge-card p,
+.business-tools-page .solution-card p {
+  margin: 0 0 18px;
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.business-tools-page .challenge-card p {
+  color: #64748b;
+}
+
+.business-tools-page .solution-card p {
+  color: #cbd5e1;
+}
+
+.business-tools-page .solution-card .project-label {
+  color: #60a5fa;
+}
+
+
+/* ========================================
+   KEY FEATURES
+======================================== */
+
+.business-tools-page .project-features {
+  width: 100%;
+
+  padding: 90px 20px;
+
+  background: #ffffff;
+}
+
+.business-tools-page .features-heading {
+  max-width: 700px;
+
+  margin: 0 auto 50px;
+
+  text-align: center;
+}
+
+.business-tools-page .features-heading h2 {
+  margin: 15px 0 0;
+
+  color: #111827;
+
+  font-size: 40px;
+  line-height: 1.3;
+}
+
+.business-tools-page .features-grid {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 20px;
+}
+
+.business-tools-page .feature-card {
+  box-sizing: border-box;
+
+  padding: 30px;
+
+  min-height: 200px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 20px;
+
+  transition: 0.3s ease;
+}
+
+.business-tools-page .feature-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.08);
+}
+
+.business-tools-page .feature-card h3 {
+  margin: 0 0 12px;
+
+  color: #111827;
+
+  font-size: 20px;
+}
+
+.business-tools-page .feature-card p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+  .business-tools-page .project-hero h1 {
+    font-size: 44px;
+  }
+
+  .business-tools-page .project-overview-grid {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+  }
+
+  .business-tools-page .challenge-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .business-tools-page .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+  .business-tools-page .project-hero {
+    padding: 90px 20px 70px;
+  }
+
+  .business-tools-page .project-hero h1 {
+    font-size: 36px;
+  }
+
+  .business-tools-page .project-hero p {
+    font-size: 16px;
+  }
+
+  .business-tools-page .project-overview {
+    padding: 70px 20px;
+  }
+
+  .business-tools-page .project-overview h2 {
+    font-size: 30px;
+  }
+
+  .business-tools-page .project-challenge {
+    padding: 70px 20px;
+  }
+
+  .business-tools-page .challenge-card,
+  .business-tools-page .solution-card {
+    padding: 30px;
+
+    min-height: auto;
+  }
+
+  .business-tools-page .challenge-card h2,
+  .business-tools-page .solution-card h2 {
+    font-size: 27px;
+  }
+
+  .business-tools-page .project-features {
+    padding: 70px 20px;
+  }
+
+  .business-tools-page .features-heading h2 {
+    font-size: 32px;
+  }
+
+  .business-tools-page .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
