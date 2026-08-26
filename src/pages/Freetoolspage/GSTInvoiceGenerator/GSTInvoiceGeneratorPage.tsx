@@ -1994,7 +1994,7 @@ function GSTInvoiceGeneratorPage() {
                             min="0"
                             max="100"
                             step="0.01"
-                            value={item.discount}
+                            value={item.discount || ""}
                             onChange={(e) =>
                               updateItem(
                                 item.id,
