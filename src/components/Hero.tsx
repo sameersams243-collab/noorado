@@ -66,14 +66,14 @@ function Hero() {
 
         <div className="hero-buttons">
           <motion.a
-            href="#contact"
-            className="hero-btn"
-            aria-label="Go to Contact section"
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Get Started
-          </motion.a>
+  href="/tools"
+  className="hero-btn"
+  aria-label="Go to Tools"
+  whileHover={{ scale: 1.08 }}
+  whileTap={{ scale: 0.95 }}
+>
+  Get Started
+</motion.a>
 
           <motion.a
             href="#services"
