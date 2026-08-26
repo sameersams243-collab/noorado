@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import heroimage from "../assets/cartoon-hero-image.png";
+import heroimage from "../assets/cartoon-hero-image.webp";
 
 function Hero() {
   return (
