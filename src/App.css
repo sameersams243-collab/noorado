@@ -44,7 +44,7 @@ background-blend-mode: screen;
 /* Navigation */
 
 .navbar {
-  background: linear-gradient(135deg, rgba(255,255,255,.5), rgba(255,192,203,.25));
+  background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,192,203,.85));
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   display: flex;
