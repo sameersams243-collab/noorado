@@ -1943,17 +1943,17 @@ function GSTInvoiceGeneratorPage() {
                             type="number"
                             min="0"
                             step="0.01"
-                            value={item.quantity}
+                            value={item.quantity === 0 ? "" : item.quantity}
                             onChange={(e) =>
                               updateItem(
                                 item.id,
                                 "quantity",
-                                Math.max(
-                                  0,
-                                  Number(
-                                    e.target.value
-                                  )
-                                )
+                                e.target.value === ""
+                                  ? 0
+                                  : Math.max(
+                                      0,
+                                      Number(e.target.value)
+                                    )
                               )
                             }
                           />
@@ -1968,7 +1968,7 @@ function GSTInvoiceGeneratorPage() {
                             type="number"
                             min="0"
                             step="0.01"
-                            value={item.rate}
+                            value={item.rate || ""}
                             onChange={(e) =>
                               updateItem(
                                 item.id,
