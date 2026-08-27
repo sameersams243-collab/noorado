@@ -1,23 +1,15 @@
-
 import { motion } from "framer-motion";
+import { Globe, FileSpreadsheet, Settings, Briefcase } from "lucide-react";
 import heroimage from "../assets/cartoon-hero-image.webp";
 
 function Hero() {
   return (
-    <motion.section
+    <section
       id="hero"
       className="hero"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
     >
       {/* Left Content */}
-      <motion.div
-        className="hero-left"
-        initial={{ opacity: 0, x: -80 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-      >
+      <div className="hero-left">
         <h1>
           Build Smarter Businesses
           <br />
@@ -31,61 +23,53 @@ function Hero() {
         </p>
 
         <ul className="hero-list">
-          <motion.li
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.0 }}
-          >
-            ✅ Business Websites
-          </motion.li>
+          <li>
+            <span className="feature-icon">
+              <Globe />
+            </span>
+            Business Websites
+          </li>
 
-          <motion.li
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.0 }}
-          >
-            ✅ Excel Templates
-          </motion.li>
+          <li>
+            <span className="feature-icon">
+              <FileSpreadsheet />
+            </span>
+            Excel Templates
+          </li>
 
-          <motion.li
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.0 }}
-          >
-            ✅ Business Software
-          </motion.li>
+          <li>
+            <span className="feature-icon">
+              <Settings />
+            </span>
+            Business Software
+          </li>
 
-          <motion.li
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.0 }}
-          >
-            ✅ Online Business Tools
-          </motion.li>
+          <li>
+            <span className="feature-icon">
+              <Briefcase />
+            </span>
+            Online Business Tools
+          </li>
         </ul>
 
         <div className="hero-buttons">
-          <motion.a
-  href="/tools"
-  className="hero-btn"
-  aria-label="Go to Tools"
-  whileHover={{ scale: 1.08 }}
-  whileTap={{ scale: 0.95 }}
->
-  Get Started
-</motion.a>
+          <a
+            href="/tools"
+            className="hero-btn"
+            aria-label="Go to Tools"
+          >
+            Get Started
+          </a>
 
-          <motion.a
+          <a
             href="#services"
             className="hero-btn secondary"
             aria-label="Go to Services section"
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.95 }}
           >
             Our Services
-          </motion.a>
+          </a>
         </div>
-      </motion.div>
+      </div>
 
       {/* Right Image */}
       <motion.div
@@ -95,10 +79,13 @@ function Hero() {
         transition={{ duration: 1 }}
       >
         <div className="hero-image">
-          <img src={heroimage} alt="hero-illustration" />
-</div>
+          <img
+            src={heroimage}
+            alt="hero-illustration"
+          />
+        </div>
       </motion.div>
-    </motion.section>
+    </section>
   );
 }
 

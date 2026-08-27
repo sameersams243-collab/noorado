@@ -142,28 +142,29 @@ background-blend-mode: screen;
 }
 
 .hero-left h1 {
-   font-family: "Bricolage Grotesque", sans-serif;
-    font-weight: 700;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
   font-size: 52px;
   line-height: 1.15;
 
   background: linear-gradient(
-      90deg,
-      var(--primary),
-      var(--secondary),
-      var(--accent)
+    90deg,
+    var(--primary),
+    var(--secondary),
+    var(--accent)
   );
 
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 3px 4px 5px rgba(0, 0, 0, 0.20);
 }
 
 .hero-left p {
   font-family: "Inter", sans-serif;
-    font-weight: 400;
+  font-weight: 400;
   font-size: 18px;
-  color: var(--text-light);
+  color: #333333;
   line-height: 1.7;
   margin-bottom: 25px;
 }
@@ -175,8 +176,37 @@ background-blend-mode: screen;
 }
 
 .hero-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   margin-bottom: 12px;
+  font-family: "Inter", sans-serif;
   font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.feature-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+  border: 1px solid #dbe3ef;
+  border-radius: 50%;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+
+  flex-shrink: 0;
+}
+
+.feature-icon svg {
+  width: 22px;
+  height: 22px;
+  color: #2563eb;
+  stroke-width: 2;
 }
 
 .hero-buttons {
@@ -340,9 +370,13 @@ background-blend-mode: screen;
 .why h2,
 .stats h2,
 .contact h2 {
-  font-size: 42px;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 52px;
   font-weight: 800;
+  color: #333333;
   margin-bottom: 50px;
+  text-align: center;
+  text-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
 }
 
 .services-grid {
@@ -601,28 +635,94 @@ button,
 @media (max-width: 768px) {
 
   .navbar {
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    height: auto;
+    min-height: 64px;
+    width: calc(100% - 20px);
+    margin: 0 auto;
+    top: 8px;
+  }
+
+  .logo {
+    font-size: 21px;
+    flex-shrink: 0;
   }
 
   .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .nav-links li {
+    flex-shrink: 0;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    padding: 5px 3px;
+    white-space: nowrap;
   }
 
   .nav-links li:hover {
-    transform: translateY(-2px);
+    transform: none;
   }
 
   .hero {
     flex-direction: column;
     text-align: center;
+    margin-top: 35px;
+    margin-bottom: 35px;
+  }
+
+  .hero-left h1 {
+    font-size: 38px;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+
+  .hero-left p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .hero-list {
+    width: fit-content;
+    margin: 0 auto 30px;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+
+  .hero-list li {
+    font-size: 16px;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .feature-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .feature-icon svg {
+    width: 20px;
+    height: 20px;
   }
 
   .hero-buttons {
     justify-content: center;
+    gap: 12px;
+  }
+
+  .hero-btn {
+    padding: 11px 20px;
+    font-size: 15px;
   }
 
   .services-grid,

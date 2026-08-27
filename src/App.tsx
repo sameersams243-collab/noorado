@@ -1,6 +1,6 @@
 import "./App.css";
-import { lazy, Suspense } from "react";
-import { Navigate, Routes, Route } from "react-router-dom";
+import { lazy, Suspense, useEffect } from "react";
+import { Navigate, Routes, Route, useLocation } from "react-router-dom";
 
 import Home from "./pages/HomePage";
 import PortfolioPage from "./pages/PortfolioPage";
@@ -95,6 +95,16 @@ function PublicRoute({
   return children;
 }
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <Suspense
@@ -104,6 +114,8 @@ function App() {
         </div>
       }
     >
+      <ScrollToTop />
+
       <Routes>
         {/* Public pages */}
 
