@@ -336,22 +336,17 @@ background-blend-mode: screen;
   height: auto;
   border-radius: var(--radius);
   animation: float 4s ease-in-out infinite;
-  transition: transform 0.4s ease;
-}
-
-.hero-image img:hover {
-  transform: scale(1.05);
 }
 
 @keyframes float {
   0% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
   50% {
     transform: translateY(-12px);
   }
   100% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
 }
 

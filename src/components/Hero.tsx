@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Globe, FileSpreadsheet, Settings, Briefcase } from "lucide-react";
 import heroimage from "../assets/cartoon-hero-image.webp";
 
@@ -72,19 +71,14 @@ function Hero() {
       </div>
 
       {/* Right Image */}
-      <motion.div
-        className="hero-right"
-        initial={{ opacity: 0, x: 80 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1 }}
-      >
+      <div className="hero-right">
         <div className="hero-image">
           <img
             src={heroimage}
             alt="hero-illustration"
           />
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
