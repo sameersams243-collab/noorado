@@ -16,6 +16,78 @@ type Item = {
 
 type GstType = "cgst-sgst" | "igst";
 type InvoiceTemplate = "long" | "short";
+type ValidationModalType = "mandatory" | "optional";
+
+type ValidationModalProps = {
+  type: ValidationModalType;
+  fields: string[];
+  onClose: () => void;
+  onProceed?: () => void;
+};
+
+function ValidationModal({
+  type,
+  fields,
+  onClose,
+  onProceed,
+}: ValidationModalProps) {
+  const isMandatory = type === "mandatory";
+
+  return (
+    <div
+      className="gst-invoice-validation-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="validation-modal-title"
+    >
+      <div className="gst-invoice-validation-modal">
+        <div className="gst-invoice-validation-icon" aria-hidden="true">
+          !
+        </div>
+
+        <h2 id="validation-modal-title">
+          {isMandatory
+            ? "Required Information"
+            : "Some Information Is Missing"}
+        </h2>
+
+        {!isMandatory && (
+          <p>
+            These details are optional. You can fill them in or continue
+            without them.
+          </p>
+        )}
+
+        <ul className="gst-invoice-validation-list">
+          {fields.map((field) => (
+            <li key={field}>{field}</li>
+          ))}
+        </ul>
+
+        <div className="gst-invoice-validation-actions">
+          {isMandatory ? (
+            <button type="button" onClick={onClose}>
+              OK
+            </button>
+          ) : (
+            <>
+              <button
+                type="button"
+                className="secondary"
+                onClick={onClose}
+              >
+                Fill Details
+              </button>
+              <button type="button" onClick={onProceed}>
+                Leave &amp; Proceed
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const GST_RATES = [0, 5, 12, 18, 28];
 
@@ -93,7 +165,10 @@ function GSTInvoiceGeneratorPage() {
     }
 
     if (!file.type.startsWith("image/")) {
-      alert("Please upload a valid image file.");
+      setValidationModal({
+        type: "mandatory",
+        fields: ["Please upload a valid image file."],
+      });
       return;
     }
 
@@ -146,6 +221,11 @@ function GSTInvoiceGeneratorPage() {
   // Controls template popup
   const [showTemplateSelector, setShowTemplateSelector] =
     useState(false);
+  const [validationModal, setValidationModal] =
+    useState<{
+      type: ValidationModalType;
+      fields: string[];
+    } | null>(null);
 
   // ==================================================
   // ITEMS
@@ -646,6 +726,9 @@ function GSTInvoiceGeneratorPage() {
         }
       );
 
+    const detailColumnWidth =
+      (182 - 8 - 37 - 19) / 7;
+
     autoTable(doc, {
       startY: Math.max(
         customerY + 10,
@@ -729,38 +812,38 @@ function GSTInvoiceGeneratorPage() {
         },
 
         3: {
-          cellWidth: 10,
-          halign: "right",
+          cellWidth: detailColumnWidth,
+          halign: "center",
         },
 
         4: {
-          cellWidth: 17,
-          halign: "right",
+          cellWidth: detailColumnWidth,
+          halign: "center",
         },
 
         5: {
-          cellWidth: 12,
+          cellWidth: detailColumnWidth,
           halign: "center",
         },
 
         6: {
-          cellWidth: 12,
+          cellWidth: detailColumnWidth,
           halign: "center",
         },
 
         7: {
-          cellWidth: 22,
-          halign: "right",
+          cellWidth: detailColumnWidth,
+          halign: "center",
         },
 
         8: {
-          cellWidth: 23,
-          halign: "right",
+          cellWidth: detailColumnWidth,
+          halign: "center",
         },
 
         9: {
-          cellWidth: 22,
-          halign: "right",
+          cellWidth: detailColumnWidth,
+          halign: "center",
         },
       },
 
@@ -1290,81 +1373,107 @@ function GSTInvoiceGeneratorPage() {
   };
 
   const validateInvoice = () => {
-    const errors: string[] = [];
+    const mandatoryErrors: string[] = [];
+    const optionalWarnings: string[] = [];
 
-    // Seller validation
     if (!sellerName.trim()) {
-      errors.push("Seller business name is required.");
+      mandatoryErrors.push("Business Name");
     }
 
-    if (!sellerAddress.trim()) {
-      errors.push("Seller business address is required.");
-    }
-
-    if (!sellerGSTIN.trim()) {
-      errors.push("Seller GSTIN is required.");
-    }
-
-    if (!sellerState) {
-      errors.push("Seller state is required.");
-    }
-
-    if (!sellerPincode.trim()) {
-      errors.push("Seller PIN code is required.");
-    } else if (sellerPincode.length !== 6) {
-      errors.push("Seller PIN code must be 6 digits.");
-    }
-
-    // Customer validation
     if (!customerName.trim()) {
-      errors.push("Customer name is required.");
+      mandatoryErrors.push("Customer Name");
     }
 
-    if (!customerAddress.trim()) {
-      errors.push("Customer address is required.");
-    }
-
-    if (!customerState) {
-      errors.push("Customer state is required.");
-    }
-
-    // Invoice validation
     if (!invoiceNumber.trim()) {
-      errors.push("Invoice number is required.");
+      mandatoryErrors.push("Invoice Number");
     }
 
     if (!invoiceDate) {
-      errors.push("Invoice date is required.");
+      mandatoryErrors.push("Invoice Date");
     }
 
-    if (!placeOfSupply.trim()) {
-      errors.push("Place of supply is required.");
-    }
-
-    // Items validation
     if (items.length === 0) {
-      errors.push("At least one product or service is required.");
+      mandatoryErrors.push("At least one Item");
     }
 
     items.forEach((item, index) => {
       if (!item.name.trim()) {
-        errors.push(`Item ${index + 1}: Product / Service is required.`);
-      }
-
-      if (!item.hsnSac.trim()) {
-        errors.push(`Item ${index + 1}: HSN / SAC is required.`);
+        mandatoryErrors.push(`Item ${index + 1} Name`);
       }
 
       if (item.quantity <= 0) {
-        errors.push(`Item ${index + 1}: Quantity must be greater than 0.`);
+        mandatoryErrors.push(`Item ${index + 1} Quantity`);
       }
 
       if (item.rate <= 0) {
-        errors.push(`Item ${index + 1}: Rate must be greater than 0.`);
+        mandatoryErrors.push(`Item ${index + 1} Rate`);
       }
     });
 
-    return errors;
+    if (!sellerAddress.trim()) {
+      optionalWarnings.push("Seller Address");
+    }
+
+    if (!sellerGSTIN.trim()) {
+      optionalWarnings.push("Seller GSTIN");
+    }
+
+    if (!sellerState) {
+      optionalWarnings.push("Seller State");
+    }
+
+    if (!sellerPincode.trim()) {
+      optionalWarnings.push("Seller PIN Code");
+    }
+
+    if (!sellerPhone.trim()) {
+      optionalWarnings.push("Seller Phone");
+    }
+
+    if (!sellerEmail.trim()) {
+      optionalWarnings.push("Seller Email");
+    }
+
+    if (!customerAddress.trim()) {
+      optionalWarnings.push("Customer Address");
+    }
+
+    if (!customerGSTIN.trim()) {
+      optionalWarnings.push("Customer GSTIN");
+    }
+
+    if (!customerState) {
+      optionalWarnings.push("Customer State");
+    }
+
+    if (!customerPincode.trim()) {
+      optionalWarnings.push("Customer PIN Code");
+    }
+
+    if (!customerPhone.trim()) {
+      optionalWarnings.push("Customer Phone");
+    }
+
+    if (!customerEmail.trim()) {
+      optionalWarnings.push("Customer Email");
+    }
+
+    if (!placeOfSupply.trim()) {
+      optionalWarnings.push("Place of Supply");
+    }
+
+    if (!dueDate) {
+      optionalWarnings.push("Due Date");
+    }
+
+    if (!paymentTerms.trim()) {
+      optionalWarnings.push("Payment Terms");
+    }
+
+    return {
+      mandatoryErrors,
+      optionalWarnings,
+    };
   };
 
   // ==================================================
@@ -1372,10 +1481,24 @@ function GSTInvoiceGeneratorPage() {
   // ==================================================
 
   const handleGenerateInvoice = () => {
-    const errors = validateInvoice();
+    const {
+      mandatoryErrors,
+      optionalWarnings,
+    } = validateInvoice();
 
-    if (errors.length > 0) {
-      window.alert(errors.join("\n"));
+    if (mandatoryErrors.length > 0) {
+      setValidationModal({
+        type: "mandatory",
+        fields: mandatoryErrors,
+      });
+      return;
+    }
+
+    if (optionalWarnings.length > 0) {
+      setValidationModal({
+        type: "optional",
+        fields: optionalWarnings,
+      });
       return;
     }
 
@@ -2428,6 +2551,18 @@ function GSTInvoiceGeneratorPage() {
           </div>
 
         </div>
+      )}
+
+      {validationModal && (
+        <ValidationModal
+          type={validationModal.type}
+          fields={validationModal.fields}
+          onClose={() => setValidationModal(null)}
+          onProceed={() => {
+            setValidationModal(null);
+            setShowTemplateSelector(true);
+          }}
+        />
       )}
 
     </main>

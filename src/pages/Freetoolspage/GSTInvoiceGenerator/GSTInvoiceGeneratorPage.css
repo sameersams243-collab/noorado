@@ -295,6 +295,131 @@
   background: #115e59;
 }
 
+.gst-invoice-validation-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.68);
+}
+
+.gst-invoice-validation-modal {
+  width: min(460px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 32px;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.28);
+  text-align: center;
+  animation: gst-invoice-validation-appear 0.2s ease-out;
+}
+
+.gst-invoice-validation-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: #dbeafe;
+  color: #2563eb;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.gst-invoice-validation-modal h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 25px;
+  line-height: 1.25;
+}
+
+.gst-invoice-validation-modal p {
+  margin: 12px 0 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.gst-invoice-validation-list {
+  margin: 22px 0 26px;
+  padding: 0;
+  color: #334155;
+  font-size: 15px;
+  line-height: 1.5;
+  list-style: none;
+  text-align: left;
+}
+
+.gst-invoice-validation-list li {
+  position: relative;
+  padding-left: 20px;
+}
+
+.gst-invoice-validation-list li + li {
+  margin-top: 8px;
+}
+
+.gst-invoice-validation-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.65em;
+  left: 2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2563eb;
+}
+
+.gst-invoice-validation-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.gst-invoice-validation-actions button {
+  min-width: 120px;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.gst-invoice-validation-actions button:hover {
+  background: #1d4ed8;
+}
+
+.gst-invoice-validation-actions button.secondary {
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+}
+
+.gst-invoice-validation-actions button.secondary:hover {
+  background: #f8fafc;
+}
+
+@keyframes gst-invoice-validation-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .gst-invoice-template-overlay {
   position: fixed;
   inset: 0;
@@ -496,6 +621,27 @@
 }
 
 @media (max-width: 700px) {
+  .gst-invoice-validation-overlay {
+    padding: 16px;
+  }
+
+  .gst-invoice-validation-modal {
+    padding: 26px 20px;
+    border-radius: 17px;
+  }
+
+  .gst-invoice-validation-modal h2 {
+    font-size: 22px;
+  }
+
+  .gst-invoice-validation-actions {
+    flex-direction: column-reverse;
+  }
+
+  .gst-invoice-validation-actions button {
+    width: 100%;
+  }
+
   .gst-invoice-template-overlay {
     padding: 10px;
   }
