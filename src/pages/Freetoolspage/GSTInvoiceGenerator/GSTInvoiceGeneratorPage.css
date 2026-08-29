@@ -173,10 +173,12 @@
 .gst-invoice-item-summary span {
   display: flex;
   gap: 7px;
+  white-space: nowrap;
 }
 
 .gst-invoice-item-summary strong {
   color: #172033;
+  white-space: nowrap;
 }
 
 .gst-invoice-add-item {
@@ -261,8 +263,13 @@
   color: #64748b;
 }
 
+.gst-invoice-summary-list span {
+  white-space: nowrap;
+}
+
 .gst-invoice-summary-list strong {
   color: #172033;
+  white-space: nowrap;
 }
 
 .gst-invoice-grand-total {
@@ -272,6 +279,7 @@
   color: #172033;
   font-size: 19px;
   font-weight: 800;
+  white-space: nowrap;
 }
 
 .gst-invoice-actions {

@@ -1,7 +1,16 @@
 import { Link } from "react-router-dom";
 import "./FeaturedTools.css";
 
-const FEATURED_TOOLS = [
+type FeaturedTool = {
+  category: string;
+  title: string;
+  description: string;
+  path: string;
+  button: string;
+  comingSoon?: boolean;
+};
+
+const FEATURED_TOOLS: FeaturedTool[] = [
   {
     category: "CALCULATORS",
     title: "GST Calculator",
@@ -21,8 +30,7 @@ const FEATURED_TOOLS = [
     title: "EMI Calculator",
     description: "Calculate monthly EMI, interest and total loan payment.",
     path: "/tools/emi-calculator",
-    button: "Coming Soon",
-    comingSoon: true,
+    button: "Use Tool →",
   },
 ];
 

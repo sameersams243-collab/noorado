@@ -726,8 +726,13 @@ function GSTInvoiceGeneratorPage() {
         }
       );
 
-    const detailColumnWidth =
-      (182 - 8 - 37 - 19) / 7;
+    const digits = Math.max(1, String(items.length).length);
+    const srColWidth =
+      digits <= 1 ? 8 : digits === 2 ? 10 : digits === 3 ? 12 : 14;
+
+    const fixedColumnsWidth =
+      srColWidth + 15 + 12 + 18 + 11 + 10 + 19 + 17 + 20;
+    const productColWidth = Math.max(35, 182 - fixedColumnsWidth);
 
     autoTable(doc, {
       startY: Math.max(
@@ -756,8 +761,13 @@ function GSTInvoiceGeneratorPage() {
 
       styles: {
         font: "helvetica",
-        fontSize: 8,
-        cellPadding: 3,
+        fontSize: 7.5,
+        cellPadding: {
+          top: 2.5,
+          bottom: 2.5,
+          left: 1.5,
+          right: 1.5,
+        },
         lineColor: [
           210,
           210,
@@ -769,15 +779,12 @@ function GSTInvoiceGeneratorPage() {
           30,
           30,
         ],
-        overflow:
-          "linebreak",
-        valign:
-          "middle",
+        valign: "middle",
       },
 
       headStyles: {
         fontStyle: "bold",
-        fontSize: 8,
+        fontSize: 7.5,
         halign: "center",
         valign: "middle",
         fillColor: [
@@ -790,60 +797,67 @@ function GSTInvoiceGeneratorPage() {
           255,
           255,
         ],
-        cellPadding: 3,
+        cellPadding: {
+          top: 2.8,
+          bottom: 2.8,
+          left: 1.5,
+          right: 1.5,
+        },
       },
 
       bodyStyles: {
-        minCellHeight: 10,
+        minCellHeight: 8,
       },
 
       columnStyles: {
         0: {
-          cellWidth: 8,
+          cellWidth: srColWidth,
           halign: "center",
         },
 
         1: {
-          cellWidth: 37,
+          cellWidth: productColWidth,
+          halign: "left",
         },
 
         2: {
-          cellWidth: 19,
+          cellWidth: 15,
+          halign: "center",
         },
 
         3: {
-          cellWidth: detailColumnWidth,
-          halign: "center",
+          cellWidth: 12,
+          halign: "right",
         },
 
         4: {
-          cellWidth: detailColumnWidth,
-          halign: "center",
+          cellWidth: 18,
+          halign: "right",
         },
 
         5: {
-          cellWidth: detailColumnWidth,
-          halign: "center",
+          cellWidth: 11,
+          halign: "right",
         },
 
         6: {
-          cellWidth: detailColumnWidth,
+          cellWidth: 10,
           halign: "center",
         },
 
         7: {
-          cellWidth: detailColumnWidth,
-          halign: "center",
+          cellWidth: 19,
+          halign: "right",
         },
 
         8: {
-          cellWidth: detailColumnWidth,
-          halign: "center",
+          cellWidth: 17,
+          halign: "right",
         },
 
         9: {
-          cellWidth: detailColumnWidth,
-          halign: "center",
+          cellWidth: 20,
+          halign: "right",
         },
       },
 
@@ -854,15 +868,20 @@ function GSTInvoiceGeneratorPage() {
 
       tableWidth: 182,
 
-      didParseCell: (
-        data
-      ) => {
-        if (
-          data.section ===
-          "head"
-        ) {
-          data.cell.styles.halign =
-            "center";
+      didParseCell: (data) => {
+        if (data.section === "head") {
+          data.cell.styles.halign = "center";
+          data.cell.styles.valign = "middle";
+        } else if (data.section === "body") {
+          data.cell.styles.valign = "middle";
+          if (data.column.index === 0) {
+            data.cell.styles.halign = "center";
+            data.cell.styles.overflow = "visible";
+          } else if (data.column.index === 1) {
+            data.cell.styles.overflow = "linebreak";
+          } else {
+            data.cell.styles.overflow = "visible";
+          }
         }
       },
     });
@@ -1234,6 +1253,14 @@ function GSTInvoiceGeneratorPage() {
       ];
     });
 
+    const digits = Math.max(1, String(items.length).length);
+    const srColWidth =
+      digits <= 1 ? 7 : digits === 2 ? 9 : digits === 3 ? 11 : 13;
+
+    const fixedColumnsWidth =
+      srColWidth + 16 + 14 + 22 + 13 + 24 + 25;
+    const productColWidth = Math.max(40, contentWidth - fixedColumnsWidth);
+
     autoTable(doc, {
       startY: tableStartY,
       margin: { left: margin, right: margin },
@@ -1243,35 +1270,57 @@ function GSTInvoiceGeneratorPage() {
       theme: "grid",
       styles: {
         font: "helvetica",
-        fontSize: 6.2,
-        cellPadding: 1.8,
+        fontSize: 6.8,
+        cellPadding: {
+          top: 2.0,
+          bottom: 2.0,
+          left: 1.5,
+          right: 1.5,
+        },
         lineColor: [205, 205, 205],
         lineWidth: 0.2,
         textColor: [30, 30, 30],
-        overflow: "linebreak",
         valign: "middle",
       },
       headStyles: {
         fontStyle: "bold",
-        fontSize: 6.2,
+        fontSize: 6.8,
         halign: "center",
         valign: "middle",
         fillColor: [20, 184, 166],
         textColor: [255, 255, 255],
-        cellPadding: 1.8,
+        cellPadding: {
+          top: 2.2,
+          bottom: 2.2,
+          left: 1.5,
+          right: 1.5,
+        },
       },
       columnStyles: {
-        0: { cellWidth: 6, halign: "center" },
-        1: { cellWidth: 36 },
-        2: { cellWidth: 12 },
-        3: { cellWidth: 9, halign: "right" },
-        4: { cellWidth: 16, halign: "right" },
-        5: { cellWidth: 10, halign: "center" },
-        6: { cellWidth: 17, halign: "right" },
-        7: { cellWidth: 16, halign: "right" },
+        0: { cellWidth: srColWidth, halign: "center" },
+        1: { cellWidth: productColWidth, halign: "left" },
+        2: { cellWidth: 16, halign: "center" },
+        3: { cellWidth: 14, halign: "right" },
+        4: { cellWidth: 22, halign: "right" },
+        5: { cellWidth: 13, halign: "center" },
+        6: { cellWidth: 24, halign: "right" },
+        7: { cellWidth: 25, halign: "right" },
       },
       didParseCell: (data) => {
-        if (data.section === "head") data.cell.styles.halign = "center";
+        if (data.section === "head") {
+          data.cell.styles.halign = "center";
+          data.cell.styles.valign = "middle";
+        } else if (data.section === "body") {
+          data.cell.styles.valign = "middle";
+          if (data.column.index === 0) {
+            data.cell.styles.halign = "center";
+            data.cell.styles.overflow = "visible";
+          } else if (data.column.index === 1) {
+            data.cell.styles.overflow = "linebreak";
+          } else {
+            data.cell.styles.overflow = "visible";
+          }
+        }
       },
     });
 
