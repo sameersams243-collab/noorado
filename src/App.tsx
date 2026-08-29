@@ -14,10 +14,10 @@ const ToolsPage = lazy(
   () => import("./pages/Freetoolspage/ToolsPage")
 );
 
-const GSTDiscountCalculatorPage = lazy(
+const GSTCalculatorPage = lazy(
   () =>
     import(
-      "./pages/Freetoolspage/GSTDiscountCalculator/GSTDiscountCalculatorPage"
+      "./pages/Freetoolspage/GSTCalculator/GSTCalculatorPage"
     )
 );
 
@@ -135,7 +135,7 @@ function App() {
 
         <Route
           path="/tools/gst-discount-calculator"
-          element={<GSTDiscountCalculatorPage />}
+          element={<GSTCalculatorPage />}
         />
 
         <Route

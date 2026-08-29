@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ToolRecommendation from "../../ToolsRecommendation/ToolRecommendation";
-import "./GSTDiscountCalculatorPage.css";
+import "./GSTCalculatorPage.css";
 
 const GST_RATES = [0, 5, 12, 18, 28];
 
