@@ -36,6 +36,24 @@ const PDFToExcelPage = lazy(
   () => import("./pages/Freetoolspage/PDFToExcel/PDFToExcelPage")
 );
 
+const PercentageCalculatorPage = lazy(
+  () =>
+    import(
+      "./pages/Freetoolspage/PercentageCalculator/PercentageCalculatorPage"
+    )
+);
+
+const AgeCalculatorPage = lazy(
+  () => import("./pages/Freetoolspage/AgeCalculator/AgeCalculatorPage")
+);
+
+const ProfitLossCalculatorPage = lazy(
+  () =>
+    import(
+      "./pages/Freetoolspage/ProfitLossCalculator/ProfitLossCalculatorPage"
+    )
+);
+
 const CorporateWebsitePage = lazy(
   () => import("./pages/portfolio/CorporateWebsitePage")
 );
@@ -155,6 +173,21 @@ function App() {
         <Route
           path="/tools/pdf-to-excel"
           element={<PDFToExcelPage />}
+        />
+
+        <Route
+          path="/tools/percentage-calculator"
+          element={<PercentageCalculatorPage />}
+        />
+
+        <Route
+          path="/tools/age-calculator"
+          element={<AgeCalculatorPage />}
+        />
+
+        <Route
+          path="/tools/profit-loss-calculator"
+          element={<ProfitLossCalculatorPage />}
         />
 
         {/* Portfolio pages */}

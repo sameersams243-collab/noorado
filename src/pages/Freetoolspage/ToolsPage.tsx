@@ -45,7 +45,7 @@ const TOOLS: Tool[] = [
       "Quickly calculate percentages, increases and decreases.",
     category: "Calculators",
     path: "/tools/percentage-calculator",
-    available: false,
+    available: true,
   },
 
   {
@@ -54,7 +54,7 @@ const TOOLS: Tool[] = [
       "Calculate your exact age from your date of birth.",
     category: "Everyday",
     path: "/tools/age-calculator",
-    available: false,
+    available: true,
   },
 
   {
@@ -63,7 +63,7 @@ const TOOLS: Tool[] = [
       "Calculate profit, loss and percentage from your selling price.",
     category: "Business",
     path: "/tools/profit-loss-calculator",
-    available: false,
+    available: true,
   },
 
   {

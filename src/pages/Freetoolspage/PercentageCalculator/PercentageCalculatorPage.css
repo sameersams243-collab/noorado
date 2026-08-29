@@ -1,0 +1,546 @@
+/* ========================================
+   PERCENTAGE CALCULATOR
+======================================== */
+
+.pct-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  color: #111111;
+}
+
+.pct-page * {
+  box-sizing: border-box;
+}
+
+/* ========================================
+   CONTAINER
+======================================== */
+
+.pct-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ========================================
+   HERO
+======================================== */
+
+.pct-hero {
+  padding: 70px 0 60px;
+  background: #f7f7f7;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.pct-back-link {
+  display: inline-block;
+  margin-bottom: 35px;
+  color: #555555;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pct-back-link:hover {
+  color: #111111;
+}
+
+.pct-label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #777777;
+}
+
+.pct-hero h1 {
+  margin: 0;
+  font-size: clamp(36px, 5vw, 58px);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+
+.pct-hero p {
+  max-width: 620px;
+  margin: 20px 0 0;
+  color: #666666;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   CALCULATOR SECTION
+======================================== */
+
+.pct-section {
+  padding: 70px 0 90px;
+}
+
+.pct-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.pct-results-column {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ========================================
+   INPUT CARD
+======================================== */
+
+.pct-card {
+  padding: 34px;
+  background: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+}
+
+.pct-card-header {
+  margin-bottom: 24px;
+}
+
+.pct-card-header span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #777777;
+}
+
+.pct-card-header h2 {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+/* ========================================
+   TABS
+======================================== */
+
+.pct-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 26px;
+  padding: 6px;
+  background: #f4f4f4;
+  border-radius: 12px;
+}
+
+.pct-tab-btn {
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #555555;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.pct-tab-btn:hover {
+  color: #111111;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.pct-tab-btn.active {
+  background: #ffffff;
+  color: #111111;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.pct-pane-desc {
+  margin: 0 0 20px;
+  color: #666666;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ========================================
+   FORM INPUTS
+======================================== */
+
+.pct-form-group {
+  margin-bottom: 22px;
+}
+
+.pct-form-group label {
+  display: block;
+  margin-bottom: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #222222;
+}
+
+.pct-input-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  background: #ffffff;
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.pct-input-wrapper:focus-within {
+  border-color: #111111;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.pct-input-wrapper span {
+  padding: 0 15px;
+  color: #666666;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pct-input-wrapper input {
+  width: 100%;
+  min-width: 0;
+  height: 50px;
+  padding: 0 15px;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #111111;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.pct-input-wrapper input[type="number"] {
+  appearance: textfield;
+}
+
+.pct-input-wrapper input::-webkit-inner-spin-button,
+.pct-input-wrapper input::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.pct-error-message {
+  margin: 4px 0 16px;
+  color: #b42318;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* ========================================
+   ACTIONS
+======================================== */
+
+.pct-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.pct-reset-btn,
+.pct-reset-all-btn {
+  flex: 1;
+  min-height: 48px;
+  padding: 0 16px;
+  border: 1px solid #d5d5d5;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #222222;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pct-reset-btn:hover,
+.pct-reset-all-btn:hover {
+  background: #f5f5f5;
+  border-color: #bbbbbb;
+}
+
+.pct-reset-all-btn {
+  color: #666666;
+  background: #fafafa;
+}
+
+/* ========================================
+   RESULTS CARD
+======================================== */
+
+.pct-results {
+  overflow: hidden;
+  border-radius: 18px;
+  background: #111111;
+  color: #ffffff;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+.pct-primary-result {
+  padding: 34px;
+  background: #191919;
+}
+
+.pct-primary-result > span {
+  display: block;
+  color: #aaaaaa;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.pct-primary-result strong {
+  display: block;
+  margin-top: 10px;
+  font-size: clamp(34px, 5vw, 48px);
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  color: #ffffff;
+  overflow-wrap: anywhere;
+}
+
+.pct-primary-result p {
+  margin: 12px 0 0;
+  color: #bbbbbb;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.pct-result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid #333333;
+}
+
+.pct-result-grid > div {
+  min-width: 0;
+  padding: 20px 16px;
+  border-right: 1px solid #333333;
+}
+
+.pct-result-grid > div:last-child {
+  border-right: 0;
+}
+
+.pct-result-grid span {
+  display: block;
+  color: #aaaaaa;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.pct-result-grid strong {
+  display: block;
+  margin-top: 7px;
+  font-size: 15px;
+  color: #ffffff;
+  overflow-wrap: anywhere;
+}
+
+.pct-formula-box {
+  padding: 20px 34px;
+  background: #151515;
+}
+
+.pct-formula-box span {
+  display: block;
+  margin-bottom: 6px;
+  color: #888888;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.pct-formula-box code {
+  display: block;
+  color: #99f6e4;
+  font-size: 13px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* ========================================
+   SUMMARY EXAMPLES CARD
+======================================== */
+
+.pct-summary-card {
+  padding: 24px 28px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+}
+
+.pct-summary-card h3 {
+  margin: 0 0 14px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.pct-summary-card ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.pct-summary-card li {
+  margin-bottom: 6px;
+}
+
+.pct-summary-card strong {
+  color: #0f172a;
+}
+
+/* ========================================
+   INFO SECTION
+======================================== */
+
+.pct-info {
+  max-width: 800px;
+  margin: 70px auto 0;
+  padding-top: 40px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.pct-info > span {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #777777;
+}
+
+.pct-info h2 {
+  margin: 28px 0 12px;
+  font-size: 26px;
+  line-height: 1.2;
+  color: #111111;
+}
+
+.pct-info p {
+  margin: 0;
+  color: #666666;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.pct-info .pct-formula {
+  margin: 14px 0 20px;
+  padding: 15px 18px;
+  border-radius: 10px;
+  background: #f7f7f7;
+  color: #222222;
+  font-family: Georgia, serif;
+  font-size: 17px;
+  overflow-x: auto;
+}
+
+.pct-recommendation-wrap {
+  margin-top: 50px;
+}
+
+/* ========================================
+   RESPONSIVE (TABLET & MOBILE)
+======================================== */
+
+@media (max-width: 850px) {
+  .pct-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .pct-container {
+    padding: 0 16px;
+  }
+
+  .pct-hero {
+    padding: 45px 0;
+  }
+
+  .pct-back-link {
+    margin-bottom: 28px;
+  }
+
+  .pct-hero h1 {
+    font-size: 38px;
+    letter-spacing: -1.5px;
+  }
+
+  .pct-hero p {
+    font-size: 15px;
+  }
+
+  .pct-section {
+    padding: 45px 0 65px;
+  }
+
+  .pct-card,
+  .pct-primary-result {
+    padding: 24px;
+    border-radius: 14px;
+  }
+
+  .pct-results {
+    border-radius: 14px;
+  }
+
+  .pct-tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .pct-result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pct-result-grid > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 24px;
+    border-right: 0;
+    border-bottom: 1px solid #333333;
+  }
+
+  .pct-result-grid > div:last-child {
+    border-bottom: 0;
+  }
+
+  .pct-result-grid strong {
+    margin: 0;
+    text-align: right;
+  }
+
+  .pct-formula-box {
+    padding: 16px 24px;
+  }
+
+  .pct-info {
+    margin-top: 50px;
+  }
+
+  .pct-info h2 {
+    font-size: 22px;
+  }
+}
+
