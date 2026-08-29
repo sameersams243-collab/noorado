@@ -36,7 +36,7 @@ const TOOLS: Tool[] = [
       "Calculate your monthly loan EMI, interest and total payment.",
     category: "Calculators",
     path: "/tools/emi-calculator",
-    available: false,
+    available: true,
   },
 
   {

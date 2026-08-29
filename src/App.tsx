@@ -28,6 +28,10 @@ const GSTInvoiceGeneratorPage = lazy(
     )
 );
 
+const EMICalculatorPage = lazy(
+  () => import("./pages/Freetoolspage/EMICalculator/EMICalculatorPage")
+);
+
 const PDFToExcelPage = lazy(
   () => import("./pages/Freetoolspage/PDFToExcel/PDFToExcelPage")
 );
@@ -141,6 +145,11 @@ function App() {
         <Route
           path="/tools/gst-invoice-generator"
           element={<GSTInvoiceGeneratorPage />}
+        />
+
+        <Route
+          path="/tools/emi-calculator"
+          element={<EMICalculatorPage />}
         />
 
         <Route
