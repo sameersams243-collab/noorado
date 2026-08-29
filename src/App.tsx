@@ -14,10 +14,6 @@ const ToolsPage = lazy(
   () => import("./pages/Freetoolspage/ToolsPage")
 );
 
-const GSTCalculatorPage = lazy(
-  () => import("./pages/Freetoolspage/GSTCalculator/GSTCalculatorPage")
-);
-
 const GSTDiscountCalculatorPage = lazy(
   () =>
     import(
@@ -30,6 +26,10 @@ const GSTInvoiceGeneratorPage = lazy(
     import(
       "./pages/Freetoolspage/GSTInvoiceGenerator/GSTInvoiceGeneratorPage"
     )
+);
+
+const PDFToExcelPage = lazy(
+  () => import("./pages/Freetoolspage/PDFToExcel/PDFToExcelPage")
 );
 
 const CorporateWebsitePage = lazy(
@@ -134,11 +134,6 @@ function App() {
         <Route path="/tools" element={<ToolsPage />} />
 
         <Route
-          path="/tools/gst-calculator"
-          element={<GSTCalculatorPage />}
-        />
-
-        <Route
           path="/tools/gst-discount-calculator"
           element={<GSTDiscountCalculatorPage />}
         />
@@ -146,6 +141,11 @@ function App() {
         <Route
           path="/tools/gst-invoice-generator"
           element={<GSTInvoiceGeneratorPage />}
+        />
+
+        <Route
+          path="/tools/pdf-to-excel"
+          element={<PDFToExcelPage />}
         />
 
         {/* Portfolio pages */}

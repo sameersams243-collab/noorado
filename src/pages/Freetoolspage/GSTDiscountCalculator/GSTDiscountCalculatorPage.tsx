@@ -97,7 +97,7 @@ function GSTDiscountCalculatorPage() {
           </span>
 
           <h1>
-            GST Discount Calculator
+            GST Calculator
           </h1>
 
           <p>

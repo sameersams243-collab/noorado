@@ -5,13 +5,6 @@ const FEATURED_TOOLS = [
   {
     category: "CALCULATORS",
     title: "GST Calculator",
-    description: "Calculate GST, CGST, SGST, IGST and final amount quickly.",
-    path: "/tools/gst-calculator",
-    button: "Use Tool →",
-  },
-  {
-    category: "BUSINESS",
-    title: "GST Discount Calculator",
     description: "Calculate discount, taxable amount, GST and final price.",
     path: "/tools/gst-discount-calculator",
     button: "Use Tool →",

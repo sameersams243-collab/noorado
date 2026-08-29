@@ -15,17 +15,8 @@ const TOOLS: Tool[] = [
   {
     title: "GST Calculator",
     description:
-      "Calculate GST amount, inclusive price and exclusive price.",
-    category: "Calculators",
-    path: "/tools/gst-calculator",
-    available: true,
-  },
-
-  {
-    title: "GST Discount Calculator",
-    description:
       "Calculate discount, GST and final payable amount quickly.",
-    category: "Business",
+    category: "Calculators",
     path: "/tools/gst-discount-calculator",
     available: true,
   },
