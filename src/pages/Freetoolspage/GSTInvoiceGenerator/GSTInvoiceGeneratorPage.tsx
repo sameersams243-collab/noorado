@@ -731,7 +731,7 @@ function GSTInvoiceGeneratorPage() {
       digits <= 1 ? 8 : digits === 2 ? 10 : digits === 3 ? 12 : 14;
 
     const fixedColumnsWidth =
-      srColWidth + 15 + 12 + 18 + 11 + 10 + 19 + 17 + 20;
+      srColWidth + 22 + 12 + 18 + 11 + 10 + 19 + 17 + 20;
     const productColWidth = Math.max(35, 182 - fixedColumnsWidth);
 
     autoTable(doc, {
@@ -821,7 +821,7 @@ function GSTInvoiceGeneratorPage() {
         },
 
         2: {
-          cellWidth: 15,
+          cellWidth: 22,
           halign: "center",
         },
 
@@ -869,21 +869,24 @@ function GSTInvoiceGeneratorPage() {
       tableWidth: 182,
 
       didParseCell: (data) => {
-        if (data.section === "head") {
-          data.cell.styles.halign = "center";
-          data.cell.styles.valign = "middle";
-        } else if (data.section === "body") {
-          data.cell.styles.valign = "middle";
-          if (data.column.index === 0) {
-            data.cell.styles.halign = "center";
-            data.cell.styles.overflow = "visible";
-          } else if (data.column.index === 1) {
-            data.cell.styles.overflow = "linebreak";
-          } else {
-            data.cell.styles.overflow = "visible";
-          }
-        }
-      },
+  if (data.section === "head") {
+    data.cell.styles.halign = "center";
+    data.cell.styles.valign = "middle";
+  } else if (data.section === "body") {
+    data.cell.styles.valign = "middle";
+
+    // Keep every value inside its own cell.
+    data.cell.styles.overflow = "linebreak";
+
+    if (data.column.index === 0) {
+      data.cell.styles.halign = "center";
+    } else if (data.column.index === 1) {
+      data.cell.styles.halign = "left";
+    } else if (data.column.index === 2) {
+      data.cell.styles.halign = "center";
+    }
+  }
+},
     });
 
     // ------------------------------------------------
@@ -903,115 +906,350 @@ function GSTInvoiceGeneratorPage() {
     let summaryY =
       finalY + 14;
 
-    if (summaryY > 235) {
+    // ------------------------------------------------
+    // SUMMARY - PROTECTED LABEL/VALUE LAYOUT
+    // ------------------------------------------------
+    // The label and value each occupy their own disjoint horizontal
+    // region. Values are measured and wrapped inside a bounded value
+    // box so they can NEVER cross into the label region.
+    const summaryLeft = 118;
+    const summaryRight = 196;
+
+    // Reserve fixed space for the label text.
+    const labelWidth = 38;
+
+    // The value box starts after the label and a small gap.
+    const valueBoxLeft = summaryLeft + labelWidth;
+    const valueBoxRight = summaryRight;
+    const valueBoxWidth = valueBoxRight - valueBoxLeft;
+
+    const safeBottomMargin = 25;
+    const pageBottomLimit = pageHeight - safeBottomMargin;
+
+    // Given a value string and font options, return the number of
+    // lines it will occupy inside the bounded value box (after any
+    // required font-size reduction). This is used for height budgeting
+    // WITHOUT drawing anything yet.
+    const measureSummaryLines =
+      (
+        value: string,
+        options?: {
+          bold?: boolean;
+          fontSize?: number;
+        }
+      ): number => {
+        const startFontSize =
+          options?.fontSize ?? 10;
+
+        const isBold =
+          options?.bold ?? false;
+
+        doc.setFont(
+          "helvetica",
+          isBold ? "bold" : "normal"
+        );
+
+        const minimumFontSize = startFontSize - 3;
+
+        let fontSize = startFontSize;
+
+        doc.setFontSize(fontSize);
+
+        while (
+          doc.getTextWidth(value) > valueBoxWidth &&
+          fontSize > minimumFontSize
+        ) {
+          fontSize -= 0.5;
+          doc.setFontSize(fontSize);
+        }
+
+        if (
+          doc.getTextWidth(value) <=
+          valueBoxWidth
+        ) {
+          return 1;
+        }
+
+        return doc
+          .splitTextToSize(
+            value,
+            valueBoxWidth
+          )
+          .length;
+      };
+
+    const drawSafeSummaryRow = (
+                label: string,
+        value: string,
+        y: number,
+        options?: {
+          bold?: boolean;
+          fontSize?: number;
+        }
+      ): number => {
+        const startFontSize =
+          options?.fontSize ?? 10;
+
+        const isBold =
+          options?.bold ?? false;
+
+        doc.setFont(
+          "helvetica",
+          isBold ? "bold" : "normal"
+        );
+
+        // Draw the label in its dedicated region.
+        doc.setFontSize(startFontSize);
+        doc.text(
+          label,
+          summaryLeft,
+          y
+        );
+
+        // Keep currency prefix aligned across all totals rows.
+        const isNegative =
+          value.startsWith("Rs.(-)");
+
+        const currencyPrefix =
+          isNegative
+            ? "Rs.(-)"
+            : value.startsWith("Rs. ")
+              ? "Rs."
+              : "";
+
+        const numericValue =
+          isNegative
+            ? value
+                .slice("Rs.(-)".length)
+                .trim()
+            : value.startsWith("Rs. ")
+              ? value
+                  .slice("Rs. ".length)
+                  .trim()
+              : value;
+
+        const minimumFontSize =
+          Math.max(6, startFontSize - 3);
+
+        let fontSize = startFontSize;
+        doc.setFontSize(fontSize);
+
+        const prefixWidth =
+          currencyPrefix
+            ? doc.getTextWidth(
+                `${currencyPrefix} `
+              )
+            : 0;
+
+        const numberLeft =
+          currencyPrefix
+            ? valueBoxLeft + prefixWidth
+            : valueBoxLeft;
+
+        const numberWidth =
+          Math.max(
+            1,
+            valueBoxRight - numberLeft
+          );
+
+        // Reduce font size only when required.
+        while (
+          doc.getTextWidth(numericValue) >
+            numberWidth &&
+          fontSize > minimumFontSize
+        ) {
+          fontSize -= 0.5;
+          doc.setFontSize(fontSize);
+        }
+
+        let lines: string[];
+
+        if (
+          doc.getTextWidth(numericValue) <=
+          numberWidth
+        ) {
+          lines = [numericValue];
+        } else {
+          lines = doc.splitTextToSize(
+            numericValue,
+            numberWidth
+          );
+        }
+
+        const lineHeight =
+          fontSize * 0.45;
+
+        lines.forEach(
+          (line, index) => {
+            const lineY =
+              y + index * lineHeight;
+
+            if (
+              index === 0 &&
+              currencyPrefix
+            ) {
+              doc.text(
+                currencyPrefix,
+                valueBoxLeft,
+                lineY
+              );
+
+              doc.text(
+                line,
+                numberLeft,
+                lineY
+              );
+            } else {
+              doc.text(
+                line,
+                numberLeft,
+                lineY
+              );
+            }
+          }
+        );
+
+        // Return ONLY the height consumed by this row.
+        return (
+          Math.max(1, lines.length) *
+          lineHeight
+        );
+      };
+
+    // ------------------------------------------------------------
+    // HEIGHT BUDGET: compute the full height the totals block needs
+    // then ensure it fits on one page BEFORE drawing anything.
+    // ------------------------------------------------------------
+    const rowGap = 4;
+    const grandTotalGap = 4;
+    const lineHeightNormal = 10 * 0.45;
+    const lineHeightGrand = 13 * 0.45;
+
+    const totalsBlockHeight =
+      measureSummaryLines(
+        formatPDFCurrency(totals.subtotal)
+      ) *
+        lineHeightNormal +
+      rowGap +
+      measureSummaryLines(
+        `Rs.(-) ${totals.discount.toFixed(2)}`
+      ) *
+        lineHeightNormal +
+      rowGap +
+      measureSummaryLines(
+        formatPDFCurrency(totals.taxable)
+      ) *
+        lineHeightNormal +
+      rowGap +
+      (gstType === "cgst-sgst"
+        ? measureSummaryLines(
+            formatPDFCurrency(cgst)
+          ) *
+            lineHeightNormal +
+          rowGap +
+          measureSummaryLines(
+            formatPDFCurrency(sgst)
+          ) *
+            lineHeightNormal +
+          rowGap
+        : measureSummaryLines(
+            formatPDFCurrency(igst)
+          ) *
+            lineHeightNormal +
+          rowGap) +
+      measureSummaryLines(
+        formatPDFCurrency(totals.gst)
+      ) *
+        lineHeightNormal +
+      rowGap +
+      grandTotalGap +
+      measureSummaryLines(
+        formatPDFCurrency(totals.total),
+        { bold: true, fontSize: 13 }
+      ) *
+        lineHeightGrand;
+
+    // If the whole block won't fit in the remaining space, move it to
+    // a fresh page so the Grand Total can never fall off-page.
+    if (
+      summaryY + totalsBlockHeight >
+      pageBottomLimit
+    ) {
       doc.addPage();
 
       summaryY = 20;
     }
 
-    const summaryX = 118;
-    const valueX = 196;
+    let currentY = summaryY;
 
-    const drawSummaryRow =
-      (
-        label: string,
-        value: string,
-        y: number
-      ) => {
-        doc.setFont(
-          "helvetica",
-          "normal"
-        );
+    currentY +=
+      drawSafeSummaryRow(
+        "Subtotal",
+        formatPDFCurrency(
+          totals.subtotal
+        ),
+        currentY
+      ) + rowGap;
 
-        doc.setFontSize(10);
+    currentY +=
+      drawSafeSummaryRow(
+        "Discount",
+        `Rs.(-) ${totals.discount.toFixed(2)}`,
+        currentY
+      ) + rowGap;
 
-        doc.text(
-          label,
-          summaryX,
-          y
-        );
-
-        doc.text(
-          value,
-          valueX,
-          y,
-          {
-            align: "right",
-          }
-        );
-      };
-
-    drawSummaryRow(
-      "Subtotal",
-      formatPDFCurrency(
-        totals.subtotal
-      ),
-      summaryY
-    );
-
-    drawSummaryRow(
-      "Discount",
-      `- ${formatPDFCurrency(
-        totals.discount
-      )}`,
-      summaryY + 7
-    );
-
-    drawSummaryRow(
-      "Taxable Amount",
-      formatPDFCurrency(
-        totals.taxable
-      ),
-      summaryY + 14
-    );
+    currentY +=
+      drawSafeSummaryRow(
+        "Taxable Amount",
+        formatPDFCurrency(
+          totals.taxable
+        ),
+        currentY
+      ) + rowGap;
 
     if (
       gstType ===
       "cgst-sgst"
     ) {
-      drawSummaryRow(
-        "CGST",
-        formatPDFCurrency(
-          cgst
-        ),
-        summaryY + 21
-      );
+      currentY +=
+        drawSafeSummaryRow(
+          "CGST",
+          formatPDFCurrency(
+            cgst
+          ),
+          currentY
+        ) + rowGap;
 
-      drawSummaryRow(
-        "SGST",
-        formatPDFCurrency(
-          sgst
-        ),
-        summaryY + 28
-      );
+      currentY +=
+        drawSafeSummaryRow(
+          "SGST",
+          formatPDFCurrency(
+            sgst
+          ),
+          currentY
+        ) + rowGap;
     } else {
-      drawSummaryRow(
-        "IGST",
-        formatPDFCurrency(
-          igst
-        ),
-        summaryY + 21
-      );
+      currentY +=
+        drawSafeSummaryRow(
+          "IGST",
+          formatPDFCurrency(
+            igst
+          ),
+          currentY
+        ) + rowGap;
     }
 
-    drawSummaryRow(
-      "Total GST",
-      formatPDFCurrency(
-        totals.gst
-      ),
-      summaryY +
-        (gstType ===
-        "cgst-sgst"
-          ? 35
-          : 28)
-    );
+    currentY +=
+      drawSafeSummaryRow(
+        "Total GST",
+        formatPDFCurrency(
+          totals.gst
+        ),
+        currentY
+      ) + rowGap;
 
     const grandTotalY =
-      summaryY +
-      (gstType ===
-      "cgst-sgst"
-        ? 47
-        : 40);
+      currentY + grandTotalGap;
 
     doc.setDrawColor(
       40,
@@ -1024,33 +1262,21 @@ function GSTInvoiceGeneratorPage() {
     );
 
     doc.line(
-      summaryX,
+      summaryLeft,
       grandTotalY - 6,
-      valueX,
+      summaryRight,
       grandTotalY - 6
     );
 
-    doc.setFont(
-      "helvetica",
-      "bold"
-    );
-
-    doc.setFontSize(13);
-
-    doc.text(
+    drawSafeSummaryRow(
       "Grand Total",
-      summaryX,
-      grandTotalY
-    );
-
-    doc.text(
       formatPDFCurrency(
         totals.total
       ),
-      valueX,
       grandTotalY,
       {
-        align: "right",
+        bold: true,
+        fontSize: 13,
       }
     );
 
@@ -1258,7 +1484,7 @@ function GSTInvoiceGeneratorPage() {
       digits <= 1 ? 7 : digits === 2 ? 9 : digits === 3 ? 11 : 13;
 
     const fixedColumnsWidth =
-      srColWidth + 16 + 14 + 22 + 13 + 24 + 25;
+      srColWidth + 22 + 14 + 22 + 13 + 24 + 25;
     const productColWidth = Math.max(40, contentWidth - fixedColumnsWidth);
 
     autoTable(doc, {
@@ -1299,7 +1525,7 @@ function GSTInvoiceGeneratorPage() {
       columnStyles: {
         0: { cellWidth: srColWidth, halign: "center" },
         1: { cellWidth: productColWidth, halign: "left" },
-        2: { cellWidth: 16, halign: "center" },
+        2: { cellWidth: 22, halign: "center" },
         3: { cellWidth: 14, halign: "right" },
         4: { cellWidth: 22, halign: "right" },
         5: { cellWidth: 13, halign: "center" },
@@ -1307,21 +1533,25 @@ function GSTInvoiceGeneratorPage() {
         7: { cellWidth: 25, halign: "right" },
       },
       didParseCell: (data) => {
-        if (data.section === "head") {
-          data.cell.styles.halign = "center";
-          data.cell.styles.valign = "middle";
-        } else if (data.section === "body") {
-          data.cell.styles.valign = "middle";
-          if (data.column.index === 0) {
-            data.cell.styles.halign = "center";
-            data.cell.styles.overflow = "visible";
-          } else if (data.column.index === 1) {
-            data.cell.styles.overflow = "linebreak";
-          } else {
-            data.cell.styles.overflow = "visible";
-          }
-        }
-      },
+  if (data.section === "head") {
+    data.cell.styles.halign = "center";
+    data.cell.styles.valign = "middle";
+  } else if (data.section === "body") {
+    data.cell.styles.valign = "middle";
+
+    // Prevent every body-cell value from overflowing
+    // into neighboring columns.
+    data.cell.styles.overflow = "linebreak";
+
+    if (data.column.index === 0) {
+      data.cell.styles.halign = "center";
+    } else if (data.column.index === 1) {
+      data.cell.styles.halign = "left";
+    } else if (data.column.index === 2) {
+      data.cell.styles.halign = "center";
+    }
+  }
+},
     });
 
     // ------------------------------------------------
@@ -1332,37 +1562,233 @@ function GSTInvoiceGeneratorPage() {
       tableStartY + 20;
 
     let summaryY = finalY + 8;
-    const summaryLabelX = pageWidth - 58;
-    const summaryValueX = pageWidth - margin;
 
-    const row = (label: string, value: string, y: number, bold = false) => {
-      doc.setFont("helvetica", bold ? "bold" : "normal");
-      doc.setFontSize(bold ? 8.5 : 7.2);
-      doc.text(label, summaryLabelX, y);
-      doc.text(value, summaryValueX, y, { align: "right" });
-    };
+    // The value region has a fixed, bounded width so that values can
+    // NEVER cross into the label region. The label region is separate.
+    const totalsRight = pageWidth - margin;
+    const totalsValueWidth = 35;
+    const totalsValueLeft = totalsRight - totalsValueWidth;
+    const labelWidth = 20;
+    const totalsLabelLeft = totalsValueLeft - 5 - labelWidth;
 
-    row("Subtotal", money(totals.subtotal), summaryY);
-    row("Discount", `- ${money(totals.discount)}`, summaryY + 5);
-    row("Taxable", money(totals.taxable), summaryY + 10);
+    const drawSafeRow = (
+        label: string,
+        value: string,
+        y: number,
+        bold: boolean,
+        startFontSize: number
+      ): number => {
+        doc.setFont(
+          "helvetica",
+          bold ? "bold" : "normal"
+        );
 
-    let gstY = summaryY + 15;
+        // Label region.
+        doc.setFontSize(startFontSize);
+        doc.text(
+          label,
+          totalsLabelLeft,
+          y
+        );
+
+        // Keep the currency prefix fixed for every totals row.
+        const isNegative =
+          value.startsWith("Rs.(-)");
+
+        const currencyPrefix =
+          isNegative
+            ? "Rs.(-)"
+            : value.startsWith("Rs. ")
+              ? "Rs."
+              : "";
+
+        const numericValue =
+          isNegative
+            ? value
+                .slice("Rs.(-)".length)
+                .trim()
+            : value.startsWith("Rs. ")
+              ? value
+                  .slice("Rs. ".length)
+                  .trim()
+              : value;
+
+        const minimumFontSize =
+          Math.max(6, startFontSize - 2.5);
+
+        let fontSize = startFontSize;
+        doc.setFontSize(fontSize);
+
+        const prefixWidth =
+          currencyPrefix
+            ? doc.getTextWidth(
+                `${currencyPrefix} `
+              )
+            : 0;
+
+        const numberLeft =
+          currencyPrefix
+            ? totalsValueLeft + prefixWidth
+            : totalsValueLeft;
+
+        const numberWidth =
+          Math.max(
+            1,
+            totalsRight - numberLeft
+          );
+
+        while (
+          doc.getTextWidth(numericValue) >
+            numberWidth &&
+          fontSize > minimumFontSize
+        ) {
+          fontSize -= 0.5;
+          doc.setFontSize(fontSize);
+        }
+
+        const lines =
+          doc.getTextWidth(numericValue) <=
+          numberWidth
+            ? [numericValue]
+            : doc.splitTextToSize(
+                numericValue,
+                numberWidth
+              );
+
+        const lineHeight =
+          fontSize * 0.5;
+
+        lines.forEach((line: string, index: number) => {
+            const lineY =
+              y + index * lineHeight;
+
+            if (
+              index === 0 &&
+              currencyPrefix
+            ) {
+              doc.text(
+                currencyPrefix,
+                totalsValueLeft,
+                lineY
+              );
+
+              doc.text(
+                line,
+                numberLeft,
+                lineY
+              );
+            } else {
+              doc.text(
+                line,
+                numberLeft,
+                lineY
+              );
+            }
+          }
+        );
+
+        // A5 callers expect the next absolute Y position.
+        return (
+          y +
+          Math.max(1, lines.length) *
+            lineHeight
+        );
+      };
+
+    let cursorY = summaryY;
+
+    cursorY =
+      drawSafeRow(
+        "Subtotal",
+        money(totals.subtotal),
+        cursorY,
+        false,
+        7.2
+      ) + 4;
+
+   cursorY =
+  drawSafeRow(
+    "Discount",
+    `Rs.(-) ${totals.discount.toFixed(2)}`,
+    cursorY,
+    false,
+    7.2
+  ) + 4;
+
+    cursorY =
+      drawSafeRow(
+        "Taxable",
+        money(totals.taxable),
+        cursorY,
+        false,
+        7.2
+      ) + 4;
+
     if (gstType === "cgst-sgst") {
-      row("CGST", money(cgst), gstY);
-      row("SGST", money(sgst), gstY + 5);
-      row("Total GST", money(totals.gst), gstY + 10, true);
-      summaryY = gstY + 10;
+      cursorY =
+        drawSafeRow(
+          "CGST",
+          money(cgst),
+          cursorY,
+          false,
+          7.2
+        ) + 4;
+
+      cursorY =
+        drawSafeRow(
+          "SGST",
+          money(sgst),
+          cursorY,
+          false,
+          7.2
+        ) + 4;
+
+      cursorY =
+        drawSafeRow(
+          "Total GST",
+          money(totals.gst),
+          cursorY,
+          true,
+          8.5
+        ) + 4;
     } else {
-      row("IGST", money(igst), gstY);
-      row("Total GST", money(totals.gst), gstY + 5, true);
-      summaryY = gstY + 5;
+      cursorY =
+        drawSafeRow(
+          "IGST",
+          money(igst),
+          cursorY,
+          false,
+          7.2
+        ) + 4;
+
+      cursorY =
+        drawSafeRow(
+          "Total GST",
+          money(totals.gst),
+          cursorY,
+          true,
+          8.5
+        ) + 4;
     }
 
-    const grandTotalY = summaryY + 9;
+    const grandTotalY = cursorY + 4;
+
     doc.setDrawColor(40, 40, 40);
     doc.setLineWidth(0.35);
-    doc.line(summaryLabelX, grandTotalY - 4, summaryValueX, grandTotalY - 4);
-    row("Grand Total", money(totals.total), grandTotalY, true);
+    doc.line(
+      totalsLabelLeft,
+      grandTotalY - 4,
+      totalsRight,
+      grandTotalY - 4
+    );
+
+    drawSafeRow(
+      "Grand Total",
+      money(totals.total),
+      grandTotalY,
+      true,
+      8.5
+    );
 
     // ------------------------------------------------
     // PAYMENT TERMS + FOOTER
