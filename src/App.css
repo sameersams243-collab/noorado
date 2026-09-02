@@ -41,86 +41,7 @@ body{
     linear-gradient(180deg, var(--bg), #eef6d8);
 background-blend-mode: screen;
 }
-/* Navigation */
 
-.navbar {
-  background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,192,203,.85));
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 60px;
-  position: sticky;
-  top: 16px;
-  z-index: 1000;
-  height: 80px;
-  box-shadow: 0 8px 32px rgba(255,105,140,.15);
-  border: 1px solid rgba(255, 255, 255, 0.137);
-  border-radius: 999px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.logo {
-   font-family: "Black Ops One", cursive;
-  font-size: 32px;
-  font-weight: 90;
-  color: #d82424;
-  letter-spacing: 1px;
-  cursor: pointer;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 35px;
-}
-
-.nav-links li {
-  cursor: pointer;
-  font-weight: 600;
-  transition: .3s;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: var(--text-light);
-  font-size: 17px;
-  font-weight: 600;
-  transition: all .3s ease;
-  position: relative;
-  padding: 6px 10px;
-  border-radius: 8px;
-  background: transparent;
-}
-
-.nav-links a:hover {
-  color: var(--primary);
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(6px);
-}
-
-.nav-links a.active {
-  color: #2563eb;
-  font-weight: 800;
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0%;
-  height: 3px;
-  background: #a26ab8;
-  border-radius: 20px;
-  transition: width .3s ease;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
 
 /* ===========================
    Hero Section
@@ -128,7 +49,7 @@ background-blend-mode: screen;
 
 .hero {
   max-width: 1100px;
-  margin: 80px auto;
+  margin: 45px auto;
   padding: 20px;
 
   display: flex;
@@ -146,6 +67,7 @@ background-blend-mode: screen;
   font-weight: 800;
   font-size: 52px;
   line-height: 1.15;
+  margin-bottom: 20px;
 
   background: linear-gradient(
     90deg,
@@ -157,7 +79,6 @@ background-blend-mode: screen;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 3px 4px 5px rgba(0, 0, 0, 0.20);
 }
 
 .hero-left p {
@@ -211,24 +132,29 @@ background-blend-mode: screen;
 
 .hero-buttons {
   display: flex;
-  gap: 15px;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .hero-btn {
   display: inline-flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
-  padding: 15px 34px;
-  border-radius: 50px;
+  min-height: 40px;
+  padding: 0 17px;
 
-  font-size: 17px;
-  font-weight: 700;
+  border-radius: 999px;
+
+  background: var(--primary);
+  color: #ffffff;
+
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 580;
 
   text-decoration: none;
-
-  cursor: pointer;
-  transition: all .3s ease;
 }
 
 .hero-btn:hover {
@@ -540,79 +466,8 @@ button,
   transform: translateY(-3px);
 }
 
-/* ===========================
-   Footer
-=========================== */
-
-.footer {
-  background: var(--text);
-  color: var(--white);
-  text-align: center;
-  padding: 25px 20px;
-  margin-top: 80px;
-}
-
-.footer p {
-  font-family: "Inter", sans-serif;
-    font-weight: 400;
-  font-size: 16px;
-  color: var(--text-light);
-}
-
-.footer-container {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  text-align: left;
-  margin-bottom: 30px;
-}
-
-.footer-section {
-  flex: 1;
-}
-
-.footer-section h2,
-.footer-section h3 {
-  margin-bottom: 15px;
-  color: white;
-}
-
-.footer-section p {
-  font-family: "Inter", sans-serif;
-    font-weight: 400;
-  color: var(--text-light);
-  line-height: 1.8;
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section li {
-  margin-bottom: 10px;
-  color: var(--text-light);
-  cursor: pointer;
-}
-
-.footer-section li:hover {
-  color: white;
-}
-
-.footer hr {
-  border: none;
-  border-top: 1px solid #334155;
-  margin: 20px 0;
-}
-
-.copyright {
-  text-align: center;
-  color: #94a3b8;
-}
-
 /* Fix scrolling for sticky navbar */
+
 
 #hero,
 #services,
@@ -629,46 +484,6 @@ button,
 
 @media (max-width: 768px) {
 
-  .navbar {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 14px;
-    height: auto;
-    min-height: 64px;
-    width: calc(100% - 20px);
-    margin: 0 auto;
-    top: 8px;
-  }
-
-  .logo {
-    font-size: 21px;
-    flex-shrink: 0;
-  }
-
-  .nav-links {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 2px;
-  }
-
-  .nav-links li {
-    flex-shrink: 0;
-  }
-
-  .nav-links a {
-    font-size: 12px;
-    padding: 5px 3px;
-    white-space: nowrap;
-  }
-
-  .nav-links li:hover {
-    transform: none;
-  }
-
   .hero {
     flex-direction: column;
     text-align: center;
@@ -679,7 +494,7 @@ button,
   .hero-left h1 {
     font-size: 38px;
     line-height: 1.15;
-    margin-bottom: 18px;
+    margin-bottom: 8px;
   }
 
   .hero-left p {
@@ -713,11 +528,13 @@ button,
   .hero-buttons {
     justify-content: center;
     gap: 12px;
+    margin-top: 18px;
   }
 
   .hero-btn {
-    padding: 11px 20px;
-    font-size: 15px;
+    min-height: 38px;
+    padding: 0 16px;
+    font-size: 12px;
   }
 
   .services-grid,
@@ -732,11 +549,6 @@ button,
 
   .contact h2 {
     font-size: 32px;
-  }
-
-  .footer-container {
-    flex-direction: column;
-    text-align: center;
   }
 }
 

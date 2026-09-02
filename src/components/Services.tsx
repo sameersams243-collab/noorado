@@ -1,38 +1,31 @@
-import ServiceCard from "./ServiceCard";
-
-const services = [
-  {
-    title: "Business Websites",
-    description: "Professional websites for startups and businesses."
-  },
-  {
-    title: "Excel Templates",
-    description: "Ready-made templates with formulas."
-  },
-  {
-    title: "Business Tools",
-    description: "Online calculators and productivity tools."
-  },
-  {
-    title: "Custom Software",
-    description: "HR, Inventory and Business Management Systems."
-  }
-];
+import { Link } from "react-router-dom";
+import "./Services.css";
 
 function Services() {
   return (
-   <section id="services" className="services">
-      <h2>Our Services</h2>
+    <section id="services" className="services">
+      <div className="studio-intro">
+        <span className="studio-label">
+          <span className="label-noorado">Noorado</span>{" "}
+          <span className="label-studio">Studio</span>
+        </span>
 
-     <div className="services-grid">
-  {services.map((service, index) => (
-    <ServiceCard
-      key={index}
-      title={service.title}
-      description={service.description}
-    />
-  ))}
-</div>
+        <h2>
+          The Future Is Being Built
+        </h2>
+
+        <p>
+          We're building new products, software, and technology
+          for the future.
+        </p>
+
+        <Link
+          to="/studio"
+          className="studio-button"
+        >
+          Explore Noorado Studio →
+        </Link>
+      </div>
     </section>
   );
 }

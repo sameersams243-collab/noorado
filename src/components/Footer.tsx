@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import "./Footer.css";
+
 function Footer() {
   return (
     <footer id="footer" className="footer">
@@ -14,20 +17,42 @@ function Footer() {
         <div className="footer-section">
           <h3>Company</h3>
           <ul>
-            <li>Home</li>
-            <li>Services</li>
-            <li>About</li>
-            <li>Contact</li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+
+            <li>
+              <Link to="/services">Services</Link>
+            </li>
+
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
           </ul>
         </div>
 
         <div className="footer-section">
-          <h3>Services</h3>
+          <h3>Solutions</h3>
           <ul>
-            <li>Business Websites</li>
-            <li>Excel Templates</li>
-            <li>Business Software</li>
-            <li>Online Tools</li>
+            <li>
+              <Link to="/services">Business Websites</Link>
+            </li>
+
+            <li>
+              <Link to="/services">Business Software</Link>
+            </li>
+
+            <li>
+              <Link to="/services">Custom Digital Solutions</Link>
+            </li>
+
+            <li>
+              <Link to="/tools">Online Tools</Link>
+            </li>
           </ul>
         </div>
 
@@ -42,5 +67,4 @@ function Footer() {
   );
 }
 
-
-export default Footer;
+export default Footer;  

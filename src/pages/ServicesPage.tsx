@@ -4,6 +4,22 @@ import "./ServicesPage.css";
 function Services() {
   return (
     <main className="services-page">
+
+      {/* ========================================
+          TOP BACK NAVIGATION
+      ======================================== */}
+      <div className="services-top-nav">
+        <div className="services-container">
+          <Link to="/" className="services-back-button">
+            ← Back to Home
+          </Link>
+        </div>
+      </div>
+
+
+      {/* ========================================
+          HERO
+      ======================================== */}
       <section className="services-hero">
         <div className="services-container">
           <span className="services-label">
@@ -17,84 +33,126 @@ function Services() {
           </h1>
 
           <p>
-            Noorado creates practical websites, business tools
-            and automation solutions that make everyday work
-            simpler, faster and more efficient.
+            Noorado creates practical websites, software,
+            business tools, and digital solutions that make
+            everyday work simpler, faster, and more efficient.
           </p>
         </div>
       </section>
 
+
+      {/* ========================================
+          SERVICES
+      ======================================== */}
       <section className="services-section">
         <div className="services-container">
-          <div className="services-heading section-title">
-            <span>OUR SERVICES</span>
+
+          <div className="services-heading">
+            <span className="services-section-label">
+              OUR SERVICES
+            </span>
 
             <h2>
               Simple solutions.
               <br />
               Useful results.
             </h2>
+
+            <p>
+              We build practical digital solutions around
+              real business needs, with a focus on simplicity,
+              usability, and efficiency.
+            </p>
           </div>
 
+
           <div className="services-grid">
-            <article className="service-card">
+
+            <article
+              id="business-websites"
+              className="service-card"
+            >
               <span className="service-number">01</span>
-              <h3>Corporate Websites</h3>
+
+              <h3>
+                Business Websites
+              </h3>
+
               <p>
-                Professional and responsive websites designed
-                to present your business clearly and build
-                trust with your customers.
+                Professional websites designed for businesses that
+                want a strong online presence, clear information,
+                and a modern customer experience.
               </p>
-              <Link to="/portfolio/corporate-website" className="service-link">
-                View Project →
-              </Link>
             </article>
 
-            <article className="service-card">
+
+            <article
+              id="business-software"
+              className="service-card"
+            >
               <span className="service-number">02</span>
-              <h3>Excel Automation</h3>
+
+              <h3>
+                Business Software
+              </h3>
+
               <p>
-                Turn repetitive Excel work into faster,
-                organised and easier-to-manage workflows
-                with practical automation.
+                Practical software solutions that help businesses
+                manage operations, reduce repetitive work, and
+                improve day-to-day efficiency.
               </p>
-              <Link to="/portfolio/excel-automation" className="service-link">
-                View Project →
-              </Link>
             </article>
 
-            <article className="service-card">
+
+            <article
+              id="app-builder"
+              className="service-card"
+            >
               <span className="service-number">03</span>
-              <h3>Inventory Management</h3>
+
+              <h3>
+                App Builder
+              </h3>
+
               <p>
-                Custom inventory solutions to help businesses
-                manage products, stock movement and daily
-                operations more efficiently.
+                A flexible platform for creating connected
+                business applications tailored to specific
+                workflows, teams, and business requirements.
               </p>
-              <Link to="/portfolio/inventory-management" className="service-link">
-                View Project →
-              </Link>
             </article>
 
-            <article className="service-card">
+
+            <article
+              id="custom-digital-solutions"
+              className="service-card"
+            >
               <span className="service-number">04</span>
-              <h3>Business Tools</h3>
+
+              <h3>
+                Custom Digital Solutions
+              </h3>
+
               <p>
-                Useful digital tools designed around real
-                business needs, from calculations to
-                document and workflow solutions.
+                Custom-built digital solutions designed around
+                unique business needs, workflows, and operational
+                challenges.
               </p>
-              <Link to="/portfolio/business-tools" className="service-link">
-                View Project →
-              </Link>
             </article>
+
           </div>
         </div>
       </section>
 
+
+      {/* ========================================
+          CTA
+      ======================================== */}
       <section className="services-cta">
         <div className="services-container">
-          <span>HAVE AN IDEA?</span>
+
+          <span className="services-cta-label">
+            HAVE AN IDEA?
+          </span>
 
           <h2>
             Let's build something
@@ -103,15 +161,20 @@ function Services() {
           </h2>
 
           <p>
-            Tell us what you need and we'll help turn
-            your idea into a practical digital solution.
+            Tell us what you need and let's turn your idea
+            into a practical digital solution.
           </p>
 
-          <Link to="/contact" className="services-cta-button">
+          <Link
+            to="/contact"
+            className="services-cta-button"
+          >
             Talk to Noorado →
           </Link>
+
         </div>
       </section>
+
     </main>
   );
 }

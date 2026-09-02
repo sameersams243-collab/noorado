@@ -1,67 +1,23 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./ContactPage.css";
 
 function Contact() {
   return (
     <main className="contact-page">
 
-      {/* NAVBAR */}
-      <nav className="navbar">
-        <div className="logo">
-          Noorado
-        </div>
+      {/* ========================================
+          CONTACT HERO
+      ======================================== */}
+      <section className="contact-hero">
+        <div className="contact-container">
 
-        <ul className="nav-links">
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? "active" : ""
-              }
-            >
-              Home
-            </NavLink>
-          </li>
+          <Link
+            to="/"
+            className="contact-back-button"
+          >
+            ← Back to Home
+          </Link>
 
-          <li>
-            <NavLink
-              to="/tools"
-              className={({ isActive }) =>
-                isActive ? "active" : ""
-              }
-            >
-              Tools
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to="/portfolio"
-              className={({ isActive }) =>
-                isActive ? "active" : ""
-              }
-            >
-              Portfolio
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                isActive ? "active" : ""
-              }
-            >
-              Contact
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-
-      {/* CONTACT CONTENT */}
-      <div className="contact-container">
-
-        <section className="contact-hero">
           <span className="contact-label">
             CONTACT NOORADO
           </span>
@@ -77,11 +33,21 @@ function Contact() {
             or looking for a digital solution for your business?
             Tell us about it.
           </p>
-        </section>
 
-        <section className="contact-content">
+        </div>
+      </section>
 
-          {/* EMAIL */}
+
+      {/* ========================================
+          CONTACT CONTENT
+      ======================================== */}
+      <section className="contact-content">
+        <div className="contact-container">
+
+
+          {/* ========================================
+              EMAIL
+          ======================================== */}
           <div className="contact-email-card">
 
             <div className="contact-email-icon">
@@ -115,7 +81,9 @@ function Contact() {
           </div>
 
 
-          {/* FORM */}
+          {/* ========================================
+              CONTACT FORM
+          ======================================== */}
           <div className="contact-form-card">
 
             <div className="contact-form-heading">
@@ -133,6 +101,7 @@ function Contact() {
               </p>
 
             </div>
+
 
             <form
               className="contact-form"
@@ -187,6 +156,7 @@ ${message}`;
                   />
                 </div>
 
+
                 <div className="contact-field">
                   <label htmlFor="email">
                     Email
@@ -203,6 +173,7 @@ ${message}`;
 
               </div>
 
+
               <div className="contact-field">
 
                 <label htmlFor="subject">
@@ -217,6 +188,7 @@ ${message}`;
                 />
 
               </div>
+
 
               <div className="contact-field">
 
@@ -234,6 +206,7 @@ ${message}`;
 
               </div>
 
+
               <button
                 type="submit"
                 className="contact-submit"
@@ -245,9 +218,8 @@ ${message}`;
 
           </div>
 
-        </section>
-
-      </div>
+        </div>
+      </section>
 
     </main>
   );

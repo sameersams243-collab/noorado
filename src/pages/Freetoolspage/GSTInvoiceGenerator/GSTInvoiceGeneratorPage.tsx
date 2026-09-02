@@ -731,7 +731,7 @@ function GSTInvoiceGeneratorPage() {
       digits <= 1 ? 8 : digits === 2 ? 10 : digits === 3 ? 12 : 14;
 
     const fixedColumnsWidth =
-      srColWidth + 22 + 12 + 18 + 11 + 10 + 19 + 17 + 20;
+      srColWidth + 22 + 12 + 18 + 14 + 10 + 19 + 17 + 20;
     const productColWidth = Math.max(35, 182 - fixedColumnsWidth);
 
     autoTable(doc, {
@@ -836,7 +836,7 @@ function GSTInvoiceGeneratorPage() {
         },
 
         5: {
-          cellWidth: 11,
+          cellWidth: 14,
           halign: "right",
         },
 
@@ -876,7 +876,9 @@ function GSTInvoiceGeneratorPage() {
     data.cell.styles.valign = "middle";
 
     // Keep every value inside its own cell.
-    data.cell.styles.overflow = "linebreak";
+    // The discount column has enough width to keep values such as 19.10% on one line.
+    data.cell.styles.overflow =
+      data.column.index === 5 ? "visible" : "linebreak";
 
     if (data.column.index === 0) {
       data.cell.styles.halign = "center";
@@ -1473,6 +1475,7 @@ function GSTInvoiceGeneratorPage() {
         item.hsnSac || "-",
         item.quantity.toFixed(2),
         item.rate.toFixed(2),
+        `${item.discount.toFixed(2)}%`,
         `${item.gstRate}%`,
         calculation.taxableAmount.toFixed(2),
         calculation.total.toFixed(2),
@@ -1484,14 +1487,14 @@ function GSTInvoiceGeneratorPage() {
       digits <= 1 ? 7 : digits === 2 ? 9 : digits === 3 ? 11 : 13;
 
     const fixedColumnsWidth =
-      srColWidth + 22 + 14 + 22 + 13 + 24 + 25;
+      srColWidth + 22 + 14 + 22 + 13 + 13 + 24 + 25;
     const productColWidth = Math.max(40, contentWidth - fixedColumnsWidth);
 
     autoTable(doc, {
       startY: tableStartY,
       margin: { left: margin, right: margin },
       tableWidth: contentWidth,
-      head: [["#", "Product / Service", "HSN", "Qty", "Rate", "GST", "Taxable", "Total"]],
+      head: [["#", "Product / Service", "HSN", "Qty", "Rate", "Disc.", "GST", "Taxable", "Total"]],
       body: tableRows,
       theme: "grid",
       styles: {
@@ -1529,8 +1532,9 @@ function GSTInvoiceGeneratorPage() {
         3: { cellWidth: 14, halign: "right" },
         4: { cellWidth: 22, halign: "right" },
         5: { cellWidth: 13, halign: "center" },
-        6: { cellWidth: 24, halign: "right" },
-        7: { cellWidth: 25, halign: "right" },
+        6: { cellWidth: 13, halign: "center" },
+        7: { cellWidth: 24, halign: "right" },
+        8: { cellWidth: 25, halign: "right" },
       },
       didParseCell: (data) => {
   if (data.section === "head") {
@@ -1561,7 +1565,7 @@ function GSTInvoiceGeneratorPage() {
       (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ||
       tableStartY + 20;
 
-    let summaryY = finalY + 8;
+    let summaryY = finalY + 6;
 
     // The value region has a fixed, bounded width so that values can
     // NEVER cross into the label region. The label region is separate.
@@ -1695,6 +1699,9 @@ function GSTInvoiceGeneratorPage() {
         );
       };
 
+    const summaryRowGap = 2.5;
+    const grandTotalGap = 3;
+
     let cursorY = summaryY;
 
     cursorY =
@@ -1704,7 +1711,7 @@ function GSTInvoiceGeneratorPage() {
         cursorY,
         false,
         7.2
-      ) + 4;
+      ) + summaryRowGap;
 
    cursorY =
   drawSafeRow(
@@ -1713,7 +1720,7 @@ function GSTInvoiceGeneratorPage() {
     cursorY,
     false,
     7.2
-  ) + 4;
+  ) + summaryRowGap;
 
     cursorY =
       drawSafeRow(
@@ -1722,7 +1729,7 @@ function GSTInvoiceGeneratorPage() {
         cursorY,
         false,
         7.2
-      ) + 4;
+      ) + summaryRowGap;
 
     if (gstType === "cgst-sgst") {
       cursorY =
@@ -1732,7 +1739,7 @@ function GSTInvoiceGeneratorPage() {
           cursorY,
           false,
           7.2
-        ) + 4;
+        ) + summaryRowGap;
 
       cursorY =
         drawSafeRow(
@@ -1741,7 +1748,7 @@ function GSTInvoiceGeneratorPage() {
           cursorY,
           false,
           7.2
-        ) + 4;
+        ) + summaryRowGap;
 
       cursorY =
         drawSafeRow(
@@ -1750,7 +1757,7 @@ function GSTInvoiceGeneratorPage() {
           cursorY,
           true,
           8.5
-        ) + 4;
+        ) + summaryRowGap;
     } else {
       cursorY =
         drawSafeRow(
@@ -1759,7 +1766,7 @@ function GSTInvoiceGeneratorPage() {
           cursorY,
           false,
           7.2
-        ) + 4;
+        ) + summaryRowGap;
 
       cursorY =
         drawSafeRow(
@@ -1768,10 +1775,10 @@ function GSTInvoiceGeneratorPage() {
           cursorY,
           true,
           8.5
-        ) + 4;
+        ) + summaryRowGap;
     }
 
-    const grandTotalY = cursorY + 4;
+    const grandTotalY = cursorY + grandTotalGap;
 
     doc.setDrawColor(40, 40, 40);
     doc.setLineWidth(0.35);
@@ -2587,28 +2594,36 @@ function GSTInvoiceGeneratorPage() {
                             Discount %
                           </label>
 
-                          <input
-                            type="number"
-                            min="0"
-                            max="100"
-                            step="0.01"
-                            value={item.discount || ""}
-                            onChange={(e) =>
-                              updateItem(
-                                item.id,
-                                "discount",
-                                Math.min(
-                                  100,
-                                  Math.max(
-                                    0,
-                                    Number(
-                                      e.target.value
-                                    )
-                                  )
-                                )
-                              )
-                            }
-                          />
+                          <input 
+  type="number" 
+  min="0" 
+  max="100" 
+  step="0.01" 
+  value={item.discount || ""} 
+  onChange={(e) => { 
+    const value = e.target.value; 
+
+    // Allow empty value while editing. 
+    if (value === "") { 
+      updateItem(item.id, "discount", 0); 
+      return; 
+    } 
+
+    // Allow only up to 3 digits before decimal and 2 after decimal. 
+    if (!/^\d{0,3}(\.\d{0,2})?$/.test(value)) { 
+      return; 
+    } 
+
+    const numericValue = Number(value); 
+
+    // Keep discount between 0 and 100. 
+    if (numericValue < 0 || numericValue > 100) { 
+      return; 
+    } 
+
+    updateItem(item.id, "discount", numericValue); 
+  }} 
+/>
                         </div>
 
                         <div className="gst-invoice-form-group">

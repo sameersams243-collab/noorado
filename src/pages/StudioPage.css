@@ -1,0 +1,635 @@
+/* ========================================
+   NOORADO STUDIO PAGE — R&D LAB AESTHETIC
+======================================== */
+
+.studio-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #f2f2f2;
+  font-family: "Sora", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Subtle background grid pattern */
+.studio-page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(0deg, transparent 24%, rgba(212, 175, 55, 0.03) 25%, rgba(212, 175, 55, 0.03) 26%, transparent 27%, transparent 74%, rgba(212, 175, 55, 0.03) 75%, rgba(212, 175, 55, 0.03) 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, rgba(212, 175, 55, 0.03) 25%, rgba(212, 175, 55, 0.03) 26%, transparent 27%, transparent 74%, rgba(212, 175, 55, 0.03) 75%, rgba(212, 175, 55, 0.03) 76%, transparent 77%, transparent);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.studio-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========================================
+   HERO SECTION
+======================================== */
+
+.studio-page-hero {
+  position: relative;
+  width: 100%;
+  padding: 160px 20px 120px;
+  text-align: center;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 13, 13, 0.8) 0%,
+    #0a0a0a 100%
+  );
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.studio-page-hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  animation: studio-page-hero-fade-up 0.9s ease-out both;
+}
+
+@keyframes studio-page-hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-page-hero-content {
+    animation: none;
+  }
+}
+
+/* Eyebrow tag */
+.studio-page-eyebrow {
+  display: inline-block;
+  font-family: ui-monospace, "Menlo", "Consolas", monospace;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #d4af37;
+  padding: 8px 20px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50px;
+  background: rgba(212, 175, 55, 0.05);
+  backdrop-filter: blur(8px);
+}
+
+/* ========================================
+   NOORADO STUDIO BADGE (page-scoped copy)
+======================================== */
+
+.studio-page-badge {
+  display: inline-flex;
+  align-items: center;
+
+  font-family: "Black Ops One", cursive;
+
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+
+  padding: 10px 24px;
+  border-radius: 50px;
+
+  background: #0d0d0d;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.studio-page-badge-noorado {
+  color: #d82424;
+}
+
+.studio-page-badge-studio {
+  color: #d4af37;
+}
+
+@media (max-width: 480px) {
+  .studio-page-badge {
+    font-size: 16px;
+    padding: 8px 18px;
+  }
+}
+
+/* Main heading */
+.studio-page-heading {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin: 0;
+  background: linear-gradient(
+    135deg,
+    #f2f2f2 0%,
+    #d4af37 50%,
+    #f2f2f2 100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.studio-page-heading::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 2px;
+  margin: 28px auto 0;
+  border-radius: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #d4af37,
+    transparent
+  );
+}
+
+/* Subtitle */
+.studio-page-subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0.2px;
+  color: #c0c0c0;
+  max-width: 680px;
+  margin: 0;
+}
+
+/* ========================================
+   PROJECTS GRID SECTION
+======================================== */
+
+.studio-page-projects {
+  position: relative;
+  width: 100%;
+  padding: 100px 20px;
+}
+
+.studio-page-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+/* ========================================
+   PROJECT CARD
+======================================== */
+
+.studio-page-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 32px;
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  transition:
+    border-color 0.4s ease,
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    background 0.4s ease;
+  animation: studio-page-card-reveal 0.7s ease-out both;
+  animation-delay: calc(0.15s * var(--card-index, 0));
+}
+
+@keyframes studio-page-card-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-page-card {
+    animation: none;
+  }
+}
+
+.studio-page-card:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+  transform: translateY(-8px);
+  background: rgba(20, 20, 20, 0.8);
+  box-shadow:
+    0 20px 40px rgba(212, 175, 55, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-page-card:hover {
+    transform: none;
+  }
+}
+
+/* Card header */
+.studio-page-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.studio-page-project-tag {
+  font-family: ui-monospace, "Menlo", "Consolas", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #d4af37;
+  line-height: 1.2;
+}
+
+/* Icon container */
+.studio-page-icon-container {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 8px;
+  background: rgba(212, 175, 55, 0.05);
+  flex-shrink: 0;
+  transition:
+    border-color 0.4s ease,
+    background 0.4s ease;
+}
+
+.studio-page-card:hover .studio-page-icon-container {
+  border-color: rgba(212, 175, 55, 0.5);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.studio-page-icon-svg {
+  width: 40px;
+  height: 40px;
+  color: #d4af37;
+}
+
+/* Card body */
+.studio-page-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.studio-page-card-title {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  color: #f2f2f2;
+  letter-spacing: -0.5px;
+}
+
+.studio-page-card-tagline {
+  font-size: 15px;
+  font-weight: 600;
+  color: #d4af37;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.studio-page-card-description {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #b0b0b0;
+  margin: 0;
+  letter-spacing: 0.1px;
+}
+
+/* Card footer */
+.studio-page-card-footer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.studio-page-status-badge {
+  display: inline-block;
+  font-family: ui-monospace, "Menlo", "Consolas", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(212, 175, 55, 0.15);
+  color: #d4af37;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* ========================================
+   CLOSING SECTION
+======================================== */
+
+.studio-page-closing {
+  position: relative;
+  width: 100%;
+  padding: 80px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(212, 175, 55, 0.02) 50%,
+    transparent 100%
+  );
+}
+
+.studio-page-closing-text {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #9a9a9a;
+  margin: 0;
+  letter-spacing: 0.2px;
+  animation: studio-page-hero-fade-up 0.9s ease-out 0.4s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-page-closing-text {
+    animation: none;
+  }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 1024px) {
+  .studio-page-hero {
+    padding: 120px 20px 100px;
+  }
+
+  .studio-page-heading {
+    font-size: 56px;
+  }
+
+  .studio-page-heading::after {
+    margin-top: 20px;
+  }
+
+  .studio-page-grid {
+    gap: 32px;
+  }
+
+  .studio-page-card {
+    padding: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .studio-page-hero {
+    padding: 100px 16px 80px;
+  }
+
+  .studio-page-heading {
+    font-size: 42px;
+    line-height: 1.15;
+  }
+
+  .studio-page-heading::after {
+    width: 60px;
+    margin-top: 16px;
+  }
+
+  .studio-page-subtitle {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .studio-page-projects {
+    padding: 80px 16px;
+  }
+
+  .studio-page-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .studio-page-card {
+    padding: 24px;
+  }
+
+  .studio-page-card-title {
+    font-size: 24px;
+  }
+
+  .studio-page-card-tagline,
+  .studio-page-card-description {
+    font-size: 14px;
+  }
+
+  .studio-page-eyebrow {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    padding: 7px 16px;
+  }
+
+  .studio-page-icon-container {
+    width: 56px;
+    height: 56px;
+  }
+
+  .studio-page-icon-svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .studio-page-closing {
+    padding: 60px 16px;
+  }
+
+  .studio-page-closing-text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .studio-page-hero {
+    padding: 80px 14px 60px;
+  }
+
+  .studio-page-hero-content {
+    gap: 24px;
+  }
+
+  .studio-page-heading {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .studio-page-heading::after {
+    width: 50px;
+    height: 2px;
+    margin-top: 14px;
+  }
+
+  .studio-page-eyebrow {
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+  }
+
+  .studio-page-subtitle {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .studio-page-projects {
+    padding: 60px 14px;
+  }
+
+  .studio-page-grid {
+    gap: 20px;
+  }
+
+  .studio-page-card {
+    padding: 20px;
+  }
+
+  .studio-page-card-header {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .studio-page-icon-container {
+    width: 48px;
+    height: 48px;
+    align-self: flex-end;
+  }
+
+  .studio-page-icon-svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .studio-page-card-title {
+    font-size: 20px;
+  }
+
+  .studio-page-card-tagline,
+  .studio-page-card-description {
+    font-size: 13px;
+  }
+
+  .studio-page-card-description {
+    line-height: 1.6;
+  }
+
+  .studio-page-project-tag {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .studio-page-status-badge {
+    font-size: 11px;
+    padding: 5px 12px;
+  }
+
+  .studio-page-closing {
+    padding: 50px 14px;
+  }
+
+  .studio-page-closing-text {
+    font-size: 14px;
+  }
+}
+
+/* ========================================
+   ANIMATION UTILITIES
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-page-card,
+  .studio-page-hero-content,
+  .studio-page-closing-text {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .studio-page-card:hover {
+    transform: none !important;
+  }
+}
+/* ========================================
+   BACK TO HOME LINK
+======================================== */
+
+.studio-page-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  
+
+  font-family: "ui-monospace", "Menlo", "Consolas", monospace;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+
+  color: #9a9a9a;
+  text-decoration: none;
+
+  padding: 8px 4px;
+  margin-top: 24px;
+  margin-left: 54px;
+  margin-bottom: 09px;
+
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.studio-page-back:hover {
+  color: #d4af37;
+  transform: translateX(-2px);
+}
+
+@media (max-width: 480px) {
+  .studio-page-back {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+}

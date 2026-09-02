@@ -35,6 +35,11 @@ function ProfitLossCalculatorPage() {
   const [isCostFocused, setIsCostFocused] = useState(false);
   const [isSellFocused, setIsSellFocused] = useState(false);
 
+  const [costReplaceOnNext, setCostReplaceOnNext] =
+    useState(false);
+  const [sellReplaceOnNext, setSellReplaceOnNext] =
+    useState(false);
+
   const [hasCalculated, setHasCalculated] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -109,6 +114,12 @@ function ProfitLossCalculatorPage() {
   const handleCostChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     if (val === "" || /^\d*\.?\d*$/.test(val)) {
+      if (costReplaceOnNext && val !== "") {
+        setCostInput(val);
+        setCostReplaceOnNext(false);
+        setErrorMessage("");
+        return;
+      }
       setCostInput(val);
       setErrorMessage("");
     }
@@ -117,8 +128,78 @@ function ProfitLossCalculatorPage() {
   const handleSellChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     if (val === "" || /^\d*\.?\d*$/.test(val)) {
+      if (sellReplaceOnNext && val !== "") {
+        setSellInput(val);
+        setSellReplaceOnNext(false);
+        setErrorMessage("");
+        return;
+      }
       setSellInput(val);
       setErrorMessage("");
+    }
+  };
+
+  const handleCostFocus = (
+    event: React.FocusEvent<HTMLInputElement>
+  ) => {
+    setIsCostFocused(true);
+    if (costPrice > 0) {
+      setCostReplaceOnNext(true);
+      requestAnimationFrame(() => {
+        event.target.select();
+      });
+    }
+  };
+
+  const handleSellFocus = (
+    event: React.FocusEvent<HTMLInputElement>
+  ) => {
+    setIsSellFocused(true);
+    if (sellingPrice > 0) {
+      setSellReplaceOnNext(true);
+      requestAnimationFrame(() => {
+        event.target.select();
+      });
+    }
+  };
+
+  const handleCostBlur = () => {
+    setIsCostFocused(false);
+    setCostReplaceOnNext(false);
+  };
+
+  const handleSellBlur = () => {
+    setIsSellFocused(false);
+    setSellReplaceOnNext(false);
+  };
+
+  const handleCostKeyDown = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (
+      event.key === "ArrowLeft" ||
+      event.key === "ArrowRight" ||
+      event.key === "ArrowUp" ||
+      event.key === "ArrowDown" ||
+      event.key === "Home" ||
+      event.key === "End"
+    ) {
+      setCostReplaceOnNext(false);
+    }
+  };
+
+  const handleSellKeyDown = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (
+      event.key === "ArrowLeft" ||
+      event.key === "ArrowRight" ||
+      event.key === "ArrowUp" ||
+      event.key === "ArrowDown" ||
+      event.key === "Home" ||
+      event.key === "End"
+    ) {
+      setSellReplaceOnNext(false);
     }
   };
 
@@ -207,8 +288,9 @@ function ProfitLossCalculatorPage() {
                           ? formatIndianNumber(costPrice)
                           : costInput
                       }
-                      onFocus={() => setIsCostFocused(true)}
-                      onBlur={() => setIsCostFocused(false)}
+                      onFocus={handleCostFocus}
+                      onBlur={handleCostBlur}
+                      onKeyDown={handleCostKeyDown}
                       onChange={handleCostChange}
                       aria-describedby={errorMessage ? "pl-error-msg" : undefined}
                     />
@@ -236,8 +318,9 @@ function ProfitLossCalculatorPage() {
                           ? formatIndianNumber(sellingPrice)
                           : sellInput
                       }
-                      onFocus={() => setIsSellFocused(true)}
-                      onBlur={() => setIsSellFocused(false)}
+                      onFocus={handleSellFocus}
+                      onBlur={handleSellBlur}
+                      onKeyDown={handleSellKeyDown}
                       onChange={handleSellChange}
                     />
                   </div>

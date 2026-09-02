@@ -1,55 +1,122 @@
 import { useState } from "react";
+import "./Contact.css";
 
-const Contact = () => {
+function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    console.log({
+      name,
+      email,
+      message,
+    });
+
+    setSubmitted(true);
+
+    setName("");
+    setEmail("");
+    setMessage("");
+  };
 
   return (
     <section id="contact" className="contact">
-      <h2>Contact Us</h2>
+      <div className="contact-container">
 
-     <form
-  className="contact-form"
-  onSubmit={(e) => {
-  e.preventDefault();
+        {/* HEADER */}
+        <div className="contact-heading">
+          <span className="contact-label">
+            GET IN TOUCH
+          </span>
 
-  console.log({
-    name,
-    email,
-    message,
-  });
+          <h2>
+            Let's build something
+            <br />
+            useful together.
+          </h2>
 
-  alert(`Thanks ${name}! Your message has been received.`);
-}}
->
+          <p>
+            Have an idea, a business requirement, or a project
+            in mind? Tell us what you need and we'll get back to you.
+          </p>
+        </div>
 
-       <input
-  type="text"
-  placeholder="Your Name"
-  value={name}
-  onChange={(e) => setName(e.target.value)}
-/>
 
-        <input
-          type="email"
-          placeholder="Your Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        {/* FORM */}
+        <form
+          className="contact-form"
+          onSubmit={handleSubmit}
+        >
+          <div className="contact-field">
+            <label htmlFor="contact-name">
+              Name
+            </label>
 
-        <textarea
-          placeholder="Your Message"
-          rows={6}
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        ></textarea>
+            <input
+              id="contact-name"
+              type="text"
+              placeholder="Your Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
 
-        <button type="submit">
-          Send Message
-        </button>
 
-      </form>
+          <div className="contact-field">
+            <label htmlFor="contact-email">
+              Email
+            </label>
+
+            <input
+              id="contact-email"
+              type="email"
+              placeholder="Your Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+
+          <div className="contact-field">
+            <label htmlFor="contact-message">
+              Message
+            </label>
+
+            <textarea
+              id="contact-message"
+              placeholder="Tell us what you need..."
+              rows={6}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required
+            />
+          </div>
+
+
+          <button
+            type="submit"
+            className="contact-button"
+          >
+            Send Message →
+          </button>
+
+
+          {submitted && (
+            <p className="contact-success">
+              Thanks {name || "for reaching out"}! Your message
+              has been received.
+            </p>
+          )}
+
+        </form>
+
+      </div>
     </section>
   );
 }

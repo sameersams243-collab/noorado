@@ -1,12 +1,13 @@
 /* ========================================
-   NOORADO SERVICES PAGE
+   SERVICES PAGE
 ======================================== */
 
 .services-page {
   width: 100%;
   min-height: 100vh;
-  background: #f8fafc;
-  color: #0f172a;
+  background: transparent;
+  color: var(--text-dark);
+  overflow: hidden;
 }
 
 .services-page * {
@@ -17,214 +18,387 @@
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
+
+
+/* ========================================
+   TOP BACK NAVIGATION
+======================================== */
+
+.services-top-nav {
+  width: 100%;
+  padding: 18px 0 0;
+}
+
+.services-top-nav .services-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.services-back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 15px;
+  border: 1px solid rgba(216, 36, 36, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--primary);
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.services-back-button:hover {
+  background: rgba(216, 36, 36, 0.05);
+  color: var(--primary);
+}
+
 
 /* ========================================
    HERO
 ======================================== */
 
 .services-hero {
-  padding: 100px 20px 90px;
-  background: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
+  padding: 75px 0 55px;
+  text-align: center;
 }
 
-.services-hero .services-container {
-  max-width: 900px;
-}
-
-.services-label,
-.services-heading > span,
-.services-cta > .services-container > span {
-  display: block;
+.services-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 18px;
-  color: #2563eb;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 2px;
+  padding: 7px 16px;
+  border: 1px solid rgba(216, 36, 36, 0.18);
+  border-radius: 999px;
+  background: rgba(216, 36, 36, 0.04);
+  color: #d82424;
+  font-family: "Black Ops One", cursive;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
 }
 
 .services-hero h1 {
-  margin: 0 0 24px;
-  color: #0f172a;
-  font-size: clamp(42px, 6vw, 64px);
-  line-height: 1.05;
-  letter-spacing: -2px;
+  max-width: 880px;
+  margin: 0 auto 18px;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.12;
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--secondary),
+    var(--accent)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .services-hero p {
-  max-width: 680px;
-  margin: 0;
-  color: #64748b;
-  font-size: 18px;
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--text-light);
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1.7;
 }
+
 
 /* ========================================
    SERVICES SECTION
 ======================================== */
 
 .services-section {
-  padding: 45px 20px 55px;
-  background: #ffffff;
+  padding: 45px 0 65px;
 }
 
-.services-section .section-title {
+.services-heading {
+  max-width: 720px;
   margin-bottom: 28px;
 }
 
-.services-heading h2 {
-  margin: 0;
-  color: #0f172a;
-  font-size: 38px;
-  line-height: 1.15;
-  letter-spacing: -1px;
+.services-section-label {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--primary);
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
 }
 
+.services-heading h2 {
+  margin: 0 0 12px;
+  color: var(--text-dark);
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 36px;
+  font-weight: 750;
+  line-height: 1.18;
+}
+
+.services-heading p {
+  max-width: 650px;
+  margin: 0;
+  color: var(--text-light);
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+
 /* ========================================
-   SERVICE GRID
+   SERVICES GRID
 ======================================== */
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  gap: 14px;
 }
 
 .service-card {
-  padding: 24px 20px;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  background: #ffffff;
-  text-align: center;
+  min-height: 215px;
+  padding: 22px 24px;
+  background: rgba(255, 255, 255, 0.42);
+  border: 1px solid rgba(216, 36, 36, 0.08);
+  border-radius: 14px;
+  box-shadow: none;
 }
 
 .service-number {
   display: block;
-  margin-bottom: 28px;
-  color: #2563eb;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 1px;
+  margin-bottom: 18px;
+  color: var(--primary);
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .service-card h3 {
-  margin: 0 0 8px;
-  font-size: 18px;
-  line-height: 1.3;
-  color: #2563eb;
+  margin: 0 0 9px;
+  color: var(--text-dark);
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 .service-card p {
   margin: 0;
-  color: #64748b;
+  color: var(--text-light);
+  font-family: "Inter", sans-serif;
   font-size: 14px;
-  line-height: 1.5;
+  font-weight: 400;
+  line-height: 1.65;
 }
 
-.service-link {
-  display: inline-block;
-  margin-top: 28px;
-  color: #2563eb;
-  font-size: 14px;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.service-link:hover {
-  color: #1d4ed8;
-}
 
 /* ========================================
    CTA
 ======================================== */
 
 .services-cta {
-  padding: 90px 20px;
-  background: #0f172a;
-  color: #ffffff;
-}
-
-.services-cta .services-container {
+  padding: 60px 0 75px;
   text-align: center;
 }
 
-.services-cta > .services-container > span {
-  color: #93c5fd;
+.services-cta .services-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.services-cta-label {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--primary);
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
 }
 
 .services-cta h2 {
-  margin: 0 0 20px;
-  font-size: clamp(36px, 5vw, 52px);
-  line-height: 1.1;
-  letter-spacing: -1.5px;
+  margin: 0 0 14px;
+  color: var(--text-dark);
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.15;
 }
 
 .services-cta p {
-  max-width: 560px;
-  margin: 0 auto 30px;
-  color: #cbd5e1;
-  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto 24px;
+  color: var(--text-light);
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
   line-height: 1.7;
 }
 
 .services-cta-button {
-  display: inline-block;
-  padding: 13px 22px;
-  border-radius: 8px;
-  background: #2563eb;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: var(--primary);
   color: #ffffff;
+  font-family: "Inter", sans-serif;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 600;
   text-decoration: none;
 }
 
 .services-cta-button:hover {
-  background: #1d4ed8;
+  background: var(--primary);
+  color: #ffffff;
 }
 
-/* ========================================
-   TABLET
-======================================== */
-
-@media (max-width: 800px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* ========================================
    MOBILE
 ======================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .services-container {
+    padding: 0 18px;
+  }
+
+  .services-top-nav {
+    padding: 14px 0 0;
+  }
+
+  .services-back-button {
+    min-height: 36px;
+    padding: 0 14px;
+    font-size: 12px;
+  }
+
   .services-hero {
-    padding: 75px 20px 65px;
+    padding: 58px 0 42px;
+  }
+
+  .services-label {
+    margin-bottom: 16px;
+    padding: 7px 14px;
+    font-size: 13px;
   }
 
   .services-hero h1 {
-    font-size: 40px;
+    margin-bottom: 16px;
+    font-size: 36px;
+    line-height: 1.14;
   }
 
   .services-hero p {
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 1.65;
   }
 
   .services-section {
-    padding: 65px 20px;
+    padding: 38px 0 50px;
+  }
+
+  .services-heading {
+    margin-bottom: 24px;
+  }
+
+  .services-section-label {
+    margin-bottom: 10px;
+    font-size: 11px;
   }
 
   .services-heading h2 {
-    font-size: 32px;
+    font-size: 29px;
+  }
+
+  .services-heading p {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 11px;
   }
 
   .service-card {
-    min-height: auto;
-    padding: 25px;
+    min-height: 0;
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .service-number {
+    margin-bottom: 15px;
+    font-size: 12px;
+  }
+
+  .service-card h3 {
+    margin-bottom: 8px;
+    font-size: 20px;
+  }
+
+  .service-card p {
+    font-size: 13px;
+    line-height: 1.65;
   }
 
   .services-cta {
-    padding: 70px 20px;
+    padding: 50px 0 65px;
+  }
+
+  .services-cta-label {
+    margin-bottom: 12px;
+    font-size: 11px;
+  }
+
+  .services-cta h2 {
+    font-size: 30px;
+  }
+
+  .services-cta p {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .services-cta-button {
+    min-height: 44px;
+    padding: 0 18px;
+    font-size: 13px;
+  }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+  .services-hero {
+    padding-top: 52px;
+  }
+
+  .services-hero h1 {
+    font-size: 31px;
+  }
+
+  .services-heading h2 {
+    font-size: 27px;
+  }
+
+  .services-cta h2 {
+    font-size: 27px;
   }
 }

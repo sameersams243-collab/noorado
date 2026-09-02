@@ -1,0 +1,638 @@
+/* ===========================
+   Navigation
+=========================== */
+
+.navbar {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 192, 203, 0.85)
+  );
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 11px 48px;
+
+  position: sticky;
+  top: 16px;
+  z-index: 1000;
+
+  height: 68px;
+
+  box-shadow: 0 8px 32px rgba(255, 105, 140, 0.15);
+
+  border: 1px solid rgba(255, 255, 255, 0.137);
+  border-radius: 999px;
+
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===========================
+   LOGO
+   DO NOT CHANGE
+=========================== */
+
+.logo {
+  font-family: "Black Ops One", cursive;
+  font-size: 32px;
+  font-weight: 90;
+  color: #d82424;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+/* ===========================
+   RIGHT SIDE NAVIGATION
+=========================== */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  list-style: none;
+
+  gap: 26px;
+
+  margin-left: auto;
+}
+
+.nav-links li {
+  position: relative;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ===========================
+   HOME LINK
+=========================== */
+
+.nav-links > li > a {
+  display: inline-flex;
+  align-items: center;
+
+  text-decoration: none;
+
+  color: var(--text-light);
+
+  font-size: 17px;
+  font-weight: 600;
+
+  line-height: 1;
+
+  padding: 8px 4px;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.nav-links > li > a:hover {
+  color: var(--primary);
+}
+
+.nav-links > li > a.active {
+  color: #2563eb;
+  font-weight: 800;
+}
+
+/* ===========================
+   DROPDOWN TRIGGER
+=========================== */
+
+.nav-dropdown-trigger {
+  appearance: none;
+  -webkit-appearance: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  padding: 8px 4px;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: var(--text-light);
+
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 600;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: color 0.25s ease;
+}
+
+.nav-dropdown-trigger:hover {
+  color: var(--primary);
+}
+
+/* ===========================
+   HOVER ARROW
+   Hidden normally
+=========================== */
+
+.nav-dropdown-arrow {
+  display: inline-block;
+
+  width: 6px;
+  height: 6px;
+
+  margin-top: -2px;
+
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+
+  transform: rotate(45deg);
+
+  opacity: 0;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-dropdown-trigger:hover .nav-dropdown-arrow,
+.nav-dropdown-trigger:focus-visible .nav-dropdown-arrow {
+  opacity: 1;
+
+  transform:
+    rotate(45deg)
+    translateY(1px);
+}
+
+/* ===========================
+   DROPDOWN MENU
+=========================== */
+
+.nav-dropdown-menu {
+  position: absolute;
+
+  top: calc(100% + 8px);
+  left: 50%;
+
+  width: 210px;
+
+  padding: 8px;
+
+  transform: translateX(-50%);
+
+  background: rgba(255, 255, 255, 0.98);
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 12px 28px rgba(15, 23, 42, 0.10),
+    0 4px 10px rgba(15, 23, 42, 0.04);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  z-index: 1100;
+}
+
+/* ===========================
+   DROPDOWN ITEMS
+=========================== */
+
+.nav-dropdown-menu a,
+.nav-dropdown-disabled {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  padding: 11px 10px;
+
+  border-radius: 8px;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-dropdown-menu a:hover {
+  background: rgba(37, 99, 235, 0.06);
+
+  transform: translateX(2px);
+}
+
+/* ===========================
+   DROPDOWN TEXT
+=========================== */
+
+.nav-dropdown-menu strong,
+.nav-dropdown-disabled strong {
+  color: #0f172a;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  line-height: 1.45;
+}
+
+/* No subtitles currently used */
+
+.nav-dropdown-menu small,
+.nav-dropdown-disabled small {
+  color: #64748b;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 12px;
+
+  line-height: 1.45;
+}
+
+/* ===========================
+   DISABLED DROPDOWN ITEM
+=========================== */
+
+.nav-dropdown-disabled {
+  cursor: default;
+}
+
+/* ===========================
+   MOBILE MENU BUTTON
+=========================== */
+
+.mobile-menu-button {
+  display: none;
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+/* ========================================
+   MOBILE MENU BUTTON
+======================================== */
+
+.mobile-menu-button {
+  display: none;
+
+  width: 34px;
+  height: 34px;
+
+  padding: 0;
+  margin: 0;
+
+  flex-shrink: 0;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  border: 0;
+  outline: none;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.mobile-menu-button span {
+  display: block;
+
+  width: 18px;
+  height: 2px;
+
+  margin: 2px 0;
+
+  border-radius: 999px;
+
+  background: #202020;
+}
+
+
+/* ========================================
+   MOBILE MENU
+======================================== */
+
+.mobile-menu {
+  display: none;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    width: calc(100% - 16px);
+    height: 50px;
+    min-height: 50px;
+
+    top: 6px;
+
+    padding: 6px 12px;
+  }
+
+
+  /* ----------------------------------------
+     LOGO
+  ---------------------------------------- */
+
+  .logo {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+
+  /* ----------------------------------------
+     HIDE DESKTOP NAVIGATION
+  ---------------------------------------- */
+
+  .nav-links {
+    display: none !important;
+  }
+
+
+  /* ----------------------------------------
+     SHOW MOBILE BUTTON
+  ---------------------------------------- */
+
+  .mobile-menu-button {
+    display: flex;
+  }
+
+
+  /* ----------------------------------------
+     MOBILE LIST
+  ---------------------------------------- */
+
+  .mobile-menu {
+    position: absolute;
+
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    padding: 4px 0;
+
+    background: rgba(255, 255, 255, 0.98);
+
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 14px;
+
+    box-shadow: 0 10px 25px rgba(20, 20, 20, 0.08);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    overflow: hidden;
+  }
+
+
+  /* ----------------------------------------
+     MOBILE LIST ITEM
+  ---------------------------------------- */
+
+  .mobile-nav-link,
+  .mobile-nav-trigger {
+    width: 100%;
+    min-height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 16px;
+
+    margin: 0;
+
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 0;
+
+    background: transparent;
+
+    color: #202020;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+
+    text-align: left;
+    text-decoration: none;
+
+    cursor: pointer;
+  }
+
+
+  /* Remove line from last top-level item */
+
+  .mobile-nav-group:last-child
+  .mobile-nav-trigger {
+    border-bottom: 0;
+  }
+
+
+  /* ----------------------------------------
+     MOBILE LINK / TRIGGER HOVER
+  ---------------------------------------- */
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link:focus-visible,
+  .mobile-nav-trigger:hover,
+  .mobile-nav-trigger:focus-visible {
+    background: rgba(216, 36, 36, 0.04);
+    color: var(--primary);
+  }
+
+
+  /* ----------------------------------------
+     MOBILE GROUP
+  ---------------------------------------- */
+
+  .mobile-nav-group {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  /* ----------------------------------------
+     PLUS / MINUS
+  ---------------------------------------- */
+
+  .mobile-nav-trigger > span:last-child {
+    min-width: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Inter", sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+
+    color: #555;
+  }
+
+
+  /* ----------------------------------------
+     MOBILE SUBMENU
+  ---------------------------------------- */
+
+  .mobile-submenu {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    margin: 0;
+    padding: 0;
+
+    border-left: 0;
+    background: rgba(0, 0, 0, 0.015);
+  }
+
+
+  /* ----------------------------------------
+     SUBMENU LIST ITEMS
+  ---------------------------------------- */
+
+  .mobile-submenu a,
+  .mobile-submenu-disabled {
+    width: 100%;
+    min-height: 38px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 16px 0 28px;
+
+    margin: 0;
+
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 0;
+
+    background: transparent;
+
+    color: #4a4a4a;
+
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+
+    line-height: 1.3;
+    text-align: left;
+    text-decoration: none;
+  }
+
+
+  /* ----------------------------------------
+     SUBMENU LAST ITEM
+  ---------------------------------------- */
+
+  .mobile-submenu a:last-child,
+  .mobile-submenu-disabled:last-child {
+    border-bottom: 0;
+  }
+
+
+  /* ----------------------------------------
+     SUBMENU HOVER
+  ---------------------------------------- */
+
+  .mobile-submenu a:hover,
+  .mobile-submenu a:focus-visible {
+    background: rgba(216, 36, 36, 0.04);
+    color: var(--primary);
+  }
+
+
+  /* ----------------------------------------
+     DISABLED ITEM
+  ---------------------------------------- */
+
+  .mobile-submenu-disabled {
+    color: #999;
+    cursor: not-allowed;
+  }
+
+  .mobile-submenu-disabled span {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  .mobile-submenu-disabled small {
+    margin-left: 7px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+
+    color: #aaa;
+  }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+  .navbar {
+    width: calc(100% - 12px);
+    height: 50px;
+
+    padding: 6px 10px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .mobile-menu {
+    top: calc(100% + 7px);
+    border-radius: 13px;
+  }
+
+  .mobile-nav-link,
+  .mobile-nav-trigger {
+    min-height: 42px;
+    padding: 0 15px;
+    font-size: 13px;
+  }
+
+  .mobile-submenu a,
+  .mobile-submenu-disabled {
+    min-height: 36px;
+    padding-left: 26px;
+    font-size: 12px;
+  }
+}

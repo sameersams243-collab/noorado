@@ -72,6 +72,9 @@ function EMICalculatorPage() {
   const [isScheduleOpen, setIsScheduleOpen] =
     useState(false);
 
+  const [loanReplaceOnNext, setLoanReplaceOnNext] =
+    useState(false);
+
   /*
    * Convert input strings to numbers only when needed.
    */
@@ -104,9 +107,8 @@ function EMICalculatorPage() {
             interestRate < 0
           ? "Interest rate must be 0% or greater."
           : !Number.isFinite(loanTenure) ||
-              loanTenure < 1 ||
-              !Number.isInteger(loanTenure)
-            ? "Years to pay must be a positive whole number."
+              loanTenure <= 0
+            ? "Loan tenure must be a positive number of years."
             : "";
 
   const isValid =
@@ -114,8 +116,7 @@ function EMICalculatorPage() {
     Number.isFinite(interestRate) &&
     interestRate >= 0 &&
     Number.isFinite(loanTenure) &&
-    loanTenure >= 1 &&
-    Number.isInteger(loanTenure);
+    loanTenure > 0;
 
   /*
    * SLIDER LIMITS
@@ -135,7 +136,7 @@ function EMICalculatorPage() {
   const tenureSliderMax = Math.max(
     30,
     loanTenure,
-    1
+    0.5
   );
 
   /*
@@ -144,7 +145,7 @@ function EMICalculatorPage() {
   const calculation = useMemo(() => {
     if (!isValid) return null;
 
-    const months = loanTenure * 12;
+    const months = Math.round(loanTenure * 12);
 
     const monthlyRate =
       interestRate / 12 / 100;
@@ -343,10 +344,18 @@ function EMICalculatorPage() {
             .slice(0, 2)}`
         : rawValue;
 
+    if (loanReplaceOnNext && cleanValue !== "") {
+      setLoanInput(cleanValue);
+      setLoanReplaceOnNext(false);
+      return;
+    }
+
     setLoanInput(cleanValue);
   };
 
-  const handleLoanFocus = () => {
+  const handleLoanFocus = (
+    event: React.FocusEvent<HTMLInputElement>
+  ) => {
     setLoanInput(
       loanAmount > 0
         ? String(loanAmount)
@@ -354,10 +363,33 @@ function EMICalculatorPage() {
     );
 
     setIsLoanInputFocused(true);
+
+    if (loanAmount > 0) {
+      setLoanReplaceOnNext(true);
+      requestAnimationFrame(() => {
+        event.target.select();
+      });
+    }
   };
 
   const handleLoanBlur = () => {
     setIsLoanInputFocused(false);
+    setLoanReplaceOnNext(false);
+  };
+
+  const handleLoanKeyDown = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (
+      event.key === "ArrowLeft" ||
+      event.key === "ArrowRight" ||
+      event.key === "ArrowUp" ||
+      event.key === "ArrowDown" ||
+      event.key === "Home" ||
+      event.key === "End"
+    ) {
+      setLoanReplaceOnNext(false);
+    }
   };
 
   return (
@@ -373,6 +405,7 @@ function EMICalculatorPage() {
               to="/tools"
               className="emi-back-link"
             >
+              <span className="emi-back-arrow" aria-hidden="true">←</span>
               Back to Tools
             </Link>
 
@@ -441,6 +474,7 @@ function EMICalculatorPage() {
                       }
                       onFocus={handleLoanFocus}
                       onBlur={handleLoanBlur}
+                      onKeyDown={handleLoanKeyDown}
                       onChange={
                         handleLoanAmountChange
                       }
@@ -547,7 +581,7 @@ function EMICalculatorPage() {
                 <div className="emi-field">
 
                   <label htmlFor="loan-tenure">
-                    Years to Pay
+                    Loan Tenure (Years)
                   </label>
 
                   <div className="emi-number-input">
@@ -555,8 +589,8 @@ function EMICalculatorPage() {
                     <input
                       id="loan-tenure"
                       type="number"
-                      min="1"
-                      step="1"
+                      min="0.5"
+                      step="0.1"
                       placeholder="0"
                       value={tenureInput}
                       onChange={(event) =>
@@ -572,15 +606,15 @@ function EMICalculatorPage() {
 
                   <input
                     className="emi-slider"
-                    aria-label="Years to pay"
+                    aria-label="Loan tenure in years"
                     type="range"
-                    min="1"
+                    min="0.5"
                     max={tenureSliderMax}
-                    step="1"
+                    step="0.1"
                     value={
-                      loanTenure >= 1
+                      loanTenure >= 0.5
                         ? loanTenure
-                        : 1
+                        : 0.5
                     }
                     onChange={(event) =>
                       setTenureInput(
@@ -590,7 +624,7 @@ function EMICalculatorPage() {
                   />
 
                   <div className="emi-range-labels">
-                    <span>1 year</span>
+                    <span>0.5 year</span>
                     <span>
                       {tenureSliderMax} years
                     </span>

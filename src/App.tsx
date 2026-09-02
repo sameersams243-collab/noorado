@@ -9,6 +9,7 @@ import PortfolioPage from "./pages/PortfolioPage";
 const Services = lazy(() => import("./pages/ServicesPage"));
 const About = lazy(() => import("./pages/AboutPage"));
 const Contact = lazy(() => import("./pages/ContactPage"));
+const StudioPage = lazy(() => import("./pages/StudioPage"));
 
 const ToolsPage = lazy(
   () => import("./pages/Freetoolspage/ToolsPage")
@@ -118,11 +119,24 @@ function PublicRoute({
 }
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    const frame = window.requestAnimationFrame(() => {
+      if (hash) {
+        const target = document.getElementById(hash.slice(1));
+
+        if (target) {
+          target.scrollIntoView({ behavior: "auto", block: "start" });
+          return;
+        }
+      }
+
+      window.scrollTo(0, 0);
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [pathname, hash]);
 
   return null;
 }
@@ -150,6 +164,8 @@ function App() {
         <Route path="/about" element={<About />} />
 
         <Route path="/contact" element={<Contact />} />
+
+        <Route path="/studio" element={<StudioPage />} />
 
         {/* Public tools */}
 

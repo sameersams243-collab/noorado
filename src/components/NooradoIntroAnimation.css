@@ -198,11 +198,17 @@
   background: #e2e8f0;
 }
 
+
+/* ========================================
+   INTRO ANIMATIONS
+======================================== */
+
 @keyframes noorado-intro-panel-in {
   from {
     opacity: 0;
     transform: translateY(12px) scale(0.98);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -214,11 +220,17 @@
     opacity: 0;
     transform: translateY(5px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
+
+/* ========================================
+   INTRO RESPONSIVE
+======================================== */
 
 @media (max-width: 700px) {
   .noorado-intro {
@@ -240,9 +252,81 @@
   }
 }
 
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
 @media (prefers-reduced-motion: reduce) {
   .noorado-intro-panel,
   .noorado-intro-service {
     animation: none;
+  }
+}
+
+
+/* ========================================
+   BACK TO HOME
+======================================== */
+
+.back-to-home {
+  position: fixed !important;
+
+  top: 120px;
+  left: 28px;
+
+  z-index: 9999;
+
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+
+  height: 40px;
+  padding: 0 16px;
+
+  border: 1px solid rgba(212, 175, 55, 0.55) !important;
+  border-radius: 999px;
+
+  background: rgba(8, 8, 8, 0.94) !important;
+
+  color: #d4af37 !important;
+
+  font-family: "Sora", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+
+  line-height: 1;
+  text-decoration: none !important;
+
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  cursor: pointer;
+}
+
+.back-to-home:hover {
+  background: #111111 !important;
+  color: #f0d36b !important;
+  border-color: #d4af37 !important;
+}
+
+
+/* ========================================
+   MOBILE BACK TO HOME
+======================================== */
+
+@media (max-width: 700px) {
+  .back-to-home {
+    top: 92px;
+    left: 16px;
+
+    height: 36px;
+    padding: 0 13px;
+
+    font-size: 11px !important;
   }
 }

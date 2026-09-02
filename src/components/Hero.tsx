@@ -1,4 +1,10 @@
-import { Globe, FileSpreadsheet, Settings, Briefcase } from "lucide-react";
+import {
+  Globe,
+  Settings,
+  BriefcaseBusiness,
+  Sparkles,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 import heroimage from "../assets/cartoon-hero-image.webp";
 
 function Hero() {
@@ -10,15 +16,16 @@ function Hero() {
       {/* Left Content */}
       <div className="hero-left">
         <h1>
-          Build Smarter Businesses
+          Build Smarter.
           <br />
-          With Digital Solutions
+          Work Better.
+          <br />
+          Grow Faster.
         </h1>
 
         <p>
-          We help startups and businesses grow with professional websites,
-          business management systems, Excel templates, and online business
-          tools.
+          Noorado builds software, SaaS products, and digital solutions
+          that help businesses simplify operations and work more efficiently.
         </p>
 
         <ul className="hero-list">
@@ -31,13 +38,6 @@ function Hero() {
 
           <li>
             <span className="feature-icon">
-              <FileSpreadsheet />
-            </span>
-            Excel Templates
-          </li>
-
-          <li>
-            <span className="feature-icon">
               <Settings />
             </span>
             Business Software
@@ -45,28 +45,27 @@ function Hero() {
 
           <li>
             <span className="feature-icon">
-              <Briefcase />
+              <Sparkles />
             </span>
-            Online Business Tools
+            SaaS Products
+          </li>
+
+          <li>
+            <span className="feature-icon">
+              <BriefcaseBusiness />
+            </span>
+            Digital Tools
           </li>
         </ul>
 
         <div className="hero-buttons">
-          <a
-            href="/tools"
+          <Link
+            to="/tools"
             className="hero-btn"
             aria-label="Go to Tools"
           >
             Get Started
-          </a>
-
-          <a
-            href="#services"
-            className="hero-btn secondary"
-            aria-label="Go to Services section"
-          >
-            Our Services
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -75,7 +74,7 @@ function Hero() {
         <div className="hero-image">
           <img
             src={heroimage}
-            alt="hero-illustration"
+            alt="Noorado digital solutions illustration"
           />
         </div>
       </div>
