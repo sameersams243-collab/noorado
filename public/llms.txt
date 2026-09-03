@@ -2,7 +2,7 @@
 Noorado builds smarter business software, SaaS products, and digital tools to help businesses simplify operations and work more efficiently.
 ## Pages
 - [All Tools](https://www.noorado.com/tools)
-- [GST Calculator](https://www.noorado.com/tools/gst-calculator)
+- [GST Calculator](https://www.noorado.com/tools/gst-discount-calculator)
 - [GST Invoice Generator](https://www.noorado.com/tools/gst-invoice-generator)
 - [EMI Calculator](https://www.noorado.com/tools/emi-calculator)
 - [Percentage Calculator](https://www.noorado.com/tools/percentage-calculator)
@@ -15,4 +15,3 @@ Noorado builds smarter business software, SaaS products, and digital tools to he
 - [Noorado Studio](https://www.noorado.com/studio)
 - [About Noorado](https://www.noorado.com/about)
 - [Contact Noorado](https://www.noorado.com/contact)
-- [Portfolio](https://www.noorado.com/portfolio)
