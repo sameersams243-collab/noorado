@@ -4,8 +4,38 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>noorado</title>
+
+    <meta
+      name="description"
+      content="Noorado builds smarter business software, SaaS products, and digital tools to help businesses simplify operations and work more efficiently."
+    />
+
+    <title>Noorado — Business Software & Digital Tools</title>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.noorado.com/#organization",
+            "name": "Noorado",
+            "url": "https://www.noorado.com/"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.noorado.com/#website",
+            "url": "https://www.noorado.com/",
+            "name": "Noorado",
+            "publisher": {
+              "@id": "https://www.noorado.com/#organization"
+            }
+          }
+        ]
+      }
+    </script>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
