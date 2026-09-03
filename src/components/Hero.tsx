@@ -24,8 +24,9 @@ function Hero() {
         </h1>
 
         <p>
-          Noorado builds software, SaaS products, and digital solutions
-          that help businesses simplify operations and work more efficiently.
+          Noorado is a software company building SaaS products, business
+          software, websites, and digital tools that help businesses simplify
+          operations and work more efficiently.
         </p>
 
         <ul className="hero-list">
@@ -74,7 +75,7 @@ function Hero() {
         <div className="hero-image">
           <img
             src={heroimage}
-            alt="Noorado digital solutions illustration"
+            alt="Noorado software company and business technology solutions"
           />
         </div>
       </div>

@@ -27,15 +27,15 @@ function Services() {
           </span>
 
           <h1>
-            Digital solutions
+            Software and technology
             <br />
             built for real business.
           </h1>
 
           <p>
-            Noorado creates practical websites, software,
-            business tools, and digital solutions that make
-            everyday work simpler, faster, and more efficient.
+            Noorado is a software company building practical websites,
+            business software, SaaS products, and online tools that help
+            businesses simplify operations and work more efficiently.
           </p>
         </div>
       </section>
@@ -49,19 +49,19 @@ function Services() {
 
           <div className="services-heading">
             <span className="services-section-label">
-              OUR SERVICES
+              WHAT WE BUILD
             </span>
 
             <h2>
-              Simple solutions.
+              Practical software.
               <br />
               Useful results.
             </h2>
 
             <p>
-              We build practical digital solutions around
-              real business needs, with a focus on simplicity,
-              usability, and efficiency.
+              We build software and digital products around real business
+              needs, with a focus on simplicity, usability, reliability,
+              and efficiency.
             </p>
           </div>
 
@@ -79,9 +79,9 @@ function Services() {
               </h3>
 
               <p>
-                Professional websites designed for businesses that
-                want a strong online presence, clear information,
-                and a modern customer experience.
+                Professional websites designed for businesses that want
+                a strong online presence, clear information, and a modern
+                customer experience.
               </p>
             </article>
 
@@ -97,27 +97,44 @@ function Services() {
               </h3>
 
               <p>
-                Practical software solutions that help businesses
-                manage operations, reduce repetitive work, and
-                improve day-to-day efficiency.
+                Practical software solutions that help businesses manage
+                operations, automate repetitive work, and improve
+                day-to-day efficiency.
               </p>
             </article>
 
 
             <article
-              id="app-builder"
+              id="saas-products"
               className="service-card"
             >
               <span className="service-number">03</span>
 
               <h3>
-                App Builder
+                SaaS Products
               </h3>
 
               <p>
-                A flexible platform for creating connected
-                business applications tailored to specific
-                workflows, teams, and business requirements.
+                Scalable software products designed to simplify business
+                workflows and provide useful technology through modern
+                online platforms.
+              </p>
+            </article>
+
+
+            <article
+              id="business-apps"
+              className="service-card"
+            >
+              <span className="service-number">04</span>
+
+              <h3>
+                Business App Development
+              </h3>
+
+              <p>
+                Connected business applications built around specific
+                workflows, teams, and operational requirements.
               </p>
             </article>
 
@@ -126,16 +143,33 @@ function Services() {
               id="custom-digital-solutions"
               className="service-card"
             >
-              <span className="service-number">04</span>
+              <span className="service-number">05</span>
 
               <h3>
-                Custom Digital Solutions
+                Custom Software Solutions
               </h3>
 
               <p>
-                Custom-built digital solutions designed around
-                unique business needs, workflows, and operational
+                Custom-built software and digital solutions designed
+                around unique business needs, workflows, and operational
                 challenges.
+              </p>
+            </article>
+
+
+            <article
+              id="online-business-tools"
+              className="service-card"
+            >
+              <span className="service-number">06</span>
+
+              <h3>
+                Online Business Tools
+              </h3>
+
+              <p>
+                Useful web-based tools that make common business tasks
+                faster, simpler, and easier to manage.
               </p>
             </article>
 
@@ -162,7 +196,7 @@ function Services() {
 
           <p>
             Tell us what you need and let's turn your idea
-            into a practical digital solution.
+            into practical software or technology.
           </p>
 
           <Link

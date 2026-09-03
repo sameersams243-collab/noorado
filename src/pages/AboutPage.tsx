@@ -28,10 +28,7 @@ function About() {
           </h1>
 
           <p>
-            Noorado is a technology company focused on
-            creating software, SaaS products, and digital
-            tools that solve real-world problems and make
-            everyday work simpler.
+            Noorado is a software company building SaaS products, business software, websites, and digital tools that help businesses simplify operations and work more efficiently.
           </p>
         </div>
       </section>
@@ -72,8 +69,8 @@ function About() {
             <div>
               <h3>Software</h3>
               <p>
-                Practical software designed around real
-                business needs.
+                Practical business software designed around
+                real business needs and workflows.
               </p>
             </div>
 
@@ -88,8 +85,8 @@ function About() {
             <div>
               <h3>Digital Tools</h3>
               <p>
-                Useful tools that make common tasks faster
-                and easier.
+                Useful online business tools that make common
+                tasks faster, simpler, and easier.
               </p>
             </div>
 
@@ -146,9 +143,9 @@ function About() {
           </h2>
 
           <p>
-            We want to create technology that helps people
-            and businesses work smarter, operate better,
-            and prepare for what's next.
+            We want to build useful software and technology
+            that helps people and businesses work smarter,
+            operate better, and prepare for what's next.
           </p>
 
         </div>

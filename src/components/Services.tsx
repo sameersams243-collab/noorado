@@ -15,7 +15,8 @@ function Services() {
         </h2>
 
         <p>
-          We're building new products, software, and technology
+          Noorado is a software company building new products,
+          business software, SaaS solutions, and technology
           for the future.
         </p>
 

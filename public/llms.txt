@@ -1,6 +1,9 @@
 ﻿# Noorado
-Noorado builds smarter business software, SaaS products, and digital tools to help businesses simplify operations and work more efficiently.
+
+Noorado is a software company building websites, business software, SaaS products, and online business tools that help startups and businesses simplify operations and work more efficiently.
+
 ## Pages
+
 - [All Tools](https://www.noorado.com/tools)
 - [GST Calculator](https://www.noorado.com/tools/gst-discount-calculator)
 - [GST Invoice Generator](https://www.noorado.com/tools/gst-invoice-generator)
@@ -10,8 +13,10 @@ Noorado builds smarter business software, SaaS products, and digital tools to he
 - [Age Calculator](https://www.noorado.com/tools/age-calculator)
 - [Business Websites](https://www.noorado.com/services#business-websites)
 - [Business Software](https://www.noorado.com/services#business-software)
-- [App Builder](https://www.noorado.com/services#app-builder)
-- [Custom Digital Solutions](https://www.noorado.com/services#custom-digital-solutions)
+- [SaaS Products](https://www.noorado.com/services#saas-products)
+- [Business App Development](https://www.noorado.com/services#business-apps)
+- [Custom Software Solutions](https://www.noorado.com/services#custom-digital-solutions)
+- [Online Business Tools](https://www.noorado.com/services#online-business-tools)
 - [Noorado Studio](https://www.noorado.com/studio)
 - [About Noorado](https://www.noorado.com/about)
 - [Contact Noorado](https://www.noorado.com/contact)
