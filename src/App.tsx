@@ -55,6 +55,13 @@ const ProfitLossCalculatorPage = lazy(
     )
 );
 
+const OfferJoiningLetterGeneratorPage = lazy(
+  () =>
+    import(
+      "./pages/Freetoolspage/OfferJoiningLetterGenerator/OfferJoiningLetterGeneratorPage"
+    )
+);
+
 const CorporateWebsitePage = lazy(
   () => import("./pages/portfolio/CorporateWebsitePage")
 );
@@ -205,6 +212,11 @@ function App() {
           path="/tools/profit-loss-calculator"
           element={<ProfitLossCalculatorPage />}
         />
+
+        <Route
+  path="/tools/offer-joining-letter-generator"
+  element={<OfferJoiningLetterGeneratorPage />}
+/>
 
         {/* Portfolio pages */}
 

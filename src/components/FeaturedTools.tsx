@@ -26,11 +26,12 @@ const FEATURED_TOOLS: FeaturedTool[] = [
     button: "Create Invoice →",
   },
   {
-    category: "CALCULATORS",
-    title: "EMI Calculator",
-    description: "Calculate monthly EMI, interest and total loan payment.",
-    path: "/tools/emi-calculator",
-    button: "Use Tool →",
+    category: "HR TOOLS",
+    title: "Offer & Joining Letter Generator",
+    description:
+      "Create professional offer, appointment, joining and internship letters as PDF.",
+    path: "/tools/offer-joining-letter-generator",
+    button: "Create Letter →",
   },
 ];
 

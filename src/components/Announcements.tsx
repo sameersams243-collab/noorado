@@ -31,10 +31,12 @@ const slides: Slide[] = [
   },
   {
     id: "hr-letter-generator",
-    status: "COMING SOON",
-    title: "Noorado HR Letter Generator",
+    status: "NOW LIVE",
+    title: "Offer & Joining Letter Generator",
     description:
-      "Create professional HR letters including Offer Letters, Appointment Letters, Experience Letters, and Relieving Letters.",
+      "Create professional Offer, Appointment, Joining and Internship Letters quickly with Noorado's HR Letter Generator.",
+    buttonText: "Create Letter →",
+    buttonPath: "/tools/offer-joining-letter-generator",
     icon: FileText,
   },
   {
@@ -150,7 +152,6 @@ function Announcements() {
           </p>
         </div>
 
-
         {/* CAROUSEL */}
         <div
           className="announcements-carousel"
@@ -184,13 +185,11 @@ function Announcements() {
                         />
                       </div>
 
-
                       {/* STATUS */}
                       <div className="announcements-status">
                         <span className="announcements-status-dot" />
                         {slide.status}
                       </div>
-
 
                       {/* CONTENT */}
                       <div className="announcements-slide-content">
@@ -215,7 +214,6 @@ function Announcements() {
 
                       </div>
 
-
                       {/* NUMBER */}
                       <div className="announcements-slide-number">
                         {String(index + 1).padStart(2, "0")}
@@ -228,7 +226,6 @@ function Announcements() {
             </div>
           </div>
         </div>
-
 
         {/* DOTS */}
         <div

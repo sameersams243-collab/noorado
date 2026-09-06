@@ -31,6 +31,15 @@ const TOOLS: Tool[] = [
   },
 
   {
+  title: "Offer & Joining Letter Generator",
+  description:
+    "Create professional offer, appointment, joining and internship letters as PDF.",
+  category: "HR Tools",
+  path: "/tools/offer-joining-letter-generator",
+  available: true,
+},
+
+  {
     title: "EMI Calculator",
     description:
       "Calculate your monthly loan EMI, interest and total payment.",
@@ -96,6 +105,7 @@ const TOOLS: Tool[] = [
 
 const CATEGORIES = [
   "All",
+  "HR Tools",
   "Calculators",
   "Business",
   "PDF Tools",
@@ -122,158 +132,158 @@ function ToolsPage() {
       <Navbar />
       <main className="tools-page">
 
-      {/* HERO */}
+        {/* HERO */}
 
-      <section className="tools-hero">
+        <section className="tools-hero">
 
-        <div className="tools-container">
+          <div className="tools-container">
 
-          <span className="tools-label">
-            NOORADO TOOLS
-          </span>
+            <span className="tools-label">
+              NOORADO TOOLS
+            </span>
 
-          <h1>
-            Useful tools for
-            <br />
-            everyday work.
-          </h1>
+            <h1>
+              Useful tools for
+              <br />
+              everyday work.
+            </h1>
 
-          <p>
-            Simple, practical and free tools designed
-            to help you calculate, convert and get
-            everyday tasks done faster.
-          </p>
-
-        </div>
-
-      </section>
-
-
-      {/* TOOLS */}
-
-      <section className="tools-section">
-
-        <div className="tools-container">
-
-          {/* SEARCH */}
-
-          <div className="tools-search">
-
-            <input
-              type="search"
-              placeholder="Search tools..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              aria-label="Search tools"
-            />
+            <p>
+              Simple, practical and free tools designed
+              to help you calculate, convert and get
+              everyday tasks done faster.
+            </p>
 
           </div>
 
-
-          {/* CATEGORIES */}
-
-          <div className="tools-categories">
-
-            {CATEGORIES.map((item) => (
-
-              <button
-                key={item}
-                type="button"
-                className={
-                  category === item
-                    ? "active"
-                    : ""
-                }
-                onClick={() => setCategory(item)}
-              >
-                {item}
-              </button>
-
-            ))}
-
-          </div>
+        </section>
 
 
-          {/* TOOL GRID */}
+        {/* TOOLS */}
 
-          <div className="tools-grid">
+        <section className="tools-section">
 
-            {filteredTools.map((tool) => (
+          <div className="tools-container">
 
-              <div
-                className={
-                  tool.available
-                    ? "tool-card"
-                    : "tool-card coming-soon"
-                }
-                key={tool.path}
-              >
+            {/* SEARCH */}
 
-                <div className="tool-card-top">
-                  <span className="tool-category">
-                    {tool.category}
-                  </span>
+            <div className="tools-search">
 
-                  {tool.available && (
-                    <span className="tool-available">
-                      Available
-                    </span>
-                  )}
-                </div>
-
-                <h2>
-                  {tool.title}
-                </h2>
-
-                <p>
-                  {tool.description}
-                </p>
-
-                {tool.available ? (
-
-                  <Link
-                    to={tool.path}
-                    className="tool-button"
-                  >
-                    Use Tool →
-                  </Link>
-
-                ) : (
-
-                  <span className="tool-coming-soon">
-                    Coming Soon
-                  </span>
-
-                )}
-
-              </div>
-
-            ))}
-
-          </div>
-
-
-          {/* NO RESULTS */}
-
-          {filteredTools.length === 0 && (
-
-            <div className="tools-empty">
-
-              <h2>
-                No tools found
-              </h2>
-
-              <p>
-                Try another search or category.
-              </p>
+              <input
+                type="search"
+                placeholder="Search tools..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                aria-label="Search tools"
+              />
 
             </div>
 
-          )}
 
-        </div>
+            {/* CATEGORIES */}
 
-      </section>
+            <div className="tools-categories">
+
+              {CATEGORIES.map((item) => (
+
+                <button
+                  key={item}
+                  type="button"
+                  className={
+                    category === item
+                      ? "active"
+                      : ""
+                  }
+                  onClick={() => setCategory(item)}
+                >
+                  {item}
+                </button>
+
+              ))}
+
+            </div>
+
+
+            {/* TOOL GRID */}
+
+            <div className="tools-grid">
+
+              {filteredTools.map((tool) => (
+
+                <div
+                  className={
+                    tool.available
+                      ? "tool-card"
+                      : "tool-card coming-soon"
+                  }
+                  key={tool.path}
+                >
+
+                  <div className="tool-card-top">
+                    <span className="tool-category">
+                      {tool.category}
+                    </span>
+
+                    {tool.available && (
+                      <span className="tool-available">
+                        Available
+                      </span>
+                    )}
+                  </div>
+
+                  <h2>
+                    {tool.title}
+                  </h2>
+
+                  <p>
+                    {tool.description}
+                  </p>
+
+                  {tool.available ? (
+
+                    <Link
+                      to={tool.path}
+                      className="tool-button"
+                    >
+                      Use Tool →
+                    </Link>
+
+                  ) : (
+
+                    <span className="tool-coming-soon">
+                      Coming Soon
+                    </span>
+
+                  )}
+
+                </div>
+
+              ))}
+
+            </div>
+
+
+            {/* NO RESULTS */}
+
+            {filteredTools.length === 0 && (
+
+              <div className="tools-empty">
+
+                <h2>
+                  No tools found
+                </h2>
+
+                <p>
+                  Try another search or category.
+                </p>
+
+              </div>
+
+            )}
+
+          </div>
+
+        </section>
 
       </main>
     </>
