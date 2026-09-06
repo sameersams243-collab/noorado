@@ -25,7 +25,7 @@ const slides: Slide[] = [
     title: "GST Invoice Generator",
     description:
       "Create professional GST invoices quickly with Noorado's easy-to-use GST Invoice Generator.",
-    buttonText: "Create Invoice →",
+    buttonText: "Create Invoice ",
     buttonPath: "/tools/gst-invoice-generator",
     icon: ReceiptText,
   },
@@ -35,7 +35,7 @@ const slides: Slide[] = [
     title: "Offer & Joining Letter Generator",
     description:
       "Create professional Offer, Appointment, Joining and Internship Letters quickly with Noorado's HR Letter Generator.",
-    buttonText: "Create Letter →",
+    buttonText: "Create Letter ",
     buttonPath: "/tools/offer-joining-letter-generator",
     icon: FileText,
   },
