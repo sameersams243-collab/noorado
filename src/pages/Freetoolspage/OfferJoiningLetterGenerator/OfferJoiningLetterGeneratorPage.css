@@ -1,43 +1,45 @@
-/* ==========================================================================
-   Offer / Joining Letter Generator
-   Palette: ink navy workspace + brass accent + paper preview
-   ========================================================================== */
+/* =========================================================================
+   Offer / Joining Letter Generator — premium stationery theme
+   Palette: warm paper + ink navy + brass accent, editorial serif headings,
+   Inter for all functional UI. The A4 preview is treated like real paper
+   resting on a desk; the editor stays quiet and gets out of its way.
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap');
 
 .offer-generator-page {
-  --ink-900: #16233d;
-  --ink-800: #1f3557;
-  --ink-700: #2c4270;
-  --ink-500: #536176;
-  --ink-300: #8a94a6;
-  --ink-100: #e3e7ee;
-  --ink-50: #eef1f6;
-
-  --brass: #b3873c;
-  --brass-dark: #93692b;
-  --brass-light: #f3e3c6;
-
-  --paper: #fbf9f4;
-  --paper-line: #e9e2d2;
-
-  --danger: #ac3b3b;
-  --danger-light: #f8e6e6;
-  --success: #1f7a53;
-
+  --ink: #1b2333;
+  --ink-soft: #5b6472;
+  --ink-faint: #8a8f9c;
+  --paper: #f4f1e9;
+  --paper-deep: #ece7db;
   --surface: #ffffff;
-  --bg: #f3f4f7;
-  --border: #dde1e9;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --shadow-card: 0 1px 2px rgba(22, 35, 61, 0.04), 0 8px 24px -12px rgba(22, 35, 61, 0.12);
-  --shadow-pop: 0 12px 32px -8px rgba(22, 35, 61, 0.22);
+  --surface-alt: #fbfaf6;
+  --line: #e4dfd2;
+  --line-strong: #d3cdba;
+  --brass: #a9793a;
+  --brass-dark: #8a5f28;
+  --brass-tint: #f4ead9;
+  --sage: #4c7a63;
+  --sage-tint: #e7f0eb;
+  --danger: #a63b34;
+  --danger-tint: #f7e8e6;
+  --radius-s: 6px;
+  --radius-m: 10px;
+  --radius-l: 16px;
+  --shadow-card: 0 1px 2px rgba(27, 35, 51, 0.04), 0 8px 24px -12px rgba(27, 35, 51, 0.12);
+  --shadow-paper: 0 1px 1px rgba(27, 35, 51, 0.06), 0 30px 60px -24px rgba(27, 35, 51, 0.28),
+    0 12px 26px -14px rgba(27, 35, 51, 0.18);
+  --shadow-pop: 0 20px 45px -16px rgba(27, 35, 51, 0.35);
 
-  font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  color: var(--ink-900);
-  background: var(--bg);
+  background: var(--paper);
+  background-image: radial-gradient(circle at 14% 0%, rgba(169, 121, 58, 0.06), transparent 42%),
+    radial-gradient(circle at 100% 18%, rgba(76, 122, 99, 0.05), transparent 38%);
   min-height: 100vh;
-  padding: 32px 20px 64px;
-  box-sizing: border-box;
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
 }
 
 .offer-generator-page *,
@@ -46,76 +48,78 @@
   box-sizing: border-box;
 }
 
-.offer-generator-container {
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
-/* ---------------------------------- Icons -------------------------------- */
-/* Mask-based icons so they inherit currentColor and align on a fixed box. */
-.offer-generator-page [class*="icon-"] {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  flex: 0 0 auto;
-  background-color: currentColor;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-building { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Crect x='4' y='3' width='11' height='18' rx='1'/%3E%3Cpath d='M9 8h1M9 12h1M9 16h1M15 10h5v11h-5'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Crect x='4' y='3' width='11' height='18' rx='1'/%3E%3Cpath d='M9 8h1M9 12h1M9 16h1M15 10h5v11h-5'/%3E%3C/svg%3E"); }
-
-.icon-users { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Ccircle cx='9' cy='8' r='3'/%3E%3Cpath d='M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 9a3 3 0 1 0 0-6M21 20c0-2.7-1.9-5-4.5-5.7'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Ccircle cx='9' cy='8' r='3'/%3E%3Cpath d='M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 9a3 3 0 1 0 0-6M21 20c0-2.7-1.9-5-4.5-5.7'/%3E%3C/svg%3E"); }
-
-.icon-file-text { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M6 2h9l5 5v15H6z'/%3E%3Cpath d='M15 2v5h5M9 13h6M9 17h6M9 9h2'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M6 2h9l5 5v15H6z'/%3E%3Cpath d='M15 2v5h5M9 13h6M9 17h6M9 9h2'/%3E%3C/svg%3E"); }
-
-.icon-upload { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M12 16V4M7 9l5-5 5 5M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M12 16V4M7 9l5-5 5 5M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3'/%3E%3C/svg%3E"); }
-
-.icon-plus { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E"); }
-
-.icon-check { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E"); }
-
-.icon-x { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5'%3E%3Cpath d='M18 6 6 18M6 6l12 12'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5'%3E%3Cpath d='M18 6 6 18M6 6l12 12'/%3E%3C/svg%3E"); }
-
-.icon-search { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E"); }
-
-.icon-edit { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z'/%3E%3C/svg%3E"); }
-
-.icon-eye { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E"); }
-
-.icon-trash { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2m2 0-1 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 6h12ZM10 11v6M14 11v6'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2m2 0-1 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 6h12ZM10 11v6M14 11v6'/%3E%3C/svg%3E"); }
-
-.icon-download { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M12 4v13M6 11l6 6 6-6M4 20h16'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M12 4v13M6 11l6 6 6-6M4 20h16'/%3E%3C/svg%3E"); }
-
-.icon-layers { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='m12 3 9 5-9 5-9-5 9-5ZM3 13l9 5 9-5M3 8l9 5 9-5'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='m12 3 9 5-9 5-9-5 9-5ZM3 13l9 5 9-5M3 8l9 5 9-5'/%3E%3C/svg%3E"); }
-
-/* --------------------------------- Header -------------------------------- */
-
-.offer-generator-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
-
-.offer-generator-header h1 {
-  margin: 0 0 6px;
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--ink-900);
+.offer-generator-page h1,
+.offer-generator-page h2,
+.offer-generator-page h3 {
+  font-family: 'Fraunces', 'Source Serif 4', Georgia, serif;
+  color: var(--ink);
+  margin: 0;
   letter-spacing: -0.01em;
 }
 
+.offer-generator-page button {
+  font-family: inherit;
+}
+
+.offer-generator-page :focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+
+.offer-generator-container {
+  max-width: 1900px;
+  margin: 0 auto;
+  padding: 28px 32px 96px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Back link + header                                                     */
+/* ---------------------------------------------------------------------- */
+
+.offer-generator-back-to-tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.offer-generator-back-to-tools:hover {
+  color: var(--brass-dark);
+}
+
+.offer-generator-back-to-tools span[aria-hidden] {
+  transition: transform 0.15s ease;
+}
+
+.offer-generator-back-to-tools:hover span[aria-hidden] {
+  transform: translateX(-3px);
+}
+
+.offer-generator-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 22px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.offer-generator-header h1 {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
 .offer-generator-header p {
-  margin: 0;
-  color: var(--ink-500);
-  font-size: 14px;
+  margin: 8px 0 0;
+  color: var(--ink-soft);
+  font-size: 14.5px;
   max-width: 46ch;
 }
 
@@ -124,51 +128,92 @@
   align-items: center;
   gap: 8px;
   padding: 8px 14px;
-  background: var(--ink-900);
-  color: #f3f0e6;
   border-radius: 999px;
-  font-size: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  font-size: 12.5px;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  color: var(--ink-soft);
   white-space: nowrap;
   box-shadow: var(--shadow-card);
 }
 
 .offer-generator-status-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: #4fd18b;
-  box-shadow: 0 0 0 3px rgba(79, 209, 139, 0.25);
-  animation: offer-generator-pulse 2s ease-in-out infinite;
+  background: var(--sage);
+  box-shadow: 0 0 0 3px var(--sage-tint);
 }
 
-@keyframes offer-generator-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.45; }
-}
-
-/* --------------------------------- Layout -------------------------------- */
+/* ---------------------------------------------------------------------- */
+/* Layout                                                                  */
+/* ---------------------------------------------------------------------- */
 
 .offer-generator-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-  gap: 24px;
-  align-items: flex-start;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: 32px;
+  align-items: start;
 }
 
 .offer-generator-editor {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
   min-width: 0;
 }
 
+.offer-generator-preview-column {
+  position: sticky;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+@media (min-width: 1600px) {
+  .offer-generator-container {
+    max-width: 2100px;
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+
+  .offer-generator-layout {
+    grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+    gap: 36px;
+  }
+
+  .offer-generator-preview-column {
+    min-width: 0;
+  }
+
+  .offer-generator-a4-wrapper,
+  .offer-generator-all-preview {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .offer-generator-layout {
+    grid-template-columns: 1fr;
+  }
+  .offer-generator-preview-column {
+    position: static;
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Card + section headers                                                 */
+/* ---------------------------------------------------------------------- */
+
 .offer-generator-card {
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  padding: 26px;
   box-shadow: var(--shadow-card);
 }
 
@@ -177,238 +222,89 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .offer-generator-section-header h2 {
-  margin: 0 0 4px;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--ink-900);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.offer-generator-section-header h2::before {
-  content: "";
-  width: 18px;
-  height: 18px;
-  background-color: var(--brass);
-  border-radius: 5px;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M6 2h9l5 5v15H6z'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M6 2h9l5 5v15H6z'/%3E%3C/svg%3E");
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  flex: none;
-}
-
-.offer-generator-card:nth-of-type(1) .offer-generator-section-header h2::before {
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Crect x='4' y='3' width='11' height='18' rx='1'/%3E%3Cpath d='M9 8h1M9 12h1M9 16h1M15 10h5v11h-5'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Crect x='4' y='3' width='11' height='18' rx='1'/%3E%3Cpath d='M9 8h1M9 12h1M9 16h1M15 10h5v11h-5'/%3E%3C/svg%3E");
+  font-size: 19px;
+  font-weight: 600;
 }
 
 .offer-generator-section-header p {
-  margin: 0;
+  margin: 6px 0 0;
   font-size: 13px;
-  color: var(--ink-500);
+  color: var(--ink-soft);
+  max-width: 48ch;
 }
 
-/* ---------------------------------- Forms -------------------------------- */
-
-.offer-generator-form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px 16px;
-}
-
-.offer-generator-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-width: 0;
-}
-
-.offer-generator-field-full {
-  grid-column: 1 / -1;
-}
-
-.offer-generator-field label {
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--ink-700);
-}
-
-.offer-generator-field input[type="text"],
-.offer-generator-field input[type="date"],
-.offer-generator-field input[type="search"],
-.offer-generator-field input[type="file"],
-.offer-generator-field select,
-.offer-generator-field textarea {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  font-size: 13.5px;
-  color: var(--ink-900);
-  background: var(--surface);
-  font-family: inherit;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
-}
-
-.offer-generator-field input:focus,
-.offer-generator-field select:focus,
-.offer-generator-field textarea:focus {
-  outline: none;
-  border-color: var(--brass);
-  box-shadow: 0 0 0 3px var(--brass-light);
-}
-
-.offer-generator-field input[type="file"] {
-  padding: 8px;
-  font-size: 12.5px;
-  color: var(--ink-500);
-}
-/* Stylish native Choose File button — isolated CSS-only change. */
-.offer-generator-field input[type="file"]::file-selector-button {
-  margin-right: 10px;
-  padding: 8px 14px;
-  border: 1px solid var(--ink-900);
-  border-radius: 8px;
-  background: var(--ink-900);
-  color: #ffffff;
-  font: inherit;
-  font-size: 12.5px;
+.offer-generator-candidate-count {
+  flex-shrink: 0;
+  font-size: 12px;
   font-weight: 700;
-  cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+  color: var(--brass-dark);
+  background: var(--brass-tint);
+  border: 1px solid rgba(169, 121, 58, 0.25);
+  padding: 5px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
 }
 
-.offer-generator-field input[type="file"]::file-selector-button:hover {
-  background: var(--ink-800);
-  border-color: var(--ink-800);
-  box-shadow: 0 2px 8px rgba(22, 35, 61, 0.12);
-}
-
-.offer-generator-field input[type="file"]::file-selector-button:active {
-  transform: translateY(1px);
-}
-
-.offer-generator-field textarea {
-  resize: vertical;
-  line-height: 1.5;
-}
-
-.offer-generator-checkbox-field {
+.offer-generator-content-heading {
   display: flex;
-  align-items: center;
-  gap: 9px;
-  margin: 6px 0 4px;
-  font-size: 13px;
-  color: var(--ink-700);
-  cursor: pointer;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
 }
 
-.offer-generator-checkbox-field input {
-  width: 16px;
-  height: 16px;
-  accent-color: var(--brass);
-  cursor: pointer;
+.offer-generator-content-heading h3 {
+  font-size: 15.5px;
+  font-weight: 600;
 }
 
-/* ------------------------------- Logo upload ------------------------------ */
-
-.offer-generator-logo-preview {
-  margin-top: 12px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  padding: 10px;
-  background: var(--ink-50);
-  border: 1px dashed var(--ink-100);
-  border-radius: var(--radius-md);
+.offer-generator-content-heading p {
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  color: var(--ink-soft);
 }
 
-.offer-generator-logo-preview img {
-  height: 44px;
-  width: auto;
-  max-width: 120px;
-  object-fit: contain;
-  background: var(--surface);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-  padding: 4px;
-}
-
-.offer-generator-logo-actions {
+.offer-generator-content-heading-actions {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-wrap: wrap;
+  flex-shrink: 0;
 }
 
-.offer-generator-logo-align-button {
-  padding: 7px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--ink-500);
+.offer-generator-content-heading-actions > span {
   font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s ease;
+  color: var(--ink-faint);
+  white-space: nowrap;
 }
 
-.offer-generator-logo-alignment-control {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
-
-.offer-generator-logo-alignment-label {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--ink-700);
-}
-
-.offer-generator-logo-align-button:hover {
-  border-color: var(--brass);
-  color: var(--brass-dark);
-}
-
-.offer-generator-logo-align-button.active {
-  background: var(--ink-900);
-  border-color: var(--ink-900);
-  color: #fff;
-}
-
-/* -------------------------------- Buttons -------------------------------- */
+/* ---------------------------------------------------------------------- */
+/* Buttons                                                                 */
+/* ---------------------------------------------------------------------- */
 
 .offer-generator-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  padding: 10px 16px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
+  gap: 6px;
+  border: 1px solid var(--line-strong);
   background: var(--surface);
-  color: var(--ink-700);
-  font-size: 13px;
+  color: var(--ink);
+  font-size: 12.5px;
   font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-s);
   cursor: pointer;
-  transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.05s ease;
   white-space: nowrap;
 }
 
 .offer-generator-button:hover {
-  border-color: var(--ink-300);
-  box-shadow: 0 2px 8px rgba(22, 35, 61, 0.08);
+  border-color: var(--brass);
+  background: var(--brass-tint);
 }
 
 .offer-generator-button:active {
@@ -416,124 +312,530 @@
 }
 
 .offer-generator-button:disabled {
-  opacity: 0.5;
+  opacity: 0.45;
   cursor: not-allowed;
-  box-shadow: none;
+  background: var(--surface);
+  border-color: var(--line);
+}
+
+.offer-generator-button.is-active {
+  border-color: var(--brass);
+  background: var(--brass-tint);
+  color: var(--brass-dark);
 }
 
 .offer-generator-button-primary {
-  background: var(--ink-900);
-  border-color: var(--ink-900);
+  background: var(--ink);
+  border-color: var(--ink);
   color: #fff;
 }
 
 .offer-generator-button-primary:hover {
-  background: var(--ink-800);
-  border-color: var(--ink-800);
+  background: #2a3350;
+  border-color: #2a3350;
 }
 
 .offer-generator-button-secondary {
-  background: var(--surface);
-  border-color: var(--border);
-  color: var(--ink-700);
+  background: var(--surface-alt);
+  border-color: var(--line-strong);
+  color: var(--ink-soft);
 }
 
-.offer-generator-add-candidate::before {
-  content: "";
-  width: 13px;
-  height: 13px;
-  background-color: currentColor;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E");
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
+.offer-generator-button-secondary:hover {
+  color: var(--ink);
+  border-color: var(--brass);
+  background: var(--brass-tint);
 }
 
-/* ---------------------------------- Tabs ---------------------------------- */
+.offer-generator-add-candidate {
+  padding: 11px 22px;
+  font-size: 13.5px;
+}
 
-.offer-generator-tabs {
+/* ---------------------------------------------------------------------- */
+/* Form grid + fields                                                     */
+/* ---------------------------------------------------------------------- */
+
+.offer-generator-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.offer-generator-field {
   display: flex;
+  flex-direction: column;
   gap: 6px;
-  padding: 4px;
-  background: var(--ink-50);
-  border-radius: var(--radius-md);
-  margin-bottom: 18px;
 }
 
-.offer-generator-tabs button {
-  flex: 1;
-  padding: 9px 10px;
-  border: none;
-  border-radius: 8px;
-  background: transparent;
-  color: var(--ink-500);
+.offer-generator-field-full {
+  grid-column: 1 / -1;
+}
+
+.offer-generator-field-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.offer-generator-field label {
   font-size: 12.5px;
   font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.offer-generator-field-status {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--brass-dark);
+  background: var(--brass-tint);
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+.offer-generator-field-remove {
+  border: none;
+  background: none;
+  color: var(--ink-faint);
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.offer-generator-field-remove:hover {
+  color: var(--danger);
+  text-decoration: underline;
+}
+
+.offer-generator-field-help {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+.offer-generator-field input[type='text'],
+.offer-generator-field input[type='date'],
+.offer-generator-field input[type='number'],
+.offer-generator-field input[type='search'],
+.offer-generator-field select,
+.offer-generator-field textarea {
+  width: 100%;
+  border: 1px solid var(--line-strong);
+  background: var(--surface-alt);
+  border-radius: var(--radius-s);
+  padding: 10px 12px;
+  font-size: 13.5px;
+  color: var(--ink);
+  font-family: inherit;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.offer-generator-field textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.offer-generator-field input::placeholder,
+.offer-generator-field textarea::placeholder {
+  color: var(--ink-faint);
+}
+
+.offer-generator-field input:focus,
+.offer-generator-field select:focus,
+.offer-generator-field textarea:focus {
+  outline: none;
+  border-color: var(--brass);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(169, 121, 58, 0.14);
+}
+
+.offer-generator-field input[type='file'] {
+  width: 100%;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  background: var(--surface-alt);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-s);
+  padding: 5px;
+  cursor: pointer;
+}
+
+.offer-generator-field input[type='file']::file-selector-button {
+  border: 1px solid var(--brass);
+  background: var(--brass-tint);
+  color: var(--brass-dark);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 8px 14px;
+  margin-right: 10px;
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.05s ease;
+}
+
+.offer-generator-field input[type='file']::file-selector-button:hover {
+  background: var(--brass);
+  border-color: var(--brass);
+  color: #fff;
+}
+
+.offer-generator-field input[type='file']::file-selector-button:active {
+  transform: translateY(1px);
+}
+.offer-generator-checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-weight: 500;
+  margin: 4px 0 18px;
+  cursor: pointer;
+}
+
+.offer-generator-checkbox-field input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--ink);
+}
+
+/* Logo / signature upload previews --------------------------------------- */
+
+.offer-generator-logo-preview,
+.offer-generator-signature-upload-preview-box {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  background: var(--surface-alt);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-m);
+}
+
+.offer-generator-logo-preview img {
+  max-height: 52px;
+  max-width: 160px;
+  object-fit: contain;
+}
+
+.offer-generator-signature-upload-preview {
+  margin-top: 10px;
+}
+
+.offer-generator-signature-upload-preview-box img {
+  max-height: 60px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.offer-generator-signature-upload-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.offer-generator-logo-editor-wrap {
+  margin-top: 12px;
+}
+
+.offer-generator-logo-editor,
+.offer-generator-signature-editor {
+  margin-top: 12px;
+  padding: 16px;
+  background: var(--surface-alt);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+}
+
+.offer-generator-logo-editor-heading,
+.offer-generator-signature-editor-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.offer-generator-logo-editor-heading strong,
+.offer-generator-signature-editor-heading strong {
+  font-size: 13.5px;
+}
+
+.offer-generator-logo-editor-heading p,
+.offer-generator-signature-editor-heading p {
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.offer-generator-logo-editor-placement {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.offer-generator-logo-editor-grid,
+.offer-generator-signature-editor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* Page margins ------------------------------------------------------------ */
+
+.offer-generator-page-margins-editor {
+  grid-column: 1 / -1;
+  margin-top: 6px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.offer-generator-margin-presets {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.offer-generator-margin-presets button {
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 13px;
+  border-radius: 999px;
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
-.offer-generator-tabs button.active {
+.offer-generator-margin-presets button:hover {
+  border-color: var(--brass);
+  color: var(--brass-dark);
+}
+
+.offer-generator-margin-presets button.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+.offer-generator-margin-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 720px) {
+  .offer-generator-form-grid,
+  .offer-generator-logo-editor-grid,
+  .offer-generator-signature-editor-grid,
+  .offer-generator-margin-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Terms & conditions ------------------------------------------------------ */
+
+.offer-generator-terms-editor {
+  grid-column: 1 / -1;
+  margin-top: 6px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.offer-generator-terms-minimize {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--line-strong);
   background: var(--surface);
-  color: var(--ink-900);
-  box-shadow: 0 1px 3px rgba(22, 35, 61, 0.14);
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.offer-generator-terms-minimize:hover {
+  border-color: var(--brass);
+  color: var(--brass-dark);
+}
+
+.offer-generator-terms-toggle {
+  border: 1px solid var(--danger);
+  background: var(--danger-tint);
+  color: var(--danger);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 13px;
+  border-radius: var(--radius-s);
+  cursor: pointer;
+}
+
+.offer-generator-term-field {
+  margin-bottom: 12px;
+}
+
+.offer-generator-term-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+
+.offer-generator-term-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.offer-generator-term-row textarea {
+  flex: 1;
+  border: 1px solid var(--line-strong);
+  background: var(--surface-alt);
+  border-radius: var(--radius-s);
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--ink);
+}
+
+.offer-generator-term-row textarea:focus {
+  outline: none;
+  border-color: var(--brass);
+  background: #fff;
+}
+
+.offer-generator-term-remove {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--danger);
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.offer-generator-term-remove:hover {
+  border-color: var(--danger);
+  background: var(--danger-tint);
+}
+
+.offer-generator-term-add {
+  border: 1px dashed var(--line-strong);
+  background: none;
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 10px;
+  width: 100%;
+  border-radius: var(--radius-s);
+  cursor: pointer;
+}
+
+.offer-generator-term-add:hover {
+  border-color: var(--brass);
+  color: var(--brass-dark);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Tabs                                                                    */
+/* ---------------------------------------------------------------------- */
+
+.offer-generator-tabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--paper-deep);
+  border-radius: 999px;
+  margin-bottom: 22px;
+}
+
+.offer-generator-tabs button {
+  border: none;
+  background: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: all 0.15s ease;
 }
 
 .offer-generator-tabs button:disabled {
   cursor: not-allowed;
-  color: var(--ink-300);
+  opacity: 0.45;
 }
 
-/* ---------------------------- Template selector ---------------------------- */
+.offer-generator-tabs button.active {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-card);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Template / style / color selector                                      */
+/* ---------------------------------------------------------------------- */
 
 .offer-generator-inline-template-selector {
-  margin-bottom: 16px;
+  background: var(--surface-alt);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  padding: 20px;
+  margin-bottom: 22px;
 }
 
 .offer-generator-inline-template-header h3 {
-  margin: 0 0 3px;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--ink-900);
+  font-size: 14.5px;
+  font-weight: 600;
 }
 
 .offer-generator-inline-template-header p {
-  margin: 0 0 12px;
+  margin: 4px 0 16px;
   font-size: 12.5px;
-  color: var(--ink-500);
+  color: var(--ink-soft);
 }
 
 .offer-generator-template-selector {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 10px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 900px) {
+  .offer-generator-template-selector {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .offer-generator-template-selector button {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 3px;
+  gap: 4px;
   text-align: left;
-  padding: 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  padding: 13px 12px;
+  border: 1px solid var(--line-strong);
   background: var(--surface);
+  border-radius: var(--radius-m);
   cursor: pointer;
   transition: all 0.15s ease;
-}
-
-.offer-generator-template-selector button strong {
-  font-size: 12.5px;
-  color: var(--ink-900);
-  font-weight: 700;
-}
-
-.offer-generator-template-selector button span {
-  font-size: 11px;
-  color: var(--ink-500);
 }
 
 .offer-generator-template-selector button:hover {
@@ -541,8 +843,8 @@
 }
 
 .offer-generator-template-selector button.active {
-  background: var(--ink-900);
-  border-color: var(--ink-900);
+  border-color: var(--ink);
+  background: var(--ink);
 }
 
 .offer-generator-template-selector button.active strong,
@@ -550,29 +852,55 @@
   color: #fff;
 }
 
-.offer-generator-template-selector button.active span {
-  color: rgba(255, 255, 255, 0.65);
+.offer-generator-template-selector button.active .offer-generator-template-icon {
+  background: rgba(255, 255, 255, 0.16);
 }
 
-/* ------------------------------ Candidate form ----------------------------- */
-
-.offer-generator-candidate-count {
-  display: inline-flex;
-  align-items: center;
-  padding: 5px 12px;
-  border-radius: 999px;
-  background: var(--brass-light);
-  color: var(--brass-dark);
-  font-size: 12px;
-  font-weight: 700;
-  white-space: nowrap;
-  align-self: flex-start;
+.offer-generator-template-selector strong {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
 }
+
+.offer-generator-template-selector span {
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.offer-generator-template-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: var(--brass-tint);
+  margin-bottom: 2px;
+  position: relative;
+}
+
+.offer-generator-template-icon::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border-radius: 2px;
+  background-image: linear-gradient(var(--brass-dark) 0 0);
+  background-size: 100% 2px;
+  background-repeat: no-repeat;
+  box-shadow: 0 4px 0 -1px var(--brass-dark), 0 8px 0 -1px var(--brass-dark);
+}
+
+.icon-edit::before {
+  box-shadow: none;
+  background: none;
+  border: 2px solid var(--brass-dark);
+  transform: rotate(45deg);
+  inset: 8px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Candidate form                                                          */
+/* ---------------------------------------------------------------------- */
 
 .offer-generator-candidate-form {
-  margin-top: 18px;
-  padding-top: 18px;
-  border-top: 1px solid var(--ink-100);
+  margin-bottom: 26px;
 }
 
 .offer-generator-edit-banner {
@@ -580,49 +908,442 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 10px 14px;
-  margin-bottom: 14px;
-  background: var(--brass-light);
-  border: 1px solid var(--brass);
-  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  background: var(--brass-tint);
+  border: 1px solid rgba(169, 121, 58, 0.3);
+  border-radius: var(--radius-m);
+  margin-bottom: 18px;
 }
 
 .offer-generator-edit-banner strong {
   display: block;
-  font-size: 12.5px;
+  font-size: 13px;
   color: var(--brass-dark);
 }
 
 .offer-generator-edit-banner span {
   display: block;
   font-size: 11.5px;
-  color: var(--ink-500);
+  color: var(--ink-soft);
+  margin-top: 2px;
 }
 
 .offer-generator-edit-banner button {
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--brass);
-  background: var(--surface);
+  flex-shrink: 0;
+  border: 1px solid rgba(169, 121, 58, 0.4);
+  background: #fff;
   color: var(--brass-dark);
   font-size: 12px;
   font-weight: 600;
+  padding: 7px 13px;
+  border-radius: var(--radius-s);
   cursor: pointer;
-  white-space: nowrap;
 }
 
 .offer-generator-candidate-form-actions {
   display: flex;
   gap: 10px;
-  margin-top: 16px;
+  margin-top: 20px;
 }
 
-/* ------------------------------ Candidate list ----------------------------- */
+/* Dynamic / smart fields --------------------------------------------------- */
+
+.offer-generator-dynamic-fields {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.offer-generator-dynamic-detected-panel {
+  padding: 16px;
+  border: 1px solid rgba(169, 121, 58, 0.35);
+  background: var(--brass-tint);
+  border-radius: var(--radius-m);
+}
+
+.offer-generator-dynamic-fields-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.offer-generator-dynamic-fields-header strong {
+  font-size: 13.5px;
+  color: var(--ink);
+}
+
+.offer-generator-dynamic-fields-header p {
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.offer-generator-dynamic-fields-header > span {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--brass-dark);
+  background: #fff;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.offer-generator-detected-field-list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.offer-generator-detected-field-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid rgba(169, 121, 58, 0.25);
+  border-radius: var(--radius-s);
+  padding: 10px 12px;
+  flex-wrap: wrap;
+}
+
+.offer-generator-detected-field-row strong {
+  font-size: 12.5px;
+  color: var(--ink);
+  margin-right: 8px;
+}
+
+.offer-generator-detected-field-row code,
+.offer-generator-candidate-customize-row code,
+.offer-generator-smart-field-chip code,
+.offer-generator-smart-field-row code,
+.offer-generator-dynamic-field label code {
+  font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 11px;
+  background: var(--paper-deep);
+  color: var(--ink-soft);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.offer-generator-detected-field-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.offer-generator-dynamic-extra-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.offer-generator-dynamic-field label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.offer-generator-dynamic-warning {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 13px;
+  background: var(--danger-tint);
+  border: 1px solid rgba(166, 59, 52, 0.3);
+  border-radius: var(--radius-s);
+  font-size: 12px;
+}
+
+.offer-generator-dynamic-warning strong {
+  color: var(--danger);
+}
+
+.offer-generator-dynamic-warning span {
+  color: var(--ink-soft);
+}
+
+/* Candidate customize panel ------------------------------------------------- */
+
+.offer-generator-candidate-customize {
+  margin-top: 18px;
+}
+
+.offer-generator-candidate-details-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  margin-top: 5px;
+  padding: 5px 10px;
+
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+
+  background: #fff;
+  color: var(--ink-soft);
+
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  cursor: pointer;
+
+  box-shadow: 0 1px 2px rgba(27, 35, 51, 0.04);
+
+  transition:
+    color 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.05s ease;
+}
+
+.offer-generator-candidate-details-toggle::before {
+  content: "＋";
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+
+  border-radius: 50%;
+
+  background: var(--brass-tint);
+  color: var(--brass-dark);
+
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.offer-generator-candidate-details-toggle:hover {
+  border-color: var(--brass);
+  background: var(--brass-tint);
+  color: var(--brass-dark);
+
+  box-shadow:
+    0 3px 8px rgba(27, 35, 51, 0.08);
+}
+
+.offer-generator-candidate-details-toggle:hover::before {
+  background: var(--brass);
+  color: #fff;
+}
+
+.offer-generator-candidate-details-toggle:active {
+  transform: translateY(1px);
+}
+
+/* Open state: "+ Add / Edit details" → "− Hide details" */
+.offer-generator-candidate-details-toggle[aria-expanded="true"] {
+  border-color: var(--brass);
+  background: var(--brass-tint);
+  color: var(--brass-dark);
+}
+
+.offer-generator-candidate-details-toggle[aria-expanded="true"]::before {
+  content: "−";
+  background: var(--brass);
+  color: #fff;
+}
+
+.offer-generator-candidate-customize-toggle::after {
+  content: "+";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  border-radius: 7px;
+  border: 1px solid rgba(169, 121, 58, 0.28);
+
+  background: #fff;
+  color: var(--brass-dark);
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.offer-generator-candidate-customize-toggle:hover {
+  border-color: var(--brass);
+  background:
+    linear-gradient(
+      135deg,
+      #fff,
+      var(--brass-tint)
+    );
+
+  color: var(--brass-dark);
+
+  box-shadow:
+    0 2px 4px rgba(27, 35, 51, 0.05),
+    0 10px 22px -14px rgba(27, 35, 51, 0.25);
+}
+
+.offer-generator-candidate-customize-toggle:active {
+  transform: translateY(1px);
+}
+
+.offer-generator-candidate-customize-toggle[aria-expanded="true"] {
+  border-color: var(--brass);
+  background: var(--brass-tint);
+  color: var(--brass-dark);
+}
+
+.offer-generator-candidate-customize-toggle[aria-expanded="true"]::after {
+  content: "−";
+  background: var(--brass);
+  color: #fff;
+}
+
+.offer-generator-candidate-customize-panel {
+  margin-top: 12px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: var(--surface-alt);
+  border-radius: var(--radius-m);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.offer-generator-candidate-customize-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.offer-generator-candidate-customize-header strong {
+  font-size: 13.5px;
+}
+
+.offer-generator-candidate-customize-header p {
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.offer-generator-candidate-customize-add {
+  display: flex;
+  gap: 8px;
+}
+
+.offer-generator-candidate-customize-add input {
+  flex: 1;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-s);
+  padding: 9px 12px;
+  font-size: 13px;
+  background: #fff;
+}
+
+.offer-generator-candidate-customize-add input:focus {
+  outline: none;
+  border-color: var(--brass);
+}
+
+.offer-generator-candidate-customize-subheading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.offer-generator-candidate-customize-subheading strong {
+  font-size: 12.5px;
+}
+
+.offer-generator-candidate-customize-subheading span {
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+
+.offer-generator-candidate-customize-available,
+.offer-generator-candidate-customize-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.offer-generator-candidate-customize-available-row,
+.offer-generator-candidate-customize-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  padding: 9px 12px;
+}
+
+.offer-generator-candidate-customize-row strong {
+  font-size: 12.5px;
+  margin-right: 8px;
+}
+
+.offer-generator-smart-remove {
+  color: var(--danger);
+  border-color: rgba(166, 59, 52, 0.3);
+}
+
+.offer-generator-smart-remove:hover {
+  background: var(--danger-tint);
+  border-color: var(--danger);
+}
+
+.offer-generator-candidate-customize-empty,
+.offer-generator-smart-field-empty {
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  text-align: center;
+  padding: 14px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-s);
+}
+
+.offer-generator-candidate-customize-tip {
+  font-size: 12px;
+  color: var(--ink-soft);
+  background: var(--brass-tint);
+  border-radius: var(--radius-s);
+  padding: 10px 12px;
+}
+
+.offer-generator-candidate-customize-tip strong {
+  color: var(--brass-dark);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Candidate list                                                          */
+/* ---------------------------------------------------------------------- */
 
 .offer-generator-candidate-list {
-  margin-top: 22px;
-  padding-top: 20px;
-  border-top: 1px solid var(--ink-100);
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
 }
 
 .offer-generator-candidate-list-header {
@@ -631,18 +1352,16 @@
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 14px;
-  flex-wrap: wrap;
 }
 
 .offer-generator-candidate-list-header strong {
-  font-size: 14px;
-  color: var(--ink-900);
-  margin-right: 8px;
+  font-size: 15px;
 }
 
 .offer-generator-candidate-list-header span {
+  margin-left: 8px;
   font-size: 12px;
-  color: var(--ink-500);
+  color: var(--ink-faint);
 }
 
 .offer-generator-list-actions {
@@ -651,124 +1370,80 @@
 }
 
 .offer-generator-list-actions button {
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--line-strong);
   background: var(--surface);
-  color: var(--ink-700);
-  font-size: 11.5px;
+  color: var(--ink-soft);
+  font-size: 12px;
   font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-s);
   cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.offer-generator-list-actions button:first-child::before {
-  content: "";
-  display: inline-block;
-  width: 11px;
-  height: 11px;
-  margin-right: 5px;
-  vertical-align: -1px;
-  background-color: currentColor;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
 }
 
 .offer-generator-list-actions button:hover {
-  border-color: var(--ink-300);
-  color: var(--ink-900);
+  border-color: var(--brass);
+  color: var(--brass-dark);
 }
-
-/* Search */
 
 .offer-generator-search {
   position: relative;
-  display: flex;
-  align-items: center;
   margin-bottom: 16px;
-}
-
-.offer-generator-search-icon {
-  position: absolute;
-  left: 12px;
-  width: 14px;
-  height: 14px;
-  color: var(--ink-300);
-  font-size: 0;
-  pointer-events: none;
-}
-
-.offer-generator-search-icon::before {
-  content: "";
-  display: block;
-  width: 14px;
-  height: 14px;
-  background-color: currentColor;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E");
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
 }
 
 .offer-generator-search input {
   width: 100%;
-  padding: 10px 36px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong);
+  background: var(--surface-alt);
+  border-radius: var(--radius-s);
+  padding: 10px 34px 10px 14px;
   font-size: 13px;
-  background: var(--ink-50);
 }
 
 .offer-generator-search input:focus {
   outline: none;
   border-color: var(--brass);
-  background: var(--surface);
-  box-shadow: 0 0 0 3px var(--brass-light);
+  background: #fff;
+}
+
+.offer-generator-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  border: 1.5px solid var(--ink-faint);
+  border-radius: 50%;
+  display: none;
 }
 
 .offer-generator-search button {
   position: absolute;
-  right: 8px;
-  width: 22px;
-  height: 22px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
   border: none;
+  background: var(--paper-deep);
+  color: var(--ink-soft);
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background: var(--ink-100);
-  color: var(--ink-700);
-  font-size: 14px;
-  line-height: 1;
   cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
 }
-
-.offer-generator-search button:hover {
-  background: var(--danger-light);
-  color: var(--danger);
-}
-
-/* Empty state */
 
 .offer-generator-empty-state {
   text-align: center;
   padding: 32px 16px;
-  color: var(--ink-500);
-  background: var(--ink-50);
-  border-radius: var(--radius-md);
-  border: 1px dashed var(--ink-100);
+  color: var(--ink-soft);
 }
 
 .offer-generator-empty-state strong {
   display: block;
-  color: var(--ink-900);
-  font-size: 13.5px;
+  color: var(--ink);
   margin-bottom: 4px;
 }
 
@@ -777,37 +1452,36 @@
   font-size: 12.5px;
 }
 
-/* Candidate rows */
-
 .offer-generator-candidates {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-height: 480px;
+  max-height: 460px;
   overflow-y: auto;
   padding-right: 2px;
+  margin-bottom: 20px;
 }
 
 .offer-generator-candidate-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
-  padding: 12px 14px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--surface);
+  gap: 12px;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--surface-alt);
   transition: border-color 0.15s ease, background 0.15s ease;
   flex-wrap: wrap;
 }
 
 .offer-generator-candidate-row.selected {
-  border-color: var(--brass);
-  background: #fdfaf3;
+  border-color: rgba(76, 122, 99, 0.35);
+  background: var(--sage-tint);
 }
 
 .offer-generator-candidate-row.previewing {
-  box-shadow: 0 0 0 2px var(--ink-900);
+  box-shadow: 0 0 0 1.5px var(--ink) inset;
 }
 
 .offer-generator-candidate-main {
@@ -815,258 +1489,103 @@
   align-items: flex-start;
   gap: 12px;
   min-width: 0;
-  flex: 1;
 }
 
-.offer-generator-candidate-main input[type="checkbox"] {
+.offer-generator-candidate-main input[type='checkbox'] {
   margin-top: 3px;
   width: 16px;
   height: 16px;
-  accent-color: var(--brass);
-  cursor: pointer;
-  flex: none;
+  accent-color: var(--sage);
+  flex-shrink: 0;
 }
 
 .offer-generator-candidate-info {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
   min-width: 0;
 }
 
 .offer-generator-candidate-info strong {
-  font-size: 14px;
-  color: var(--ink-900);
+  display: block;
+  font-size: 13.5px;
+  color: var(--ink);
 }
 
 .offer-generator-candidate-info > span {
-  font-size: 12.5px;
-  color: var(--ink-500);
+  display: block;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 1px;
 }
 
 .offer-generator-candidate-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 .offer-generator-candidate-meta span {
-  padding: 3px 9px;
-  background: var(--ink-50);
-  color: var(--ink-700);
-  border-radius: 999px;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
+  color: var(--ink-soft);
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 3px 8px;
+  border-radius: 999px;
 }
-
-/* ------------------------------ Candidate actions ---------------------------- */
 
 .offer-generator-candidate-actions {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   gap: 6px;
-  flex: 0 0 auto;
-  margin-left: auto;
-  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .offer-generator-candidate-actions button {
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  min-width: 0;
-  min-height: 34px;
-  padding: 7px 11px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  color: var(--ink-700);
-  font-family: inherit;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  color: var(--ink-soft);
   font-size: 12px;
   font-weight: 600;
-  line-height: 1;
+  padding: 7px 10px;
+  border-radius: var(--radius-s);
   cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease,
-    color 0.15s ease, transform 0.15s ease;
+  transition: all 0.15s ease;
 }
 
 .offer-generator-candidate-actions button:hover {
   border-color: var(--brass);
   color: var(--brass-dark);
-  background: #fffdf8;
 }
 
-.offer-generator-candidate-actions button:active {
-  transform: translateY(1px);
+.offer-generator-candidate-actions button.active {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #fff;
 }
 
-/* Edit + Preview stay as normal text buttons. */
-.offer-generator-candidate-actions button:nth-child(1),
-.offer-generator-candidate-actions button:nth-child(2) {
+.icon-download::before {
+  content: '\2193';
+}
+.icon-trash::before {
+  content: '\2715';
+}
+.icon-download,
+.icon-trash {
   font-size: 12px;
 }
-
-/* Active Preview button. */
-.offer-generator-candidate-actions button:nth-child(2).active {
-  background: var(--ink-900);
-  border-color: var(--ink-900);
-  color: #ffffff;
-}
-
-.offer-generator-candidate-actions button:nth-child(2).active:hover {
-  background: var(--ink-800);
-  border-color: var(--ink-800);
-  color: #ffffff;
-}
-
-/* --------------------------------------------------------------------------
-   Remove + Download are ICON-ONLY.
-   Current TSX order:
-   1 = Edit
-   2 = Preview
-   3 = Download
-   4 = Remove
-   -------------------------------------------------------------------------- */
-
-.offer-generator-candidate-actions button:nth-child(3),
-.offer-generator-candidate-actions button:nth-child(4) {
-  width: 34px;
-  min-width: 34px;
-  height: 34px;
-  min-height: 34px;
-  padding: 0;
-  gap: 0;
-  border-radius: 8px;
-  font-size: 0;
-  line-height: 0;
-}
-
-/* Remove the original button text visually. */
-.offer-generator-candidate-actions button:nth-child(3),
-.offer-generator-candidate-actions button:nth-child(4) {
-  text-indent: -9999px;
-  overflow: visible;
-}
-
-/* Download icon. */
-.offer-generator-candidate-actions button:nth-child(3)::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 16px;
-  height: 16px;
-  transform: translate(-50%, -50%);
-  background-color: currentColor;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M12 4v13M6 11l6 6 6-6M4 20h16'/%3E%3C/svg%3E") center / contain no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M12 4v13M6 11l6 6 6-6M4 20h16'/%3E%3C/svg%3E") center / contain no-repeat;
-  pointer-events: none;
-}
-
-/* Remove icon. */
-.offer-generator-candidate-actions button:nth-child(4)::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 16px;
-  height: 16px;
-  transform: translate(-50%, -50%);
-  background-color: currentColor;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2m2 0-1 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 6h12ZM10 11v6M14 11v6'/%3E%3C/svg%3E") center / contain no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2m2 0-1 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 6h12ZM10 11v6M14 11v6'/%3E%3C/svg%3E") center / contain no-repeat;
-  pointer-events: none;
-}
-
-/* Download tooltip. */
-.offer-generator-candidate-actions button:nth-child(3)::after {
-  content: "Download";
-  position: absolute;
-  left: 50%;
-  bottom: calc(100% + 8px);
-  transform: translate(-50%, 4px);
-  padding: 6px 9px;
-  border-radius: 6px;
-  background: #16233d;
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  z-index: 1000;
-  transition: opacity 0.15s ease, transform 0.15s ease;
-  text-indent: 0;
-}
-
-/* Remove tooltip. */
-.offer-generator-candidate-actions button:nth-child(4)::after {
-  content: "Remove";
-  position: absolute;
-  left: 50%;
-  bottom: calc(100% + 8px);
-  transform: translate(-50%, 4px);
-  padding: 6px 9px;
-  border-radius: 6px;
-  background: #16233d;
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  z-index: 1000;
-  transition: opacity 0.15s ease, transform 0.15s ease;
-  text-indent: 0;
-}
-
-.offer-generator-candidate-actions button:nth-child(3):hover::after,
-.offer-generator-candidate-actions button:nth-child(4):hover::after,
-.offer-generator-candidate-actions button:nth-child(3):focus-visible::after,
-.offer-generator-candidate-actions button:nth-child(4):focus-visible::after {
-  opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, 0);
-}
-
-/* Download hover. */
-.offer-generator-candidate-actions button:nth-child(3):hover {
-  background: #f4f7fb;
-  border-color: #b9c7da;
-  color: var(--ink-800);
-}
-
-/* Remove hover. */
-.offer-generator-candidate-actions button:nth-child(4) {
-  color: var(--danger);
-  border-color: var(--danger-light);
-}
-
-.offer-generator-candidate-actions button:nth-child(4):hover {
-  background: var(--danger-light);
-  border-color: #e5b8b8;
-  color: var(--danger);
-}
-
-/* Preview-all bar */
 
 .offer-generator-preview-all-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  margin-top: 18px;
-  padding: 14px 16px;
-  background: var(--ink-900);
-  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  background: var(--ink);
+  border-radius: var(--radius-m);
   flex-wrap: wrap;
 }
 
@@ -1085,7 +1604,7 @@
 
 .offer-generator-preview-all-actions {
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 
 .offer-generator-preview-all-actions .offer-generator-button-primary {
@@ -1100,7 +1619,7 @@
 
 .offer-generator-preview-all-actions .offer-generator-button:not(.offer-generator-button-primary) {
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.25);
   color: #fff;
 }
 
@@ -1108,79 +1627,27 @@
   background: rgba(255, 255, 255, 0.16);
 }
 
-/* ------------------------------ Template form ------------------------------ */
+/* ---------------------------------------------------------------------- */
+/* Letter content / template form                                         */
+/* ---------------------------------------------------------------------- */
 
 .offer-generator-template-form {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
-.offer-generator-paragraph-editor {
-  margin-top: 6px;
-  padding-top: 16px;
-  border-top: 1px solid var(--ink-100);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+/* Smart fields panel -------------------------------------------------------- */
+
+.offer-generator-smart-fields-panel {
+  border: 1px solid var(--line);
+  background: var(--surface-alt);
+  border-radius: var(--radius-m);
+  padding: 18px;
+  margin: 4px 0 6px;
 }
 
-.offer-generator-content-heading {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.offer-generator-content-heading h3 {
-  margin: 0 0 3px;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--ink-900);
-}
-
-.offer-generator-content-heading p {
-  margin: 0;
-  font-size: 12px;
-  color: var(--ink-500);
-}
-
-.offer-generator-content-heading span {
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--brass-dark);
-  background: var(--brass-light);
-  padding: 4px 10px;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-
-.offer-generator-paragraph-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.offer-generator-paragraph-field label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--ink-700);
-}
-
-/* ============================================================================
-   Preview column
-   ============================================================================ */
-
-.offer-generator-preview-column {
-  position: sticky;
-  top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  min-width: 0;
-}
-
-.offer-generator-preview-header {
+.offer-generator-smart-fields-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -1188,33 +1655,1068 @@
   flex-wrap: wrap;
 }
 
-.offer-generator-preview-header h2 {
-  margin: 0 0 3px;
-  font-size: 16px;
+.offer-generator-smart-fields-header strong {
+  font-size: 13.5px;
+}
+
+.offer-generator-smart-fields-header span {
+  display: block;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 3px;
+  max-width: 46ch;
+}
+
+.offer-generator-smart-fields-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.offer-generator-smart-fields-body {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.offer-generator-smart-fields-how {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.offer-generator-smart-fields-how > div {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  padding: 10px;
+}
+
+.offer-generator-smart-fields-how strong {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--brass-tint);
+  color: var(--brass-dark);
+  font-size: 11px;
+}
+
+.offer-generator-smart-fields-how span {
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 900px) {
+  .offer-generator-smart-fields-how {
+    grid-template-columns: 1fr;
+  }
+}
+
+.offer-generator-smart-fields-subhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.offer-generator-smart-fields-subhead strong {
+  font-size: 12.5px;
+}
+
+.offer-generator-smart-fields-subhead span {
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+
+.offer-generator-smart-fields-chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.offer-generator-smart-field-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+
+.offer-generator-smart-field-add-box {
+  background: #fff;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-s);
+  padding: 14px;
+}
+
+.offer-generator-smart-field-add-box strong {
+  font-size: 12.5px;
+}
+
+.offer-generator-smart-field-add-box span {
+  font-size: 12px;
+  color: var(--ink-soft);
+  display: block;
+  margin-top: 2px;
+}
+
+.offer-generator-smart-field-add-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.offer-generator-smart-field-add-row input {
+  flex: 1;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-s);
+  padding: 9px 12px;
+  font-size: 13px;
+}
+
+.offer-generator-smart-field-add-row input:focus {
+  outline: none;
+  border-color: var(--brass);
+}
+
+.offer-generator-smart-field-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.offer-generator-smart-field-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  padding: 9px 12px;
+}
+
+.offer-generator-smart-field-row input {
+  flex: 1;
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  padding: 6px 9px;
+  font-size: 12.5px;
+}
+
+.offer-generator-smart-field-row span {
+  flex: 1;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+.offer-generator-smart-fields-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--sage);
+  background: var(--sage-tint);
+  padding: 10px 12px;
+  border-radius: var(--radius-s);
+}
+
+.offer-generator-smart-fields-note-icon {
   font-weight: 700;
-  color: var(--ink-900);
+}
+
+/* Custom-letter builder ------------------------------------------------------ */
+
+.offer-generator-custom-help {
+  background: var(--brass-tint);
+  border-radius: var(--radius-m);
+  padding: 16px 18px;
+  margin-bottom: 18px;
+}
+
+.offer-generator-custom-help strong {
+  font-size: 13.5px;
+  color: var(--brass-dark);
+}
+
+.offer-generator-custom-help p {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.offer-generator-custom-help code {
+  font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 11.5px;
+  background: #fff;
+  border: 1px solid rgba(169, 121, 58, 0.3);
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin: 0 2px;
+}
+
+.offer-generator-paragraph-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.offer-generator-paragraph-field {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--surface-alt);
+}
+
+.offer-generator-paragraph-field > label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.offer-generator-custom-paragraph-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.offer-generator-custom-paragraph-heading label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.offer-generator-custom-paragraph-heading button {
+  border: none;
+  background: none;
+  color: var(--danger);
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.offer-generator-paragraph-table-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* Rich text editor is styled inline in the component; layout hooks here */
+
+
+/* ---------------------------------------------------------------------- */
+/* Rich text / Word-style editor                                         */
+/* ---------------------------------------------------------------------- */
+
+.offer-generator-rich-editor {
+  width: 100%;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-m);
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(27, 35, 51, 0.03);
+}
+
+.offer-generator-rich-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 8px;
+  background: linear-gradient(to bottom, #fff, var(--surface-alt));
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.offer-generator-rich-toolbar-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding-right: 6px;
+  margin-right: 2px;
+  border-right: 1px solid var(--line);
+}
+
+.offer-generator-rich-toolbar-group:last-child {
+  border-right: none;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.offer-generator-rich-toolbar button {
+  min-width: 31px;
+  height: 31px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease,
+    color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.offer-generator-rich-toolbar button:hover {
+  background: var(--brass-tint);
+  border-color: rgba(169, 121, 58, 0.3);
+  color: var(--brass-dark);
+}
+
+.offer-generator-rich-toolbar button.is-active,
+.offer-generator-rich-toolbar button[aria-pressed="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+.offer-generator-rich-toolbar button:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 1px;
+}
+
+.offer-generator-rich-toolbar .rich-toolbar-icon-bold {
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.offer-generator-rich-toolbar .rich-toolbar-icon-italic {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.offer-generator-rich-toolbar .rich-toolbar-icon-underline {
+  text-decoration: underline;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.offer-generator-rich-toolbar .rich-toolbar-icon-strike {
+  text-decoration: line-through;
+  font-weight: 700;
+}
+
+.offer-generator-rich-toolbar select {
+  height: 31px;
+  min-width: 108px;
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  background: #fff;
+  color: var(--ink);
+  padding: 0 26px 0 8px;
+  font: 600 12px/1 inherit;
+  cursor: pointer;
+}
+
+.offer-generator-rich-toolbar select:hover,
+.offer-generator-rich-toolbar select:focus {
+  border-color: var(--brass);
+  outline: none;
+}
+
+.offer-generator-rich-font-family {
+  min-width: 145px !important;
+}
+
+.offer-generator-rich-font-size {
+  min-width: 72px !important;
+}
+
+.offer-generator-rich-color-control {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 31px;
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  background: #fff;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.offer-generator-rich-color-control:hover {
+  border-color: var(--brass);
+  background: var(--brass-tint);
+}
+
+.offer-generator-rich-color-control input[type="color"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.offer-generator-rich-color-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.offer-generator-rich-color-icon::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  bottom: 0;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--brass);
+}
+
+.offer-generator-rich-highlight-control::after {
+  content: "";
+  width: 18px;
+  height: 4px;
+  position: absolute;
+  bottom: 4px;
+  left: 8px;
+  border-radius: 2px;
+  background: #f4d35e;
+}
+
+.offer-generator-rich-toolbar .rich-toolbar-separator {
+  width: 1px;
+  height: 22px;
+  background: var(--line);
+  margin: 0 2px;
+}
+
+.offer-generator-rich-toolbar .rich-toolbar-label {
+  font-size: 10.5px;
+  color: var(--ink-faint);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0 3px;
+}
+
+.offer-generator-rich-editor-surface {
+  min-height: 150px;
+  padding: 14px 16px;
+  background: #fff;
+  color: var(--ink);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13.5px;
+  line-height: 1.65;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  outline: none;
+}
+
+.offer-generator-rich-editor-surface:focus {
+  box-shadow: inset 0 0 0 2px rgba(169, 121, 58, 0.13);
+}
+
+.offer-generator-rich-editor-surface:empty::before {
+  content: attr(data-placeholder);
+  color: var(--ink-faint);
+  pointer-events: none;
+}
+
+.offer-generator-rich-editor-surface p {
+  margin: 0 0 0.65em;
+}
+
+.offer-generator-rich-editor-surface p:last-child {
+  margin-bottom: 0;
+}
+
+.offer-generator-rich-editor-surface div {
+  min-height: 1.2em;
+}
+
+.offer-generator-rich-editor-surface br {
+  line-height: inherit;
+}
+
+.offer-generator-rich-editor-surface strong,
+.offer-generator-rich-editor-surface b {
+  font-weight: 700;
+}
+
+.offer-generator-rich-editor-surface em,
+.offer-generator-rich-editor-surface i {
+  font-style: italic;
+}
+
+.offer-generator-rich-editor-surface u {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.offer-generator-rich-editor-surface s,
+.offer-generator-rich-editor-surface strike {
+  text-decoration: line-through;
+}
+
+.offer-generator-rich-editor-surface ul,
+.offer-generator-rich-editor-surface ol {
+  margin: 0.5em 0;
+  padding-left: 1.7em;
+}
+
+.offer-generator-rich-editor-surface li {
+  margin: 0.18em 0;
+}
+
+.offer-generator-rich-editor-surface blockquote {
+  margin: 0.75em 0;
+  padding: 8px 12px;
+  border-left: 3px solid var(--brass);
+  background: var(--brass-tint);
+  color: var(--ink-soft);
+}
+
+.offer-generator-rich-editor-surface a {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.offer-generator-rich-editor-surface:disabled {
+  opacity: 0.55;
+}
+
+/* Formatting status row below the editor */
+.offer-generator-rich-editor-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 6px 10px;
+  border-top: 1px solid var(--line);
+  background: var(--surface-alt);
+  color: var(--ink-faint);
+  font-size: 10.5px;
+}
+
+.offer-generator-rich-editor-shortcuts {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.offer-generator-rich-editor-shortcuts kbd {
+  padding: 2px 5px;
+  border: 1px solid var(--line-strong);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: #fff;
+  color: var(--ink-soft);
+  font: 600 10px/1.1 "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+/* Paragraph-specific editor wrapper */
+.offer-generator-paragraph-rich-editor {
+  margin-top: 4px;
+}
+
+/* Keep every paragraph formatting control on ONE horizontal line.
+   If the available width is smaller than the toolbar, scroll horizontally
+   instead of pushing controls onto a second line. */
+.offer-generator-paragraph-rich-editor .offer-generator-rich-toolbar {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.offer-generator-paragraph-rich-editor .offer-generator-rich-toolbar-group,
+.offer-generator-paragraph-rich-editor .offer-generator-rich-toolbar button,
+.offer-generator-paragraph-rich-editor .offer-generator-rich-toolbar select {
+  flex-shrink: 0;
+}
+
+.offer-generator-paragraph-rich-editor .offer-generator-rich-toolbar-group {
+  white-space: nowrap;
+}
+
+.offer-generator-paragraph-rich-editor .offer-generator-rich-toolbar::-webkit-scrollbar {
+  height: 5px;
+}
+
+.offer-generator-paragraph-rich-editor .offer-generator-rich-toolbar::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 999px;
+}
+
+
+.offer-generator-paragraph-rich-editor .offer-generator-rich-editor-surface {
+  min-height: 128px;
+}
+
+/* Table cell rich editor */
+.offer-generator-table-cell-rich-editor {
+  min-width: 0;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.offer-generator-table-cell-rich-editor .offer-generator-rich-toolbar {
+  padding: 5px;
+  gap: 3px;
+  position: static;
+}
+
+.offer-generator-table-cell-rich-editor .offer-generator-rich-toolbar button {
+  min-width: 27px;
+  height: 27px;
+}
+
+.offer-generator-table-cell-rich-editor .offer-generator-rich-toolbar select {
+  height: 27px;
+  min-width: 76px;
+  font-size: 11px;
+}
+
+.offer-generator-table-cell-rich-editor .offer-generator-rich-font-family {
+  min-width: 105px !important;
+}
+
+.offer-generator-table-cell-rich-editor .offer-generator-rich-editor-surface {
+  min-height: 72px;
+  padding: 8px 9px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Subject / salutation / closing rich editors */
+.offer-generator-rich-single-line .offer-generator-rich-editor-surface {
+  min-height: 46px;
+  padding: 10px 12px;
+}
+
+.offer-generator-rich-single-line .offer-generator-rich-editor-surface p {
+  margin: 0;
+}
+
+/* Word-style color swatch menu, if rendered by the component */
+.offer-generator-rich-color-palette {
+  display: grid;
+  grid-template-columns: repeat(8, 20px);
+  gap: 5px;
+  padding: 9px;
+  background: #fff;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-s);
+  box-shadow: var(--shadow-pop);
+}
+
+.offer-generator-rich-color-palette button {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 1px solid rgba(27, 35, 51, 0.15);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.offer-generator-rich-color-palette button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--brass);
+}
+
+/* Make native contenteditable selections easy to see */
+.offer-generator-rich-editor-surface ::selection {
+  background: rgba(169, 121, 58, 0.24);
+}
+
+/* Keep formatting controls usable on smaller screens */
+@media (max-width: 900px) {
+  .offer-generator-rich-toolbar {
+    gap: 4px;
+  }
+
+  .offer-generator-rich-toolbar-group {
+    padding-right: 4px;
+    margin-right: 0;
+  }
+
+  .offer-generator-rich-font-family {
+    min-width: 120px !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .offer-generator-rich-toolbar {
+    position: static;
+  }
+
+  .offer-generator-rich-toolbar-group {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .offer-generator-rich-toolbar select {
+    min-width: 70px;
+  }
+
+  .offer-generator-rich-font-family {
+    min-width: 112px !important;
+  }
+
+  .offer-generator-rich-editor-surface {
+    min-height: 125px;
+    padding: 12px;
+  }
+
+  .offer-generator-rich-editor-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Existing textarea fallback                                             */
+/* ---------------------------------------------------------------------- */
+
+.offer-generator-rich-editor-fallback {
+  width: 100%;
+  min-height: 130px;
+  resize: vertical;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Print / PDF preparation                                                 */
+/* ---------------------------------------------------------------------- */
+
+.offer-generator-rich-render {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.offer-generator-rich-render p {
+  margin: 0 0 0.65em;
+}
+
+.offer-generator-rich-render p:last-child {
+  margin-bottom: 0;
+}
+
+.offer-generator-rich-render ul,
+.offer-generator-rich-render ol {
+  margin: 0.5em 0;
+  padding-left: 1.7em;
+}
+
+.offer-generator-rich-render li {
+  margin: 0.15em 0;
+}
+
+.offer-generator-rich-render strong,
+.offer-generator-rich-render b {
+  font-weight: 700;
+}
+
+.offer-generator-rich-render em,
+.offer-generator-rich-render i {
+  font-style: italic;
+}
+
+.offer-generator-rich-render u {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.offer-generator-rich-render s,
+.offer-generator-rich-render strike {
+  text-decoration: line-through;
+}
+
+.offer-generator-rich-render blockquote {
+  margin: 0.75em 0;
+  padding-left: 12px;
+  border-left: 3px solid var(--brass);
+}
+
+/* ---------------------------------------------------------------------- */
+/* End rich text editor                                                   */
+/* ---------------------------------------------------------------------- */
+
+
+/* Custom table editor -------------------------------------------------------- */
+
+.offer-generator-custom-table-editor {
+  margin-top: 14px;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-m);
+}
+
+.offer-generator-custom-table-toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.offer-generator-custom-table-toolbar input {
+  flex: 1;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-s);
+  padding: 8px 11px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.offer-generator-custom-table-style-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.offer-generator-custom-table-style-control > span {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  flex-shrink: 0;
+  min-width: 78px;
+}
+
+.offer-generator-custom-table-style-options {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.offer-generator-table-style-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface-alt);
+  padding: 6px 11px;
+  border-radius: var(--radius-s);
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.offer-generator-table-style-button.active {
+  border-color: var(--ink);
+  color: var(--ink);
+  background: #fff;
+}
+
+.offer-generator-table-style-line {
+  width: 20px;
+  height: 0;
+  border-top: 2px solid var(--ink-soft);
+  display: inline-block;
+}
+
+.offer-generator-table-style-line.style-dotted {
+  border-top-style: dotted;
+}
+.offer-generator-table-style-line.style-dashed {
+  border-top-style: dashed;
+}
+.offer-generator-table-style-line.style-none {
+  border-top-style: none;
+  opacity: 0.3;
+  border-top: 2px solid var(--ink-faint);
+}
+
+.offer-generator-table-color-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface-alt);
+  padding: 5px 10px 5px 6px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.offer-generator-table-color-button.active {
+  border-color: var(--ink);
+  color: var(--ink);
+  background: #fff;
+}
+
+.offer-generator-table-color-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.offer-generator-custom-table-scroll {
+  overflow-x: auto;
+}
+
+.offer-generator-custom-editor-table,
+.offer-generator-custom-preview-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+.offer-generator-custom-editor-table th,
+.offer-generator-custom-editor-table td,
+.offer-generator-custom-preview-table th,
+.offer-generator-custom-preview-table td {
+  border: 1px solid var(--table-border-color, var(--line-strong));
+  padding: 8px 10px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.offer-generator-custom-editor-table.border-dotted th,
+.offer-generator-custom-editor-table.border-dotted td,
+.offer-generator-custom-preview-table.border-dotted th,
+.offer-generator-custom-preview-table.border-dotted td {
+  border-style: dotted;
+}
+
+.offer-generator-custom-editor-table.border-dashed th,
+.offer-generator-custom-editor-table.border-dashed td,
+.offer-generator-custom-preview-table.border-dashed th,
+.offer-generator-custom-preview-table.border-dashed td {
+  border-style: dashed;
+}
+
+.offer-generator-custom-editor-table.border-none th,
+.offer-generator-custom-editor-table.border-none td,
+.offer-generator-custom-preview-table.border-none th,
+.offer-generator-custom-preview-table.border-none td {
+  border: none;
+}
+
+.offer-generator-custom-editor-table th {
+  background: var(--table-header-color, var(--ink));
+  color: var(--table-header-text, #fff);
+  font-weight: 700;
+  min-width: 140px;
+}
+
+.offer-generator-custom-editor-table th input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-weight: 700;
+  font-size: 12.5px;
+}
+
+.offer-generator-custom-editor-table th input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.offer-generator-custom-editor-table td {
+  background: #fff;
+  color: var(--table-text-color, var(--ink));
+}
+
+.offer-generator-custom-preview-table-wrap {
+  margin-top: 14px;
+}
+
+.offer-generator-custom-preview-table-wrap h3 {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-family: inherit;
+}
+
+.offer-generator-custom-preview-table th {
+  background: var(--table-header-color, var(--ink));
+  color: var(--table-header-text, #fff);
+  font-weight: 700;
+}
+
+.offer-generator-custom-preview-table td {
+  color: var(--table-text-color, var(--ink));
+}
+
+/* ---------------------------------------------------------------------- */
+/* Preview column header                                                   */
+/* ---------------------------------------------------------------------- */
+
+.offer-generator-preview-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 4px;
+}
+
+.offer-generator-preview-header h2 {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .offer-generator-preview-header p {
-  margin: 0;
+  margin: 4px 0 0;
   font-size: 12.5px;
-  color: var(--ink-500);
+  color: var(--ink-soft);
 }
 
 .offer-generator-preview-header-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .offer-generator-preview-mode-button {
-  padding: 7px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--line-strong);
   background: var(--surface);
-  color: var(--ink-700);
-  font-size: 11.5px;
+  color: var(--ink-soft);
+  font-size: 12px;
   font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-s);
   cursor: pointer;
 }
 
@@ -1224,226 +2726,190 @@
 }
 
 .offer-generator-preview-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: var(--success);
-  color: #fff;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.02em;
+  color: var(--sage);
+  background: var(--sage-tint);
+  padding: 6px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
 }
 
-.offer-generator-preview-status::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #fff;
+/* ---------------------------------------------------------------------- */
+/* A4 preview — treated as real paper                                     */
+/* ---------------------------------------------------------------------- */
+
+.offer-generator-a4-wrapper {
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+  padding: 28px 10px 44px;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(180deg, var(--paper-deep), var(--paper) 140px);
+  border-radius: var(--radius-l);
 }
 
-/* Desk backdrop behind the paper page */
-
-.offer-generator-a4-wrapper,
 .offer-generator-all-preview {
-  background:
-    radial-gradient(circle at 1px 1px, rgba(22, 35, 61, 0.06) 1px, transparent 0) 0 0/14px 14px,
-    var(--bg);
-  border-radius: var(--radius-lg);
-  padding: 28px;
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+  padding: 28px 10px 44px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
-  max-height: calc(100vh - 160px);
-  overflow-y: auto;
+  gap: 34px;
+  background: linear-gradient(180deg, var(--paper-deep), var(--paper) 140px);
+  border-radius: var(--radius-l);
 }
 
 .offer-generator-a4-empty {
   width: 100%;
   max-width: 480px;
   text-align: center;
-  padding: 60px 24px;
-  background: var(--surface);
-  border: 1px dashed var(--ink-100);
-  border-radius: var(--radius-md);
-  color: var(--ink-500);
+  padding: 80px 30px;
+  background: #fff;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-l);
+  color: var(--ink-soft);
 }
 
 .offer-generator-a4-empty strong {
   display: block;
-  color: var(--ink-900);
-  font-size: 14px;
+  color: var(--ink);
+  font-size: 15px;
   margin-bottom: 6px;
 }
 
 .offer-generator-a4-empty p {
   margin: 0;
-  font-size: 12.5px;
+  font-size: 13px;
 }
-
-/* ---------------------------------- A4 page -------------------------------- */
 
 .offer-generator-a4-page {
   width: 210mm;
   min-height: 297mm;
   max-width: 100%;
-  background: var(--paper);
-  box-shadow: var(--shadow-pop);
-  padding: var(--letter-margin-top, 25.4mm)
-    var(--letter-margin-right, 25.4mm)
-    var(--letter-margin-bottom, 25.4mm)
-    var(--letter-margin-left, 25.4mm);
-  color: #2a2620;
-  font-size: 13px;
-  line-height: 1.65;
-  box-sizing: border-box;
+  flex-shrink: 0;
+  background: #fff;
+  box-shadow: var(--shadow-paper);
+  padding: var(--letter-margin-top, 15mm) var(--letter-margin-right, 15mm)
+    var(--letter-margin-bottom, 15mm) var(--letter-margin-left, 15mm);
+  color: #222;
+  position: relative;
 }
+
+/* Letter style variants: typography + rhythm ------------------------------- */
+
+.offer-generator-a4-page.style-classic {
+  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  font-size: 13px;
+}
+
+.offer-generator-a4-page.style-elegant {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 13px;
+  font-style: normal;
+}
+
+.offer-generator-a4-page.style-modern {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+}
+
+.offer-generator-a4-page.style-minimal {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.002em;
+}
+
+/* Letter accent color variants ---------------------------------------------- */
+
+.offer-generator-a4-page.color-navy {
+  --letter-accent: #1f3557;
+}
+.offer-generator-a4-page.color-green {
+  --letter-accent: #176b52;
+}
+.offer-generator-a4-page.color-burgundy {
+  --letter-accent: #7a263a;
+}
+.offer-generator-a4-page.color-purple {
+  --letter-accent: #5b3f8c;
+}
+.offer-generator-a4-page.color-black {
+  --letter-accent: #222222;
+}
+
+/* Header -------------------------------------------------------------------- */
 
 .offer-generator-letter-header {
+  position: relative;
   display: flex;
-  gap: 16px;
-  align-items: center;
-}
-
-.offer-generator-letter-header.logo-center {
   flex-direction: column;
-  justify-content: flex-start;
+  align-items: center;
   text-align: center;
+  min-height: 24px;
 }
 
 .offer-generator-letter-header.logo-left {
-  position: relative;
-  justify-content: center;
-  text-align: center;
-  min-height: var(--logo-height, 52px);
+  min-height: 64px;
+}
+
+.offer-generator-letter-logo {
+  display: block;
+  width: var(--logo-width, 140px);
+  height: var(--logo-height, auto);
+  object-fit: contain;
+  margin: 0 auto 16px;
+}
+
+.offer-generator-letter-header.logo-center .offer-generator-letter-logo {
+  transform: translate(var(--logo-x, 0mm), var(--logo-y, 0mm));
 }
 
 .offer-generator-letter-header.logo-left .offer-generator-letter-logo {
   position: absolute;
-  left: 0;
   top: 0;
+  left: 0;
+  margin: 0;
+  transform: translate(var(--logo-x, 0mm), var(--logo-y, 0mm));
 }
 
 .offer-generator-letter-header.logo-left .offer-generator-letter-company {
   width: 100%;
-  text-align: center;
 }
 
-.offer-generator-letter-header.logo-right {
-  flex-direction: row;
-  text-align: right;
+.offer-generator-letter-company {
+  color: var(--letter-accent, #1f3557);
 }
 
-.offer-generator-letter-header.logo-right .offer-generator-letter-company {
-  text-align: right;
-}
-
-.offer-generator-logo-editor-wrap {
-  margin-top: 10px;
-}
-
-.offer-generator-logo-editor {
-  width: 100%;
-  margin-top: 12px;
-  padding: 14px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: #fbfcfe;
-}
-
-.offer-generator-logo-editor-heading {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-.offer-generator-logo-editor-heading strong {
-  display: block;
-  margin: 0;
-  color: var(--ink-900);
-  font-size: 13px;
-}
-
-.offer-generator-logo-editor-heading p {
-  margin: 4px 0 0;
-  color: var(--ink-500);
-  font-size: 12px;
-  line-height: 1.45;
-}
-
-.offer-generator-logo-editor-placement {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.offer-generator-logo-editor-placement > span {
-  margin-right: 4px;
-  color: var(--ink-900);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.offer-generator-logo-editor-placement .is-active {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent);
-}
-
-.offer-generator-logo-editor-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.offer-generator-logo-editor-grid .offer-generator-field {
-  margin: 0;
-}
-
-@media (max-width: 700px) {
-  .offer-generator-logo-editor-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .offer-generator-logo-editor-heading {
-    flex-direction: column;
-  }
-
-  .offer-generator-logo-editor-placement {
-    flex-wrap: wrap;
-  }
-}
-
-.offer-generator-letter-logo {
-  height: var(--logo-height, 52px);
-  width: var(--logo-width, auto);
-  max-width: 200px;
-  object-fit: contain;
-  transform: translate(var(--logo-x, 0mm), var(--logo-y, 0mm));
-  touch-action: none;
-}
-
-.offer-generator-letter-company h1 {
-  margin: 0 0 4px;
+.offer-generator-company-name {
   font-size: 21px;
   font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 4px;
+  color: var(--letter-accent, #1f3557);
+  font-family: inherit;
 }
 
-.offer-generator-letter-company div {
+.offer-generator-letter-company > div {
   font-size: 12px;
-  color: #6b6455;
   line-height: 1.5;
+  color: #6b6455;
 }
 
 .offer-generator-letter-divider {
   height: 2px;
+  background: var(--letter-accent, #1f3557);
   margin: 16px 0 20px;
-  border-radius: 2px;
+}
+
+.style-modern .offer-generator-letter-divider {
+  height: 4px;
+}
+.style-minimal .offer-generator-letter-divider {
+  height: 1px;
+  background: #d3cebe;
 }
 
 .offer-generator-letter-date {
@@ -1453,965 +2919,56 @@
 }
 
 .offer-generator-letter-recipient {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-bottom: 12px;
+  margin-bottom: -3px;
 }
 
-.offer-generator-letter-recipient strong {
+.offer-generator-candidate-name {
   font-size: 14px;
-}
-
-.offer-generator-letter-recipient span {
-  font-size: 12px;
-  color: #6b6455;
+  color: var(--letter-accent, #1f3557);
 }
 
 .offer-generator-letter-subject {
   font-size: 13.5px;
-  margin-bottom: 18px;
-  padding: 10px 0;
-  background: transparent;
-  border: none;
-  color: inherit;
+  line-height: 1.65;
+  margin: 12px 0 35px;
 }
 
 .offer-generator-letter-salutation {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.65;
   margin-bottom: 14px;
-  font-weight: 600;
 }
 
-.offer-generator-letter-body p {
-  margin: 0 0 14px;
-  text-align: justify;
-  color: #000000;
-}
-
-.offer-generator-letter-closing {
-  margin-top: 26px;
-}
-
-.offer-generator-signature {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  margin-top: 8px;
-}
-
-.offer-generator-signature-space {
-  height: 46px;
-}
-
-.offer-generator-signature span {
-  font-size: 12px;
-  color: #6b6455;
-}
-
-/* -------------------------------- Responsive -------------------------------- */
-
-@media (max-width: 1100px) {
-  .offer-generator-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .offer-generator-preview-column {
-    position: static;
-  }
-
-  .offer-generator-a4-page {
-    width: 210mm;
-    min-width: 210mm;
-    min-height: 297mm;
-    height: auto;
-  }
-}
-
-@media (max-width: 640px) {
-  .offer-generator-form-grid,
-  .offer-generator-template-selector {
-    grid-template-columns: 1fr;
-  }
-
-  .offer-generator-header {
-    flex-direction: column;
-  }
-
-  .offer-generator-candidate-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .offer-generator-candidate-actions {
-    width: 100%;
-  }
-
-  .offer-generator-candidate-actions button {
-    flex: 1;
-    justify-content: center;
-  }
-}
-/* ============================================================================
-   FINAL UI POLISH
-   - White workspace
-   - Larger right-side preview
-   - Compact template/style/color controls above candidate details
-   - Icons for template choices
-   - White A4 paper for preview and PDF output
-   ============================================================================ */
-
-.offer-generator-page {
-  background: #ffffff;
-}
-
-.offer-generator-layout {
-  grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
-  gap: 24px;
-}
-
-/* Keep the preview area itself clean and white. This is also the background
-   captured by html2canvas when generating the PDF/ZIP. */
-.offer-generator-a4-wrapper,
-.offer-generator-all-preview {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: var(--radius-lg);
-  padding: 22px;
-}
-
-.offer-generator-a4-page {
-  background: #ffffff;
-  --letter-accent: #1f3557;
-  --letter-accent-soft: #eef3f8;
-  --letter-text: #222222;
-  --letter-muted: #6b7280;
-}
-
-/* ------------------------- Template icons / controls ---------------------- */
-.offer-generator-template-selector button {
-  position: relative;
-  min-height: 104px;
-  padding: 12px;
-}
-
-.offer-generator-template-icon {
-  width: 20px !important;
-  height: 20px !important;
-  margin-bottom: 4px;
-  color: var(--ink-700);
-}
-
-.offer-generator-template-selector button.active .offer-generator-template-icon {
-  color: #ffffff;
-}
-
-.offer-generator-style-controls {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 16px;
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--ink-100);
-}
-
-.offer-generator-style-group {
-  min-width: 0;
-}
-
-.offer-generator-style-group > label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--ink-700);
-}
-
-.offer-generator-style-options,
-.offer-generator-color-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-}
-
-.offer-generator-style-options button,
-.offer-generator-color-options button {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  min-height: 34px;
-  padding: 7px 10px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: #ffffff;
-  color: var(--ink-700);
-  font-size: 11.5px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.offer-generator-style-options button:hover,
-.offer-generator-color-options button:hover {
-  border-color: var(--brass);
-  transform: translateY(-1px);
-}
-
-.offer-generator-style-options button.active,
-.offer-generator-color-options button.active {
-  border-color: var(--ink-900);
-  background: var(--ink-900);
-  color: #ffffff;
-}
-
-.style-preview-dot {
-  width: 18px;
-  height: 18px;
-  border: 1px solid #d1d5db;
-  border-radius: 5px;
-  background: #ffffff;
-  position: relative;
-  overflow: hidden;
-}
-
-.style-preview-dot::before,
-.style-preview-dot::after {
-  content: "";
-  position: absolute;
-  left: 3px;
-  right: 3px;
-  height: 2px;
-  border-radius: 2px;
-}
-
-.style-preview-dot::before {
-  top: 4px;
-  background: var(--ink-900);
-}
-
-.style-preview-dot::after {
-  top: 9px;
-  background: #d1d5db;
-  box-shadow: 0 4px 0 #d1d5db;
-}
-
-.style-preview-dot.style-modern {
-  border-radius: 3px;
-}
-
-.style-preview-dot.style-modern::before {
-  height: 4px;
-  top: 2px;
-  background: var(--ink-900);
-}
-
-.style-preview-dot.style-minimal::before {
-  background: #9ca3af;
-}
-
-.style-preview-dot.style-elegant {
-  border-radius: 50%;
-}
-
-.style-preview-dot.style-elegant::before {
-  left: 4px;
-  right: 4px;
-  background: #222222;
-}
-
-.offer-generator-color-swatch {
-  width: 15px;
-  height: 15px;
-  flex: 0 0 15px;
-  border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.85);
-  box-shadow: 0 0 0 1px rgba(22,35,61,0.18);
-}
-
-/* ----------------------------- Letter themes ----------------------------- */
-.offer-generator-a4-page.color-navy {
-  --letter-accent: #1f3557;
-  --letter-accent-soft: #eef3f8;
-}
-
-.offer-generator-a4-page.color-green {
-  --letter-accent: #176b52;
-  --letter-accent-soft: #eaf6f1;
-}
-
-.offer-generator-a4-page.color-burgundy {
-  --letter-accent: #7a263a;
-  --letter-accent-soft: #f7ecef;
-}
-
-.offer-generator-a4-page.color-purple {
-  --letter-accent: #5b3f8c;
-  --letter-accent-soft: #f1edf8;
-}
-
-.offer-generator-a4-page.color-black {
-  --letter-accent: #222222;
-  --letter-accent-soft: #f1f1f1;
-}
-
-.offer-generator-a4-page.style-classic {
-  font-family: Georgia, "Times New Roman", serif;
-}
-
-.offer-generator-a4-page.style-modern {
-  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-}
-
-.offer-generator-a4-page.style-minimal {
-  font-family: Arial, Helvetica, sans-serif;
+.style-minimal .offer-generator-letter-salutation,
+.style-minimal .offer-generator-letter-body,
+.style-minimal .offer-generator-letter-closing {
   line-height: 1.7;
 }
 
-.offer-generator-a4-page.style-elegant {
-  font-family: Georgia, "Times New Roman", serif;
-  letter-spacing: 0.01em;
-}
-
-.offer-generator-a4-page .offer-generator-letter-date,
-/* Subject should remain plain black */
-.offer-generator-a4-page .offer-generator-letter-subject,
-.offer-generator-a4-page .offer-generator-letter-subject strong {
-  color: #222222 !important;
-}
-
-/* Recipient can still use the selected accent */
-.offer-generator-a4-page .offer-generator-letter-recipient strong {
-  color: var(--letter-accent);
-}
-.offer-generator-a4-page .offer-generator-company-name,
-.offer-generator-a4-page .offer-generator-candidate-name {
-  color: var(--letter-accent) !important;
-}
-
-.offer-generator-a4-page .offer-generator-letter-divider {
-  background: var(--letter-accent);
-}
-
-.offer-generator-a4-page .offer-generator-letter-subject {
-  border-left: 3px solid var(--letter-accent);
-  padding: 10px 12px;
-  background: var(--letter-accent-soft);
-}
-
-.offer-generator-a4-page.style-modern .offer-generator-letter-divider {
-  height: 4px;
-}
-
-.offer-generator-a4-page.style-minimal .offer-generator-letter-divider {
-  height: 1px;
-}
-
-.offer-generator-a4-page.style-elegant .offer-generator-letter-divider {
-  height: 1px;
-  margin-top: 20px;
-  margin-bottom: 24px;
-}
-
-.offer-generator-a4-page.style-elegant .offer-generator-letter-company h1 {
-  letter-spacing: 0.02em;
-}
-
-/* Slightly tighter preview shell so the larger right column is used well. */
-.offer-generator-preview-column {
-  width: 100%;
-}
-
-@media (max-width: 1200px) {
-  .offer-generator-layout {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  }
-}
-
-@media (max-width: 1100px) {
-  .offer-generator-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .offer-generator-style-controls {
-    grid-template-columns: 1fr;
-  }
-}
-/* ============================================================================
-   Final visual refinements
-   - Balanced editor / preview layout
-   - Fixed A4 dimensions for accurate screen preview and html2canvas PDF
-   - Clean white paper
-   - Template style / accent controls
-   ============================================================================ */
-
-.offer-generator-page {
-  background: #ffffff;
-}
-
-.offer-generator-layout {
-  grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
-  gap: 24px;
-  align-items: start;
-}
-
-.offer-generator-preview-column {
-  width: 100%;
-  min-width: 0;
-}
-
-/* Clean preview desk. Horizontal scrolling is intentional when the viewport
-   is narrower than the real A4 width; the paper itself is never compressed. */
-.offer-generator-a4-wrapper,
-.offer-generator-all-preview {
-  width: 100%;
-  min-width: 0;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: var(--radius-lg);
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  max-height: calc(100vh - 160px);
-  overflow-x: auto;
-  overflow-y: auto;
-}
-
-/* Exact A4 paper size: 210mm × 297mm.
-   Do not use max-width:100% here because that shrinks the page and makes
-   html2canvas capture a non-A4 layout. */
-.offer-generator-a4-page {
-  position: relative;
-  flex: 0 0 auto;
-  width: 210mm;
-  min-width: 210mm;
-  max-width: none;
-  height: auto;
-  min-height: 297mm;
-  max-height: none;
-  overflow: visible;
-  background: #ffffff;
-  box-shadow: 0 12px 32px -8px rgba(22, 35, 61, 0.22);
-  padding: 20mm 18mm;
-  color: #222222;
+.offer-generator-letter-body {
   font-size: 13px;
   line-height: 1.65;
-  box-sizing: border-box;
-  transform: none;
 }
 
-.offer-generator-a4-page * {
-  box-sizing: border-box;
+.offer-generator-letter-paragraph-block {
+  margin-bottom: 14px;
 }
 
-/* Template icons / controls */
-.offer-generator-template-selector button {
-  position: relative;
-  min-height: 104px;
-  padding: 12px;
+.offer-generator-letter-paragraph-block:last-child {
+  margin-bottom: 0;
 }
 
-.offer-generator-template-icon {
-  width: 20px !important;
-  height: 20px !important;
-  margin-bottom: 4px;
-  color: var(--ink-700);
-}
-
-.offer-generator-template-selector button.active .offer-generator-template-icon {
-  color: #ffffff;
-}
-
-.offer-generator-style-controls {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 16px;
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--ink-100);
-}
-
-.offer-generator-style-group {
-  min-width: 0;
-}
-
-.offer-generator-style-group > label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--ink-700);
-}
-
-.offer-generator-style-options,
-.offer-generator-color-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-}
-
-.offer-generator-style-options button,
-.offer-generator-color-options button {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  min-height: 34px;
-  padding: 7px 10px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: #ffffff;
-  color: var(--ink-700);
-  font-size: 11.5px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.offer-generator-style-options button:hover,
-.offer-generator-color-options button:hover {
-  border-color: var(--brass);
-  transform: translateY(-1px);
-}
-
-.offer-generator-style-options button.active,
-.offer-generator-color-options button.active {
-  border-color: var(--ink-900);
-  background: var(--ink-900);
-  color: #ffffff;
-}
-
-.style-preview-dot {
-  width: 18px;
-  height: 18px;
-  border: 1px solid #d1d5db;
-  border-radius: 5px;
-  background: #ffffff;
-  position: relative;
-  overflow: hidden;
-}
-
-.style-preview-dot::before,
-.style-preview-dot::after {
-  content: "";
-  position: absolute;
-  left: 3px;
-  right: 3px;
-  height: 2px;
-  border-radius: 2px;
-}
-
-.style-preview-dot::before {
-  top: 4px;
-  background: var(--ink-900);
-}
-
-.style-preview-dot::after {
-  top: 9px;
-  background: #d1d5db;
-  box-shadow: 0 4px 0 #d1d5db;
-}
-
-.style-preview-dot.style-modern {
-  border-radius: 3px;
-}
-
-.style-preview-dot.style-modern::before {
-  height: 4px;
-  top: 2px;
-  background: var(--ink-900);
-}
-
-.style-preview-dot.style-minimal::before {
-  background: #9ca3af;
-}
-
-.style-preview-dot.style-elegant {
-  border-radius: 50%;
-}
-
-.style-preview-dot.style-elegant::before {
-  left: 4px;
-  right: 4px;
-  background: #222222;
-}
-
-.offer-generator-color-swatch {
-  width: 15px;
-  height: 15px;
-  flex: 0 0 15px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 0 0 1px rgba(22, 35, 61, 0.18);
-}
-
-/* Letter themes */
-.offer-generator-a4-page.color-navy {
-  --letter-accent: #1f3557;
-  --letter-accent-soft: #eef3f8;
-}
-
-.offer-generator-a4-page.color-green {
-  --letter-accent: #176b52;
-  --letter-accent-soft: #eaf6f1;
-}
-
-.offer-generator-a4-page.color-burgundy {
-  --letter-accent: #7a263a;
-  --letter-accent-soft: #f7ecef;
-}
-
-.offer-generator-a4-page.color-purple {
-  --letter-accent: #5b3f8c;
-  --letter-accent-soft: #f1edf8;
-}
-
-.offer-generator-a4-page.color-black {
-  --letter-accent: #222222;
-  --letter-accent-soft: #f1f1f1;
-}
-
-.offer-generator-a4-page.style-classic {
-  font-family: Georgia, "Times New Roman", serif;
-}
-
-.offer-generator-a4-page.style-modern {
-  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-}
-
-.offer-generator-a4-page.style-minimal {
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.7;
-}
-
-.offer-generator-a4-page.style-elegant {
-  font-family: Georgia, "Times New Roman", serif;
-  letter-spacing: 0.01em;
-}
-
-.offer-generator-a4-page .offer-generator-letter-date,
-/* Subject should remain plain black */
-.offer-generator-a4-page .offer-generator-letter-subject,
-.offer-generator-a4-page .offer-generator-letter-subject strong {
-  color: #222222 !important;
-}
-
-/* Recipient can still use the selected accent */
-.offer-generator-a4-page .offer-generator-letter-recipient strong {
-  color: var(--letter-accent);
-}
-.offer-generator-a4-page .offer-generator-company-name,
-.offer-generator-a4-page .offer-generator-candidate-name {
-  color: var(--letter-accent) !important;
-}
-.offer-generator-a4-page .offer-generator-letter-divider {
-  background: var(--letter-accent);
-}
-
-.offer-generator-a4-page .offer-generator-letter-subject {
-  border-left: 3px solid var(--letter-accent);
-  padding: 10px 12px;
-  background: var(--letter-accent-soft);
-}
-
-.offer-generator-a4-page.style-modern .offer-generator-letter-divider {
-  height: 4px;
-}
-
-.offer-generator-a4-page.style-minimal .offer-generator-letter-divider {
-  height: 1px;
-}
-
-.offer-generator-a4-page.style-elegant .offer-generator-letter-divider {
-  height: 1px;
-  margin-top: 20px;
-  margin-bottom: 24px;
-}
-
-.offer-generator-a4-page.style-elegant .offer-generator-letter-company h1 {
-  letter-spacing: 0.02em;
-}
-
-/* Keep candidate actions aligned even when the candidate name is long. */
-.offer-generator-candidate-row {
-  align-items: center;
-}
-
-.offer-generator-candidate-main {
-  min-width: 0;
-  flex: 1 1 auto;
-}
-
-.offer-generator-candidate-info {
-  min-width: 0;
-}
-
-.offer-generator-candidate-info strong,
-.offer-generator-candidate-info > span {
-  overflow-wrap: anywhere;
-}
-
-/* A4 print settings. The generated PDF uses the same fixed A4 dimensions. */
-@page {
-  size: A4 portrait;
-  margin: 0;
-}
-
-@media print {
-  html,
-  body {
-    margin: 0 !important;
-    padding: 0 !important;
-    background: #ffffff !important;
-  }
-
-  .offer-generator-page {
-    min-height: auto;
-    padding: 0 !important;
-    background: #ffffff !important;
-  }
-
-  .offer-generator-page > * {
-    max-width: none;
-  }
-
-  .offer-generator-a4-wrapper,
-  .offer-generator-all-preview {
-    display: block;
-    width: 210mm;
-    min-width: 210mm;
-    max-height: none;
-    overflow: visible;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: #ffffff;
-  }
-
-  .offer-generator-a4-page {
-    width: 210mm !important;
-    min-width: 210mm !important;
-    max-width: 210mm !important;
-    height: auto !important;
-    min-height: 297mm !important;
-    max-height: none !important;
-    margin: 0;
-    box-shadow: none;
-    overflow: visible;
-    break-after: page;
-    page-break-after: always;
-  }
-}
-
-/* Responsive layout */
-@media (max-width: 1200px) {
-  .offer-generator-layout {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  }
-}
-
-@media (max-width: 1100px) {
-  .offer-generator-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .offer-generator-preview-column {
-    position: static;
-  }
-
-  .offer-generator-style-controls {
-    grid-template-columns: 1fr;
-  }
-
-  .offer-generator-a4-wrapper,
-  .offer-generator-all-preview {
-    max-height: none;
-  }
-}
-
-@media (max-width: 640px) {
-  .offer-generator-page {
-    padding: 20px 12px 40px;
-  }
-
-  .offer-generator-form-grid,
-  .offer-generator-template-selector {
-    grid-template-columns: 1fr;
-  }
-
-  .offer-generator-header {
-    flex-direction: column;
-  }
-
-  .offer-generator-candidate-row {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .offer-generator-candidate-actions {
-    width: 100%;
-    margin-left: 0;
-    justify-content: flex-end;
-  }
-
-  /* Do not stretch the icon-only buttons on mobile. */
-  .offer-generator-candidate-actions button:nth-child(3),
-  .offer-generator-candidate-actions button:nth-child(4) {
-    flex: 0 0 34px;
-  }
-
-  .offer-generator-a4-wrapper,
-  .offer-generator-all-preview {
-    align-items: flex-start;
-    padding: 12px;
-  }
-}
-
-/* ========================================
-   SUBJECT — PLAIN TEXT
-======================================== */
-
-.offer-generator-a4-page .offer-generator-letter-subject {
-  border: none !important;
-  border-left: none !important;
-  padding: 0 !important;
-  margin-bottom: 20px !important;
-  background: transparent !important;
-}
-
-/* ========================================
-   TERMS & CONDITIONS — BUTTONS
-   ======================================== */
-.offer-generator-terms-toggle,
-.offer-generator-term-add,
-.offer-generator-term-remove {
-  font-family: inherit;
-  cursor: pointer;
-}
-
-.offer-generator-terms-minimize {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 32px;
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
-  min-height: 32px;
-  padding: 0;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface);
-  color: var(--ink-700);
-  font-family: inherit;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1;
-  cursor: pointer;
-  box-sizing: border-box;
-  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease, transform 0.1s ease;
-}
-
-.offer-generator-terms-minimize:hover {
-  border-color: var(--brass);
-  color: var(--brass-dark);
-  background: var(--brass-light);
-}
-
-.offer-generator-terms-minimize:active {
-  transform: translateY(1px);
-}
-
-.offer-generator-terms-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 58px;
-  min-height: 32px;
-  padding: 6px 12px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--ink-700);
-  font-size: 11.5px;
-  font-weight: 700;
-  transition: all 0.15s ease;
-}
-
-.offer-generator-terms-toggle:hover {
-  border-color: var(--brass);
-  color: var(--brass-dark);
-  background: var(--brass-light);
-  transform: translateY(-1px);
-}
-
-.offer-generator-terms-toggle:active {
-  transform: translateY(1px);
-}
-
-.offer-generator-term-add {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  min-height: 34px;
-  padding: 7px 12px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--ink-700);
-  font-size: 11.5px;
-  font-weight: 700;
-  transition: all 0.15s ease;
-}
-
-.offer-generator-term-add:hover {
-  border-color: var(--brass);
-  color: var(--brass-dark);
-  background: var(--brass-light);
-  transform: translateY(-1px);
-}
-
-.offer-generator-term-remove {
-  flex: 0 0 34px;
-  width: 34px;
-  height: 34px;
-  padding: 0;
-  border: 1px solid var(--danger-light);
-  border-radius: 50%;
-  background: var(--surface);
-  color: var(--danger);
-  font-size: 18px;
-  line-height: 1;
-  transition: all 0.15s ease;
-}
-
-.offer-generator-term-remove:hover {
-  background: var(--danger-light);
-  border-color: #e5b8b8;
-}
-
-/* Keep the Add Candidate button's CSS plus icon as the only plus sign. */
-.offer-generator-add-candidate::before {
-  flex: 0 0 13px;
-}
-
-
-/* ========================================
-   TERMS & CONDITIONS — LETTER LAYOUT
-   Allow the letter to grow instead of clipping
-   longer professional terms.
-======================================== */
 .offer-generator-letter-terms {
   margin-top: 12px;
-  margin-bottom: 18px;
-  break-inside: auto;
 }
 
 .offer-generator-letter-terms h3 {
-  margin: 0 0 7px;
   font-size: 13px;
   font-weight: 700;
-  color: inherit;
+  color: var(--letter-accent, #1f3557);
+  margin: 0 0 7px;
+  font-family: inherit;
 }
 
 .offer-generator-letter-terms ol {
@@ -2420,661 +2977,1523 @@
 }
 
 .offer-generator-letter-terms li {
-  margin: 0 0 6px;
-  padding-left: 2px;
+  font-size: 13px;
   line-height: 1.55;
-  break-inside: avoid;
+  margin-bottom: 6px;
 }
 
-@media print {
-  .offer-generator-letter-terms {
-    break-inside: auto;
-  }
-
-  .offer-generator-letter-terms li {
-    break-inside: avoid;
-  }
+.offer-generator-letter-closing {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.65;
 }
 
-/* ========================================
-   BACK TO TOOLS
-======================================== */
-.offer-generator-back-to-tools {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  width: fit-content;
-  margin-bottom: 14px;
-  padding: 8px 12px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: #ffffff;
-  color: var(--ink-700);
+.offer-generator-signature {
+  margin-top: 8px;
+}
+
+.offer-generator-signature-space {
+  position: relative;
+  height: var(--signature-space-height, 12mm);
+}
+
+.offer-generator-signature-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--signature-width, 48mm);
+  height: auto;
+  object-fit: contain;
+  transform: translate(var(--signature-x, 0mm), var(--signature-y, 0mm));
+}
+
+.offer-generator-signature strong {
+  display: block;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.offer-generator-signature span {
+  display: block;
   font-size: 12px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.15s ease;
+  color: #6b6455;
+  margin-top: 2px;
 }
 
-.offer-generator-back-to-tools span {
-  font-size: 16px;
-  line-height: 1;
+/* Signature / logo drag affordance while editors are open ------------------- */
+
+.offer-generator-signature-image,
+.offer-generator-letter-logo[style*='cursor: move'] {
+  cursor: move;
 }
 
-.offer-generator-back-to-tools:hover {
-  border-color: var(--brass);
-  color: var(--brass-dark);
-  background: var(--brass-light);
-  transform: translateY(-1px);
-}
-/* ============================================================
-   MODERN WARNING POPUP
-   Warning UI only — do not modify other generator styles
-   ============================================================ */
+/* ---------------------------------------------------------------------- */
+/* Warning / confirm modal                                                 */
+/* ---------------------------------------------------------------------- */
 
 .offer-generator-warning-overlay {
   position: fixed;
   inset: 0;
-  z-index: 9999;
-
+  background: rgba(27, 35, 51, 0.55);
+  backdrop-filter: blur(2px);
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 24px;
-
-  background: rgba(15, 23, 42, 0.42);
-
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-
-  animation: offer-generator-warning-fade 160ms ease-out;
+  z-index: 100;
 }
 
 .offer-generator-warning-modal {
   position: relative;
-
-  width: min(440px, 100%);
-
-  padding: 28px 28px 24px;
-
-  border: 1px solid rgba(148, 163, 184, 0.22);
-  border-radius: 20px;
-
-  background: #ffffff;
-
-  box-shadow:
-    0 24px 70px rgba(15, 23, 42, 0.22),
-    0 8px 24px rgba(15, 23, 42, 0.08);
-
-  color: #172033;
-
-  animation:
-    offer-generator-warning-pop
-    180ms cubic-bezier(.2, .8, .2, 1);
+  width: 100%;
+  max-width: 440px;
+  background: #fff;
+  border-radius: var(--radius-l);
+  padding: 30px 28px 26px;
+  box-shadow: var(--shadow-pop);
+  text-align: left;
 }
 
 .offer-generator-warning-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--brass-tint);
+  color: var(--brass-dark);
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 46px;
-  height: 46px;
-
-  margin-bottom: 18px;
-
-  border-radius: 14px;
-
-  background: #fff4e5;
-  color: #d97706;
-
-  font-size: 22px;
-  font-weight: 800;
-
-  box-shadow:
-    inset 0 0 0 1px rgba(217, 119, 6, 0.12);
-}
-
-.offer-generator-warning-content {
-  padding-right: 28px;
+  font-size: 19px;
+  font-weight: 700;
+  font-family: 'Fraunces', serif;
+  margin-bottom: 16px;
 }
 
 .offer-generator-warning-content h3 {
-  margin: 0 0 7px;
-
-  color: #111827;
-
-  font-size: 18px;
-  line-height: 1.3;
-  font-weight: 750;
-
-  letter-spacing: -0.02em;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
 .offer-generator-warning-content p {
   margin: 0;
-
-  color: #667085;
-
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  white-space: pre-line;
 }
 
 .offer-generator-warning-close {
   position: absolute;
-
-  top: 18px;
-  right: 18px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 34px;
-  height: 34px;
-
-  padding: 0;
-
-  border: 0;
-  border-radius: 10px;
-
-  background: transparent;
-  color: #98a2b3;
-
-  font-size: 23px;
-  line-height: 1;
-
+  top: 16px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: var(--surface-alt);
+  color: var(--ink-soft);
+  font-size: 15px;
   cursor: pointer;
-
-  transition:
-    background 140ms ease,
-    color 140ms ease,
-    transform 140ms ease;
 }
 
 .offer-generator-warning-close:hover {
-  background: #f2f4f7;
-  color: #344054;
-
-  transform: scale(1.04);
+  background: var(--paper-deep);
+  color: var(--ink);
 }
 
 .offer-generator-warning-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  min-width: 82px;
-  height: 40px;
-
   margin-top: 22px;
-  margin-left: auto;
-
-  padding: 0 16px;
-
-  border: 0;
-  border-radius: 11px;
-
-  background: #1f3557;
-  color: #ffffff;
-
-  font-size: 13px;
-  font-weight: 700;
-
+  width: 100%;
+  border: none;
+  background: var(--ink);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: var(--radius-s);
   cursor: pointer;
-
-  box-shadow:
-    0 5px 14px rgba(31, 53, 87, 0.18);
-
-  transition:
-    transform 140ms ease,
-    box-shadow 140ms ease,
-    background 140ms ease;
 }
 
 .offer-generator-warning-button:hover {
-  background: #182b47;
-
-  transform: translateY(-1px);
-
-  box-shadow:
-    0 8px 18px rgba(31, 53, 87, 0.24);
-}
-
-.offer-generator-warning-button:active {
-  transform: translateY(0);
-}
-
-@keyframes offer-generator-warning-fade {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes offer-generator-warning-pop {
-  from {
-    opacity: 0;
-    transform: translateY(8px) scale(0.97);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@media (max-width: 520px) {
-  .offer-generator-warning-overlay {
-    padding: 16px;
-  }
-
-  .offer-generator-warning-modal {
-    padding: 24px 20px 20px;
-    border-radius: 18px;
-  }
-}
-
-/* ==========================================================================
-   MODERN WARNING / CONFIRMATION POPUP
-   Popup UI only — existing generator styles remain unchanged
-   ========================================================================== */
-
-.offer-generator-warning-content p {
-  white-space: pre-line;
+  background: #2a3350;
 }
 
 .offer-generator-warning-actions {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
   gap: 10px;
   margin-top: 22px;
 }
 
 .offer-generator-warning-actions .offer-generator-warning-button {
   margin-top: 0;
-  margin-left: 0;
 }
 
 .offer-generator-warning-cancel {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  min-width: 82px;
-  height: 40px;
-
-  padding: 0 16px;
-
-  border: 1px solid #d0d5dd;
-  border-radius: 11px;
-
-  background: #ffffff;
-  color: #344054;
-
-  font-size: 13px;
-  font-weight: 700;
-
+  flex: 1;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: var(--radius-s);
   cursor: pointer;
-
-  transition:
-    background 140ms ease,
-    border-color 140ms ease,
-    transform 140ms ease;
 }
 
 .offer-generator-warning-cancel:hover {
-  background: #f9fafb;
-  border-color: #b8c0cc;
-  transform: translateY(-1px);
+  border-color: var(--ink);
+  color: var(--ink);
 }
 
-.offer-generator-warning-cancel:active {
-  transform: translateY(0);
+.offer-generator-warning-actions .offer-generator-warning-button {
+  flex: 1;
 }
 
+/* ---------------------------------------------------------------------- */
+/* Scrollbars (webkit) — keep them quiet on paper surfaces                 */
+/* ---------------------------------------------------------------------- */
 
-
-/* ============================================================
-   AUTHORIZED SIGNATURE UPLOAD
-   Signature UI only
-   ============================================================ */
-
-.offer-generator-signature-upload-preview {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 12px;
-  flex-wrap: wrap;
+.offer-generator-a4-wrapper::-webkit-scrollbar,
+.offer-generator-all-preview::-webkit-scrollbar,
+.offer-generator-candidates::-webkit-scrollbar {
+  width: 8px;
 }
 
-.offer-generator-signature-upload-preview-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 220px;
-  height: 90px;
-  padding: 10px 16px;
-  border: 1px solid #e4e7ec;
-  border-radius: 12px;
-  background: #fafafa;
-  overflow: hidden;
+.offer-generator-a4-wrapper::-webkit-scrollbar-thumb,
+.offer-generator-all-preview::-webkit-scrollbar-thumb,
+.offer-generator-candidates::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 999px;
 }
 
-.offer-generator-signature-upload-preview-box img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+.offer-generator-a4-wrapper::-webkit-scrollbar-track,
+.offer-generator-all-preview::-webkit-scrollbar-track,
+.offer-generator-candidates::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.offer-generator-signature-image {
-  display: block;
-  width: auto;
-  max-width: 180px;
-  height: auto;
-  max-height: 65px;
-  object-fit: contain;
-}
+/* ---------------------------------------------------------------------- */
+/* Reduced motion                                                          */
+/* ---------------------------------------------------------------------- */
 
-.offer-generator-field-help {
-  margin: 6px 0 0;
-  color: #667085;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-/* ================================================================
-   PRINTABLE A4 FINAL OVERRIDE
-   Word-style 1 inch / 25.4 mm margins on every side.
-   Keep this block last so older A4 rules cannot override it.
-================================================================ */
-.offer-generator-a4-page {
-  width: 210mm !important;
-  min-width: 210mm !important;
-  max-width: none !important;
-  min-height: 297mm !important;
-  height: auto !important;
-  max-height: none !important;
-  padding: var(--letter-margin-top, 25.4mm)
-    var(--letter-margin-right, 25.4mm)
-    var(--letter-margin-bottom, 25.4mm)
-    var(--letter-margin-left, 25.4mm) !important;
-  box-sizing: border-box !important;
-  overflow: visible !important;
-  transform: none !important;
-}
-
-.offer-generator-letter-closing {
-  break-inside: avoid !important;
-  page-break-inside: avoid !important;
-}
-
-.offer-generator-signature {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  gap: 0 !important;
-  margin-top: 14px !important;
-  break-inside: avoid !important;
-  page-break-inside: avoid !important;
-}
-
-.offer-generator-signature-space {
-  position: relative !important;
-  width: 100% !important;
-  height: var(--signature-space-height, 0mm) !important;
-  min-height: 0 !important;
-  margin: 0 0 10px !important;
-  padding: 0 !important;
-  display: block !important;
-  overflow: visible !important;
-  break-inside: avoid !important;
-  page-break-inside: avoid !important;
-}
-
-.offer-generator-signature-image {
-  position: absolute !important;
-  left: var(--signature-x, 0mm) !important;
-  top: var(--signature-y, 0mm) !important;
-  display: block !important;
-  width: var(--signature-width, 48mm) !important;
-  max-width: none !important;
-  max-height: none !important;
-  height: auto !important;
-  object-fit: contain !important;
-  object-position: left top !important;
-  margin: 0 !important;
-  cursor: grab !important;
-  touch-action: none !important;
-  user-select: none !important;
-}
-
-.offer-generator-signature-image:active {
-  cursor: grabbing !important;
-}
-
-.offer-generator-signature strong {
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  line-height: 1.4 !important;
-}
-
-.offer-generator-signature span {
-  display: block !important;
-  margin: 3px 0 0 !important;
-  padding: 0 !important;
-  line-height: 1.4 !important;
-}
-
-@media print {
-  @page {
-    size: A4 portrait;
-    margin: 0;
+@media (prefers-reduced-motion: reduce) {
+  .offer-generator-page * {
+    transition: none !important;
   }
+}
 
+/* ---------------------------------------------------------------------- */
+/* Small screens                                                           */
+/* ---------------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .offer-generator-container {
+    padding: 20px 16px 64px;
+  }
+  .offer-generator-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .offer-generator-card {
+    padding: 18px;
+  }
+  .offer-generator-dynamic-extra-grid {
+    grid-template-columns: 1fr;
+  }
   .offer-generator-a4-page {
-    width: 210mm !important;
-    min-width: 210mm !important;
-    min-height: 297mm !important;
-    padding: var(--letter-margin-top, 25.4mm)
-      var(--letter-margin-right, 25.4mm)
-      var(--letter-margin-bottom, 25.4mm)
-      var(--letter-margin-left, 25.4mm) !important;
-    box-shadow: none !important;
+    width: 100%;
   }
 }
+/* =========================================================
+   TABLE EDITOR — CLEAN CONTROLS
+   ========================================================= */
+.offer-generator-custom-table-toolbar {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) repeat(4, auto);
+  gap: 8px;
+  align-items: center;
+}
 
-/* ========================================
-   PAGE MARGINS EDITOR
-======================================== */
+.offer-generator-custom-table-toolbar input {
+  min-width: 0;
+}
 
-/* Keep all margin labels and inputs on the same baseline. */
-.offer-generator-margin-grid .offer-generator-field label {
-  display: flex;
-  align-items: flex-start;
-  min-height: 18px;
+.offer-generator-table-action-add,
+.offer-generator-table-action-remove {
   white-space: nowrap;
 }
 
-.offer-generator-margin-grid .offer-generator-field input[type="number"] {
-  width: 100%;
-  height: 38px;
-  min-height: 38px;
-  padding: 8px 10px;
-  box-sizing: border-box;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  font-size: 13.5px;
-  line-height: 1.2;
-  color: var(--ink-900);
-  background: var(--surface);
-  font-family: inherit;
+.offer-generator-table-action-remove:disabled,
+.offer-generator-table-column-remove:disabled,
+.offer-generator-table-row-remove:disabled {
+  opacity: .45;
+  cursor: not-allowed;
 }
 
-.offer-generator-margin-grid .offer-generator-field input[type="number"]:focus {
-  outline: none;
-  border-color: var(--ink-300);
-  box-shadow: 0 0 0 3px rgba(31, 53, 87, 0.08);
-}
-
-.offer-generator-page-margins-editor {
-  grid-column: 1 / -1;
-  margin-top: 4px;
-  padding: 18px;
-  border: 1px solid #e4e7ec;
-  border-radius: 14px;
-  background: #fcfcfd;
-}
-
-.offer-generator-margin-presets {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 14px;
-}
-
-.offer-generator-margin-presets button {
-  min-height: 36px;
-  padding: 0 13px;
-  border: 1px solid #d0d5dd;
-  border-radius: 9px;
-  background: #ffffff;
-  color: #344054;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: border-color 140ms ease, background 140ms ease, transform 140ms ease;
-}
-
-.offer-generator-margin-presets button:hover {
-  border-color: #98a2b3;
-  transform: translateY(-1px);
-}
-
-.offer-generator-margin-presets button.active {
-  border-color: #1f3557;
-  background: #1f3557;
-  color: #ffffff;
-}
-
-.offer-generator-margin-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 14px;
-}
-
-.offer-generator-margin-grid .offer-generator-field {
-  margin: 0;
-}
-
-@media (max-width: 700px) {
-  .offer-generator-margin-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 430px) {
-  .offer-generator-margin-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Keep the printable signature block together. */
-.offer-generator-signature,
-.offer-generator-signature-space,
-.offer-generator-signature-image {
-  break-inside: avoid;
-  page-break-inside: avoid;
-}
-
-
-/* ================================================================
-   DYNAMIC SIGNATURE EDITOR
-   The signature owns its layout space. Removing it removes the space.
-================================================================ */
-.offer-generator-signature-upload-actions {
+.offer-generator-table-column-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
+  gap: 5px;
 }
 
-.offer-generator-signature-editor {
+.offer-generator-table-column-header input {
   width: 100%;
-  margin-top: 12px;
-  padding: 14px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: #fbfcfe;
+  min-width: 0;
 }
 
-.offer-generator-signature-editor-heading {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 12px;
+.offer-generator-table-column-remove,
+.offer-generator-table-row-remove {
+  width: 25px;
+  height: 25px;
+  flex: 0 0 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(127, 29, 61, .28);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, .92);
+  color: #7f1d3d;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: .15s ease;
 }
 
-.offer-generator-signature-editor-heading strong {
-  display: block;
-  margin: 0;
-  color: var(--ink-900);
+.offer-generator-table-column-remove:hover:not(:disabled),
+.offer-generator-table-row-remove:hover:not(:disabled) {
+  background: #7f1d3d;
+  color: #fff;
+  border-color: #7f1d3d;
+}
+
+.offer-generator-table-row-action-header,
+.offer-generator-table-row-actions-cell {
+  width: 38px;
+  min-width: 38px;
+  max-width: 38px;
+  text-align: center;
+  padding: 5px !important;
+}
+
+.offer-generator-table-row-actions-cell {
+  vertical-align: middle;
+  background: rgba(248, 250, 252, .72);
+}
+
+/* Compact Word-style toolbar inside table cells. This prevents each cell
+   from becoming a multi-row wall of controls. */
+.offer-generator-paragraph-table-editor .offer-generator-rich-toolbar {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: 40px;
+  padding: 5px 7px;
+  gap: 5px;
+  scrollbar-width: thin;
+}
+
+.offer-generator-paragraph-table-editor .offer-generator-rich-toolbar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.offer-generator-paragraph-table-editor .offer-generator-rich-tool {
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+  padding: 0;
+}
+
+.offer-generator-paragraph-table-editor .offer-generator-rich-select {
+  height: 29px;
+  min-width: 58px;
+  padding: 0 22px 0 7px;
+  font-size: 11px;
+}
+
+.offer-generator-paragraph-table-editor .offer-generator-rich-list-select {
+  min-width: 60px;
+  width: 60px;
+  padding-left: 6px;
+  padding-right: 20px;
+}
+
+.offer-generator-paragraph-table-editor .offer-generator-rich-color-control {
+  width: 28px;
+  min-width: 28px;
+  height: 29px;
+}
+
+.offer-generator-paragraph-table-editor .offer-generator-rich-content {
+  min-height: 64px !important;
+  padding: 10px 12px;
   font-size: 13px;
-}
-
-.offer-generator-signature-editor-heading p {
-  margin: 4px 0 0;
-  color: var(--ink-500);
-  font-size: 12px;
   line-height: 1.45;
 }
 
-.offer-generator-signature-editor-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+@media (max-width: 1100px) {
+  .offer-generator-custom-table-toolbar {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .offer-generator-custom-table-toolbar input {
+    grid-column: 1 / -1;
+  }
 }
 
-.offer-generator-signature-editor-grid .offer-generator-field {
-  margin: 0;
-}
-
-@media (max-width: 700px) {
-  .offer-generator-signature-editor-grid {
+@media (max-width: 720px) {
+  .offer-generator-custom-table-toolbar {
     grid-template-columns: 1fr;
   }
 
-  .offer-generator-signature-editor-heading {
-    flex-direction: column;
+  .offer-generator-custom-table-toolbar input {
+    grid-column: auto;
   }
 }
 
-/* Terms & Conditions header buttons — keep all controls on one horizontal row. */
-.offer-generator-content-heading-actions {
+/* ======================================================================
+   WORD-LIKE DIRECT A4 PREVIEW EDITOR
+   ----------------------------------------------------------------------
+   Data flow:
+   A4 DOM edit -> sanitized HTML -> templates[candidate.letterType]
+   -> left editor -> preview -> vector PDF.
+   Table layout is persisted as columnWidths + rowHeights.
+   ====================================================================== */
+
+.offer-generator-preview-format-toolbar {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 7px 9px;
+  margin-bottom: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px 10px 0 0;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, .06);
+}
+
+.offer-generator-preview-format-label {
+  padding: 0 6px 0 2px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.offer-generator-preview-format-divider {
+  width: 1px;
+  height: 22px;
+  margin: 0 4px;
+  background: var(--line);
+}
+
+.offer-generator-preview-tool {
+  min-width: 30px;
+  height: 30px;
+  padding: 0 7px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.offer-generator-preview-tool:hover:not(:disabled) {
+  background: #f1f5f9;
+  border-color: var(--line);
+}
+
+.offer-generator-preview-tool:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.offer-generator-preview-tool:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.offer-generator-preview-format-help {
+  margin-left: auto;
+  padding-right: 4px;
+  color: #64748b;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.offer-generator-preview-edit-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-top: 0;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 11px;
+}
+
+.offer-generator-preview-edit-banner button {
+  padding: 4px 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.offer-generator-preview-edit-banner button:hover {
+  background: #f1f5f9;
+}
+
+.offer-generator-preview-inline-editor {
+  min-width: 2px;
+  min-height: 1em;
+  outline: none;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  border-radius: 3px;
+  transition: background-color .12s ease, box-shadow .12s ease;
+}
+
+.offer-generator-preview-inline-editor[contenteditable="true"]:hover {
+  background: rgba(37, 99, 235, .025);
+}
+
+.offer-generator-preview-inline-editor[contenteditable="true"]:focus {
+  background: rgba(255, 255, 255, .9);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, .14);
+}
+
+.offer-generator-preview-inline-editor:empty::before {
+  content: attr(data-placeholder);
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.offer-generator-preview-company-name {
+  font: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.offer-generator-preview-candidate-name {
+  font: inherit;
+  font-weight: inherit;
+}
+
+.offer-generator-preview-block-editor {
+  display: block;
+  width: 100%;
+}
+
+.offer-generator-preview-inline-subject {
+  display: inline-block;
+  width: calc(100% - 70px);
+  vertical-align: top;
+}
+
+.offer-generator-preview-term-editor {
+  width: 100%;
+}
+
+.offer-generator-preview-inline-editor ul,
+.offer-generator-preview-inline-editor ol {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding-left: 22px;
+}
+
+/* Preview table = real editable table, not a screenshot. */
+.offer-generator-custom-preview-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.offer-generator-custom-preview-table th,
+.offer-generator-custom-preview-table td {
+  position: relative;
+}
+
+.offer-generator-preview-table-title-editor {
+  display: inline-block;
+  min-width: 40px;
+  font-weight: 700;
+}
+
+.offer-generator-preview-table-cell-editor {
+  width: 100%;
+  min-height: 1.1em;
+  outline: none;
+}
+
+.offer-generator-preview-table-cell-editor[contenteditable="true"]:focus {
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, .22);
+}
+
+.offer-generator-preview-table-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 8px;
+  margin: 6px 0;
+  padding: 3px 0;
+}
+
+.offer-generator-preview-table-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.offer-generator-preview-table-actions button {
+  min-height: 24px;
+  padding: 3px 7px;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  background: #fff;
+  color: #334155;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.offer-generator-preview-table-actions button:hover:not(:disabled) {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.offer-generator-preview-table-actions button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.offer-generator-custom-preview-table-wrap.is-editable {
+  outline: 1px dashed rgba(37, 99, 235, .2);
+  outline-offset: 5px;
+}
+
+/* MS-Word-like column ruler/handle. Drag the vertical line between columns. */
+.offer-generator-table-column-resize-handle {
+  position: absolute;
+  z-index: 20;
+  top: -1px;
+  right: -4px;
+  width: 8px;
+  height: calc(100% + 2px);
+  cursor: col-resize;
+  touch-action: none;
+}
+
+.offer-generator-table-column-resize-handle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  width: 2px;
+  height: 24px;
+  transform: translateY(-50%);
+  border-radius: 2px;
+  background: transparent;
+}
+
+.offer-generator-table-column-resize-handle:hover::after,
+.offer-generator-table-column-resize-handle:active::after {
+  background: #2563eb;
+}
+
+/* MS-Word-like row ruler/handle. Drag the horizontal line below a row. */
+.offer-generator-table-row-resize-handle {
+  position: absolute;
+  z-index: 20;
+  right: 0;
+  bottom: -4px;
+  left: 0;
+  height: 8px;
+  cursor: row-resize;
+  touch-action: none;
+}
+
+.offer-generator-table-row-resize-handle::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: 50%;
+  left: 0;
+  height: 2px;
+  transform: translateY(-1px);
+  background: transparent;
+}
+
+.offer-generator-table-row-resize-handle:hover::after,
+.offer-generator-table-row-resize-handle:active::after {
+  background: #2563eb;
+}
+
+.offer-generator-custom-preview-table-wrap.is-editable .offer-generator-custom-preview-table th,
+.offer-generator-custom-preview-table-wrap.is-editable .offer-generator-custom-preview-table td {
+  overflow: visible;
+}
+
+@media (max-width: 900px) {
+  .offer-generator-preview-format-help {
+    display: none;
+  }
+
+  .offer-generator-preview-inline-subject {
+    width: calc(100% - 64px);
+  }
+
+  .offer-generator-preview-table-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .offer-generator-preview-table-actions {
+    justify-content: flex-start;
+  }
+}
+
+/* ========================================================================
+   A4 PREVIEW OVERFLOW FIX
+   Keep the paper itself exactly A4. The previous min-height allowed the
+   browser page to grow beyond 297mm when the letter content was tall.
+   ======================================================================== */
+.offer-generator-a4-page {
+  box-sizing: border-box;
+  height: 297mm;
+  min-height: 297mm;
+  max-height: 297mm;
+  overflow: hidden;
+}
+
+/* Tighten only the browser preview rhythm so normal offer letters fit the
+   physical A4 canvas without changing the PDF renderer's measurements. */
+.offer-generator-letter-logo {
+  margin-bottom: 10px;
+}
+
+.offer-generator-letter-divider {
+  margin-top: 12px;
+  margin-bottom: 14px;
+}
+
+.offer-generator-letter-subject {
+  margin-top: 10px;
+  margin-bottom: 22px;
+}
+
+.offer-generator-letter-salutation {
+  margin-bottom: 10px;
+}
+
+.offer-generator-letter-paragraph-block {
+  margin-bottom: 9px;
+}
+
+.offer-generator-letter-terms {
+  margin-top: 9px;
+}
+
+.offer-generator-letter-terms h3 {
+  margin-bottom: 5px;
+}
+
+.offer-generator-letter-terms li {
+  margin-bottom: 4px;
+}
+
+.offer-generator-letter-closing {
+  margin-top: 8px;
+}
+
+.offer-generator-signature {
+  margin-top: 5px;
+}
+
+/* If a user deliberately creates a very long letter, don't let content
+   paint outside the paper. The existing outer preview remains scrollable. */
+.offer-generator-a4-page > * {
+  max-width: 100%;
+}
+
+/* ========================================================================
+   Collapsible editor sections
+   ======================================================================== */
+.offer-generator-section-minimize {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--offer-generator-border, #d8d0c0);
+  border-radius: 8px;
+  background: #fffdf8;
+  color: var(--offer-generator-ink, #1f3557);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, transform .15s ease;
+}
+
+.offer-generator-section-minimize:hover {
+  background: #f4efe5;
+  border-color: #bdb29f;
+}
+
+.offer-generator-section-minimize:active {
+  transform: translateY(1px);
+}
+
+.offer-generator-section-header > .offer-generator-section-minimize,
+.offer-generator-content-heading > .offer-generator-section-minimize,
+.offer-generator-inline-template-header > .offer-generator-section-minimize {
+  margin-left: auto;
+}
+
+.offer-generator-inline-template-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .offer-generator-section-minimize {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* ========================================================================
+   Collapsible editor sections
+   ======================================================================== */
+.offer-generator-section-minimize {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--offer-generator-border, #d8d0c0);
+  border-radius: 8px;
+  background: #fffdf8;
+  color: var(--offer-generator-ink, #1f3557);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, transform .15s ease;
+}
+.offer-generator-section-minimize:hover { background: #f4efe5; border-color: #bdb29f; }
+.offer-generator-section-minimize:active { transform: translateY(1px); }
+.offer-generator-section-header > .offer-generator-section-minimize,
+.offer-generator-content-heading > .offer-generator-section-minimize,
+.offer-generator-inline-template-header > .offer-generator-section-minimize { margin-left: auto; }
+.offer-generator-inline-template-header { display: flex; align-items: center; gap: 12px; }
+@media (max-width: 640px) { .offer-generator-section-minimize { width: 32px; height: 32px; } }
+
+/* Candidate cards: keep the action buttons on the same row as the candidate details. */
+.offer-generator-candidate-row {
   flex-wrap: nowrap;
 }
 
-/* Terms & Conditions header: keep the title readable while controls stay horizontal. */
-.offer-generator-terms-editor > .offer-generator-content-heading > div:first-child {
+.offer-generator-candidate-main {
   flex: 1 1 auto;
-  min-width: 180px;
+  min-width: 0;
 }
 
-.offer-generator-terms-editor > .offer-generator-content-heading h3 {
+.offer-generator-candidate-actions {
+  margin-left: auto;
+  flex: 0 0 auto;
   white-space: nowrap;
+}
+
+/* Keep the cards usable on smaller screens. */
+@media (max-width: 720px) {
+  .offer-generator-candidate-row {
+    flex-wrap: wrap;
+  }
+
+  .offer-generator-candidate-actions {
+    width: 100%;
+    margin-left: 28px;
+    justify-content: flex-start;
+  }
+}
+
+
+/* =========================================================
+   TABLE EDITOR — KEEP EVERYTHING INSIDE THE TABLE/CARD
+   The rich toolbar inside narrow table cells must not push
+   the table beyond its parent. It scrolls horizontally when
+   necessary instead of overflowing the cell.
+   ========================================================= */
+
+.offer-generator-paragraph-table-editor,
+.offer-generator-custom-table-editor {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.offer-generator-custom-table-scroll {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+.offer-generator-custom-editor-table {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+
+.offer-generator-custom-editor-table th,
+.offer-generator-custom-editor-table td {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.offer-generator-table-cell-rich-editor {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.offer-generator-table-cell-rich-editor .offer-generator-rich-toolbar {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.offer-generator-table-cell-rich-editor .offer-generator-rich-toolbar-group,
+.offer-generator-table-cell-rich-editor .offer-generator-rich-toolbar button,
+.offer-generator-table-cell-rich-editor .offer-generator-rich-toolbar select {
+  flex-shrink: 0;
+}
+
+.offer-generator-table-cell-rich-editor .offer-generator-rich-toolbar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.offer-generator-table-cell-rich-editor .offer-generator-rich-toolbar::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 999px;
+}
+
+.offer-generator-table-cell-rich-editor .offer-generator-rich-editor-surface {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Prevent the table action row from forcing the editor wider. */
+.offer-generator-custom-table-toolbar {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.offer-generator-custom-table-toolbar input,
+.offer-generator-custom-table-toolbar button {
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 900px) {
+  .offer-generator-custom-table-toolbar {
+    grid-template-columns: minmax(0, 1fr) repeat(4, auto);
+  }
+}
+
+
+/* ========================================================================
+   PREVIEW PAGE FLOW FIX
+   IMPORTANT: Do not clip the browser preview when a letter is taller than
+   one physical A4 page. The vector PDF renderer handles its own A4 page
+   breaks; this rule only prevents the on-screen preview from cutting the
+   last terms/signature block.
+   ======================================================================== */
+
+/* A preview page must grow with its actual content instead of hiding the
+   bottom. It keeps an A4 minimum height, but never clips text/signatures. */
+.offer-generator-a4-page {
+  height: auto !important;
+  min-height: 297mm !important;
+  max-height: none !important;
+  overflow: visible !important;
+  flex: 0 0 auto;
+}
+
+/* Keep the preview canvas itself responsible for scrolling. */
+.offer-generator-a4-wrapper,
+.offer-generator-all-preview {
+  overflow-y: auto;
+  overflow-x: hidden;
+  align-items: center;
+}
+
+/* Never clip the final letter blocks inside the browser preview. */
+.offer-generator-letter-terms,
+.offer-generator-letter-closing,
+.offer-generator-signature {
+  overflow: visible;
+}
+
+/* A long term/paragraph must wrap rather than create horizontal overflow. */
+.offer-generator-letter-terms li,
+.offer-generator-letter-terms li > *,
+.offer-generator-letter-rich-paragraph,
+.offer-generator-letter-closing,
+.offer-generator-signature {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* The all-candidate stack needs enough separation when one letter grows. */
+.offer-generator-all-preview {
+  gap: 34px;
+}
+
+/* ========================================================================
+   TABLE EDITOR — MS WORD STYLE RESIZE CURSORS + FONT FAMILY
+   ======================================================================== */
+
+.offer-generator-rich-font-compact {
+  min-width: 96px !important;
+  width: 96px;
+  font-size: 11px !important;
+}
+
+.offer-generator-table-column-header {
+  position: relative;
+  min-width: 0;
+  width: 100%;
+}
+
+/* Visible vertical slider cursor between editor columns. */
+.offer-generator-editor-table-column-resize-handle {
+  position: absolute;
+  z-index: 30;
+  top: -8px;
+  right: -6px;
+  width: 12px;
+  height: calc(100% + 16px);
+  cursor: col-resize;
+  touch-action: none;
+}
+
+.offer-generator-editor-table-column-resize-handle::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 4px;
+  height: 34px;
+  transform: translateY(-50%);
+  border-radius: 4px;
+  background: var(--line-strong);
+  box-shadow: 0 -5px 0 -1px var(--line-strong), 0 5px 0 -1px var(--line-strong);
+  opacity: .7;
+}
+
+.offer-generator-editor-table-column-resize-handle:hover::before,
+.offer-generator-editor-table-column-resize-handle:active::before {
+  background: var(--brass);
+  box-shadow: 0 -5px 0 -1px var(--brass), 0 5px 0 -1px var(--brass);
+  opacity: 1;
+}
+
+/* Visible horizontal slider cursor at the bottom of each editor row. */
+.offer-generator-table-row-actions-cell {
+  position: relative;
+}
+
+.offer-generator-editor-table-row-resize-handle {
+  position: absolute;
+  z-index: 30;
+  left: -4px;
+  right: -4px;
+  bottom: -6px;
+  height: 12px;
+  cursor: row-resize;
+  touch-action: none;
+}
+
+.offer-generator-editor-table-row-resize-handle::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 4px;
+  width: 34px;
+  height: 4px;
+  transform: translateX(-50%);
+  border-radius: 4px;
+  background: var(--line-strong);
+  box-shadow: -5px 0 0 -1px var(--line-strong), 5px 0 0 -1px var(--line-strong);
+  opacity: .7;
+}
+
+.offer-generator-editor-table-row-resize-handle:hover::before,
+.offer-generator-editor-table-row-resize-handle:active::before {
+  background: var(--brass);
+  box-shadow: -5px 0 0 -1px var(--brass), 5px 0 0 -1px var(--brass);
+  opacity: 1;
+}
+
+/* Keep the table geometry stable while dragging. */
+.offer-generator-custom-editor-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.offer-generator-custom-editor-table th,
+.offer-generator-custom-editor-table td {
+  position: relative;
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .offer-generator-rich-font-compact {
+    min-width: 88px !important;
+    width: 88px;
+  }
+}
+
+/* Preview toolbar: font family, size and text color controls */
+.offer-generator-preview-format-select {
+  height: 30px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  padding: 0 8px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.offer-generator-preview-font-family {
+  width: 128px;
+}
+
+.offer-generator-preview-font-size {
+  width: 72px;
+}
+
+.offer-generator-preview-format-select:focus {
+  outline: 2px solid var(--brass);
+  outline-offset: 1px;
+}
+
+.offer-generator-preview-format-select:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.offer-generator-preview-color-control {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.offer-generator-preview-color-control:hover {
+  background: #f1f5f9;
+  border-color: var(--line);
+}
+
+.offer-generator-preview-color-control input[type='color'] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.offer-generator-preview-color-control::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  bottom: 4px;
+  height: 3px;
+  border-radius: 2px;
+  background: currentColor;
+  pointer-events: none;
+}
+
+@media (max-width: 720px) {
+  .offer-generator-preview-format-toolbar {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+
+  .offer-generator-preview-format-select,
+  .offer-generator-preview-color-control,
+  .offer-generator-preview-tool,
+  .offer-generator-preview-format-divider,
+  .offer-generator-preview-format-label {
+    flex-shrink: 0;
+  }
+}
+
+
+/* Named font-color dropdown for the A4 preview toolbar */
+.offer-generator-preview-color-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.offer-generator-preview-color-icon {
+  width: 24px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink);
+  border-bottom: 3px solid currentColor;
+}
+
+.offer-generator-preview-color-select {
+  height: 31px;
+  min-width: 88px;
+  padding: 0 22px 0 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  background: #fff;
+  color: var(--ink);
+  font: 600 11px/1.2 'Inter', sans-serif;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.offer-generator-preview-color-select:focus {
+  outline: 2px solid var(--brass);
+  outline-offset: 1px;
+}
+
+@media (max-width: 720px) {
+  .offer-generator-preview-color-select {
+    min-width: 76px;
+  }
+}
+
+
+/* =========================================================
+   PREVIEW TOOLBAR COLOR LIST — FINAL OVERRIDE
+   The earlier color-control rule used a 30px icon width for
+   the native color picker. Now that the control is a named
+   <select>, that width would clip "Color" to "or".
+   ========================================================= */
+
+.offer-generator-preview-format-toolbar
+  .offer-generator-preview-color-control {
+  width: auto !important;
+  min-width: 0 !important;
+  height: 31px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 4px !important;
+  position: static !important;
+  overflow: visible !important;
+  border: 0 !important;
+  background: transparent !important;
+  cursor: default !important;
+}
+
+.offer-generator-preview-format-toolbar
+  .offer-generator-preview-color-control::after {
+  display: none !important;
+  content: none !important;
+}
+
+.offer-generator-preview-format-toolbar
+  .offer-generator-preview-color-icon {
+  width: 24px !important;
+  height: 30px !important;
+  flex: 0 0 24px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: static !important;
+  color: var(--ink) !important;
+  border-bottom: 3px solid currentColor !important;
+}
+
+.offer-generator-preview-format-toolbar
+  .offer-generator-preview-color-select {
+  display: inline-block !important;
+  width: 88px !important;
+  min-width: 88px !important;
+  max-width: 88px !important;
+  height: 31px !important;
+  flex: 0 0 88px !important;
+  padding: 0 22px 0 7px !important;
+  border: 1px solid var(--line-strong) !important;
+  border-radius: 5px !important;
+  background: #fff !important;
+  color: var(--ink) !important;
+  font: 600 11px/1.2 'Inter', sans-serif !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
+}
+
+.offer-generator-preview-format-toolbar
+  .offer-generator-preview-color-select:disabled {
+  opacity: .5 !important;
+  cursor: not-allowed !important;
+}
+
+@media (max-width: 720px) {
+  .offer-generator-preview-format-toolbar
+    .offer-generator-preview-color-select {
+    width: 82px !important;
+    min-width: 82px !important;
+    max-width: 82px !important;
+    flex-basis: 82px !important;
+  }
+}
+
+/* ========================================================================
+   SINGLE A4 PREVIEW — SHARED SCROLL CONTAINER
+   Toolbar/banner stay pinned while the physical A4 sheet can scroll all the
+   way upward underneath them. The scrollbar belongs to this whole preview
+   area, not only to the lower paper wrapper.
+   ======================================================================== */
+.offer-generator-preview-scroll-shell {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  max-height: calc(100vh - 105px);
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: auto;
+  scrollbar-color: #64748b #e7e3d9;
+  scrollbar-gutter: stable;
+  background: linear-gradient(180deg, var(--paper-deep), var(--paper) 180px);
+  border-radius: var(--radius-l);
+  padding-bottom: 110px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.offer-generator-preview-scroll-shell::-webkit-scrollbar {
+  width: 13px;
+}
+
+.offer-generator-preview-scroll-shell::-webkit-scrollbar-track {
+  background: #e7e3d9;
+  border-radius: 999px;
+}
+
+.offer-generator-preview-scroll-shell::-webkit-scrollbar-thumb {
+  background: #64748b;
+  border: 3px solid #e7e3d9;
+  border-radius: 999px;
+  min-height: 80px;
+}
+
+.offer-generator-preview-scroll-shell::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* The formatting controls remain visible while the A4 page moves underneath. */
+.offer-generator-preview-sticky-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: var(--paper-deep);
+}
+
+.offer-generator-preview-sticky-toolbar
+  .offer-generator-preview-format-toolbar {
+  position: relative;
+  z-index: 101;
+  border-radius: 10px 10px 0 0;
+}
+
+.offer-generator-preview-sticky-toolbar
+  .offer-generator-preview-edit-banner {
+  position: relative;
+  z-index: 100;
+}
+
+/* The A4 wrapper is no longer a second scrolling viewport. */
+.offer-generator-preview-scroll-shell .offer-generator-a4-wrapper {
+  max-height: none !important;
+  overflow: visible !important;
+  padding: 28px 10px 44px;
+  background: transparent;
+  border-radius: 0;
+}
+
+/* Extra top/bottom breathing room makes the scrollbar useful for moving the
+   sheet high enough that its header can pass beneath the sticky toolbar. */
+.offer-generator-preview-scroll-shell .offer-generator-a4-wrapper::after {
+  content: "";
+  display: block;
+  height: 40px;
+}
+
+@media (max-width: 900px) {
+  .offer-generator-preview-scroll-shell {
+    max-height: calc(100vh - 95px);
+    padding-bottom: 90px;
+  }
+}
+
+/* ========================================================================
+   FINAL PREVIEW WORKSPACE / SCROLL FIX
+   Give the right-side preview a tall, dedicated viewport. The scrollbar can
+   travel from the very top of the A4 sheet to the bottom signature area while
+   the formatting toolbar remains pinned above the moving paper.
+   ======================================================================== */
+.offer-generator-preview-scroll-shell {
+  height: calc(100vh - 185px) !important;
+  max-height: none !important;
+  min-height: 520px;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding-bottom: 140px !important;
+  scrollbar-width: auto !important;
+  scrollbar-color: #64748b #e7e3d9 !important;
+  scroll-padding-top: 8px;
+}
+
+.offer-generator-preview-scroll-shell::-webkit-scrollbar {
+  width: 16px;
+}
+
+.offer-generator-preview-scroll-shell::-webkit-scrollbar-track {
+  background: #e7e3d9;
+  border-radius: 999px;
+}
+
+.offer-generator-preview-scroll-shell::-webkit-scrollbar-thumb {
+  background: #64748b;
+  border: 3px solid #e7e3d9;
+  border-radius: 999px;
+  min-height: 110px;
+}
+
+.offer-generator-preview-scroll-shell::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+.offer-generator-preview-sticky-toolbar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 200 !important;
+}
+
+.offer-generator-preview-sticky-toolbar .offer-generator-preview-format-toolbar,
+.offer-generator-preview-sticky-toolbar .offer-generator-preview-edit-banner {
+  position: relative;
+  z-index: 201;
+}
+
+.offer-generator-preview-scroll-shell .offer-generator-a4-wrapper {
+  position: relative;
+  z-index: 1;
+  padding-top: 18px !important;
+  padding-bottom: 70px !important;
+  overflow: visible !important;
+  max-height: none !important;
+}
+
+/* The A4 sheet must never be clipped by its scrolling wrapper. */
+.offer-generator-preview-scroll-shell .offer-generator-a4-page {
+  overflow: visible !important;
+  max-height: none !important;
+}
+
+@media (max-width: 900px) {
+  .offer-generator-preview-scroll-shell {
+    height: calc(100vh - 150px) !important;
+    min-height: 420px;
+  }
+}
+
+.offer-generator-preview-highlight-control .offer-generator-preview-highlight-icon {
+  width: 24px !important;
+  height: 30px !important;
+  flex: 0 0 24px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #f59e0b !important;
+  border-bottom: 3px solid currentColor !important;
+  font-size: 13px !important;
+}
+
+
+/* =========================================================
+   TOOLBAR-ONLY DOCUMENT FORMATTING
+   Letter theme is fixed to the clean corporate default.
+   Text formatting is intentionally controlled from the Word-like toolbar.
+   ========================================================= */
+.offer-generator-preview-format-toolbar,
+.offer-generator-rich-toolbar {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.offer-generator-preview-format-toolbar {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: thin;
+}
+
+.offer-generator-preview-format-toolbar > *,
+.offer-generator-rich-toolbar > * {
+  flex-shrink: 0;
 }
