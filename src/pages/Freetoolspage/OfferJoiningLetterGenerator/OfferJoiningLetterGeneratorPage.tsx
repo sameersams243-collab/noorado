@@ -3196,7 +3196,11 @@ ${clonedPage.outerHTML}
 </body>
 </html>`;
 
-    const response = await fetch("http://127.0.0.1:8787/generate-pdf", {
+    const pdfEndpoint = import.meta.env.DEV
+  ? "http://127.0.0.1:8787/generate-pdf"
+  : "/api/generate-pdf";
+
+const response = await fetch(pdfEndpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
