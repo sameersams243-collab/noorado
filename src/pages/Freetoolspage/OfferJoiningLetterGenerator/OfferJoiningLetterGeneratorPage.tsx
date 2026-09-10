@@ -998,7 +998,6 @@ const replaceCustomTokensInRichHtml = (
     hrDesignation: company.hrDesignation || "HR Designation",
     letterDate: formatDate(company.letterDate) || "Letter Date",
     candidateEmail: candidate.email || "Candidate Email",
-    candidatePhone: candidate.phone || "Candidate Phone",
     candidateAddress: candidate.address || "Candidate Address",
   };
 
@@ -2184,7 +2183,7 @@ function OfferJoiningLetterGeneratorPage() {
 
   const updateCandidateDetails = (
     candidateId: string,
-    field: "email" | "phone" | "address",
+    field: "email" |     "address",
     value: string
   ) => {
     setCandidates((current) =>
@@ -5403,21 +5402,7 @@ ${clonedPage.outerHTML}
                                       />
                                     </div>
 
-                                    <div className="offer-generator-field">
-                                      <label>Phone</label>
-                                      <input
-                                        type="text"
-                                        value={candidate.phone || ""}
-                                        onChange={(event) =>
-                                          updateCandidateDetails(
-                                            candidate.id,
-                                            "phone",
-                                            event.target.value
-                                          )
-                                        }
-                                        placeholder="+91 98765 43210"
-                                      />
-                                    </div>
+                                   
 
                                     <div className="offer-generator-field offer-generator-field-full">
                                       <label>Address</label>
