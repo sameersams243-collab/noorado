@@ -2594,35 +2594,35 @@ function GSTInvoiceGeneratorPage() {
                             Discount %
                           </label>
 
-                          <input 
-  type="number" 
-  min="0" 
-  max="100" 
-  step="0.01" 
-  value={item.discount || ""} 
-  onChange={(e) => { 
-    const value = e.target.value; 
+                          <input
+  type="number"
+  min="0"
+  max="100"
+  step="0.01"
+  value={item.discount || ""}
+  onChange={(e) => {
+    const value = e.target.value;
 
-    // Allow empty value while editing. 
-    if (value === "") { 
-      updateItem(item.id, "discount", 0); 
-      return; 
-    } 
+    // Allow empty value while editing.
+    if (value === "") {
+      updateItem(item.id, "discount", 0);
+      return;
+    }
 
-    // Allow only up to 3 digits before decimal and 2 after decimal. 
-    if (!/^\d{0,3}(\.\d{0,2})?$/.test(value)) { 
-      return; 
-    } 
+    // Allow only up to 3 digits before decimal and 2 after decimal.
+    if (!/^\d{0,3}(\.\d{0,2})?$/.test(value)) {
+      return;
+    }
 
-    const numericValue = Number(value); 
+    const numericValue = Number(value);
 
-    // Keep discount between 0 and 100. 
-    if (numericValue < 0 || numericValue > 100) { 
-      return; 
-    } 
+    // Keep discount between 0 and 100.
+    if (numericValue < 0 || numericValue > 100) {
+      return;
+    }
 
-    updateItem(item.id, "discount", numericValue); 
-  }} 
+    updateItem(item.id, "discount", numericValue);
+  }}
 />
                         </div>
 

@@ -1504,6 +1504,8 @@ function OfferJoiningLetterGeneratorPage() {
       TemplateType,
       LetterTemplate
     >>(defaultTemplates);
+const [candidateTemplatesById, setCandidateTemplatesById] =
+  useState<Record<string, Record<TemplateType, LetterTemplate>>>({});
 
   const [candidates, setCandidates] =
     useState<Candidate[]>(demoCandidates);
@@ -1534,10 +1536,25 @@ function OfferJoiningLetterGeneratorPage() {
     useState(false);
 
   const [previewAll, setPreviewAll] =
-    useState(false);
+  useState(false);
+  const [downloadStatus, setDownloadStatus] = useState<
+  "idle" | "downloading" | "complete"
+>("idle");
 
-  // The single A4 page is an editable Word-like canvas.
-  const [previewEditMode, setPreviewEditMode] = useState(true);
+type CandidateViewMode =
+  | "new"
+  | "edit"
+  | "preview";
+
+const [candidateViewMode, setCandidateViewMode] =
+  useState<CandidateViewMode>("preview");
+
+const isEditable =
+  candidateViewMode === "new" ||
+  candidateViewMode === "edit";
+
+// Keep the existing preview-edit state temporarily.
+// It will be migrated and removed in a later step.
   const previewSelectionRef = useRef<Range | null>(null);
   // Shared selection owner/callback: toolbar commands publish to the active
   // preview editor, which then updates templates[] and the left editor.
@@ -1588,8 +1605,21 @@ function OfferJoiningLetterGeneratorPage() {
   useEffect(() => {
     showWarning(
       "Before adding candidate details, carefully review the company details, logo position and size, letter template/style/color, terms & conditions, authorized signature position and size, A4 preview, and PDF layout."
-    );
-  }, []);
+    );}, []);
+
+    useEffect(() => {
+  setCandidateTemplatesById((current) => {
+    const next = { ...current };
+
+    candidates.forEach((candidate) => {
+      if (!next[candidate.id]) {
+        next[candidate.id] = cloneLetterTemplates(defaultTemplates);
+      }
+    });
+
+    return next;
+  });
+}, []);
   const [signatureEditorOpen, setSignatureEditorOpen] = useState(false);
   const [logoEditorOpen, setLogoEditorOpen] = useState(false);
   const [logoPlacement, setLogoPlacement] = useState<"center" | "left">("center");
@@ -1627,9 +1657,19 @@ function OfferJoiningLetterGeneratorPage() {
     setWarningMessage(null);
     setWarningConfirmAction(null);
   };
+  const getTemplatesForCandidate = (
+  candidateId: string | null
+): Record<TemplateType, LetterTemplate> => {
+  if (candidateId && candidateTemplatesById[candidateId]) {
+    return candidateTemplatesById[candidateId];
+  }
 
-  const currentTemplate =
-    templates[templateType];
+  return templates;
+};
+const currentTemplate =
+  getTemplatesForCandidate(
+    editingCandidateId || previewCandidateId
+  )[templateType];
 
   const getCustomTemplateText = (template: LetterTemplate) =>
     [
@@ -1662,6 +1702,11 @@ function OfferJoiningLetterGeneratorPage() {
         return !autoResolvedCommonField && !candidateDetailCustomFieldNames.includes(token);
       });
   };
+  const cloneLetterTemplates = (
+  source: Record<TemplateType, LetterTemplate>
+): Record<TemplateType, LetterTemplate> => {
+  return JSON.parse(JSON.stringify(source));
+};
 
   const getDynamicValuesForCandidate = (candidate: Candidate) =>
     candidateDynamicValuesById[candidate.id] || {};
@@ -2103,15 +2148,20 @@ function OfferJoiningLetterGeneratorPage() {
         ...current,
         [editingCandidateId]: { ...candidateFormDynamicValues },
       }));
+      setCandidateTemplatesById((current) => ({
+  ...current,
+  [editingCandidateId]: cloneLetterTemplates(templates),
+}));
 
       setPreviewCandidateId(
-        editingCandidateId
-      );
+  editingCandidateId
+);
 
-      setEditingCandidateId(null);
-      resetCandidateForm();
+setEditingCandidateId(null);
+setCandidateViewMode("preview");
+resetCandidateForm();
 
-      return;
+return;
     }
 
     const newCandidate: Candidate = {
@@ -2121,6 +2171,7 @@ function OfferJoiningLetterGeneratorPage() {
       letterType: templateType,
       selected: true,
     };
+    const newCandidateTemplates = cloneLetterTemplates(templates);
 
     setCandidates((current) => [
       ...current,
@@ -2132,22 +2183,43 @@ function OfferJoiningLetterGeneratorPage() {
       [newCandidate.id]: { ...candidateFormDynamicValues },
     }));
 
+    setCandidateTemplatesById((current) => ({
+  ...current,
+  [newCandidate.id]: newCandidateTemplates,
+}));
+
     setPreviewCandidateId(
       newCandidate.id
     );
+    setCandidateViewMode("preview");
 
     resetCandidateForm();
   };
 
   const cancelCandidateEdit = () => {
-    setEditingCandidateId(null);
-    resetCandidateForm();
-  };
+  setEditingCandidateId(null);
+  resetCandidateForm();
+  setCandidateViewMode("preview");
+};
 
-  const editCandidate = (
-    candidate: Candidate
-  ) => {
+const startNewCandidate = () => {
+  setEditingCandidateId(null);
+  resetCandidateForm();
+  setPreviewCandidateId(null);
+  setPreviewAll(false);
+  setCandidateViewMode("new");
+};
+
+const editCandidate = (
+  candidate: Candidate
+) => {
     setTemplateType(candidate.letterType);
+    const candidateTemplates =
+  candidateTemplatesById[candidate.id];
+
+if (candidateTemplates) {
+  setTemplates(cloneLetterTemplates(candidateTemplates));
+}
 
     setCandidateForm({
       name: candidate.name,
@@ -2179,6 +2251,7 @@ function OfferJoiningLetterGeneratorPage() {
     );
 
     setPreviewAll(false);
+    setCandidateViewMode("edit");
   };
 
   const updateCandidateDetails = (
@@ -2206,7 +2279,7 @@ function OfferJoiningLetterGeneratorPage() {
       candidate.id
     );
     setPreviewAll(false);
-    setPreviewEditMode(true);
+    setCandidateViewMode("preview");
   };
 
   const toggleCandidate = (
@@ -2466,6 +2539,7 @@ function OfferJoiningLetterGeneratorPage() {
     paragraphId: string,
     updater: (table: CustomTable) => CustomTable
   ) => {
+     if (!isEditable) return;
     setTemplates((current) => ({
       ...current,
       [templateType]: {
@@ -2480,6 +2554,7 @@ function OfferJoiningLetterGeneratorPage() {
   };
 
   const addParagraphTable = (paragraphId: string) => {
+     if (!isEditable) return;
     setTemplates((current) => ({
       ...current,
       [templateType]: {
@@ -2520,11 +2595,13 @@ function OfferJoiningLetterGeneratorPage() {
   };
 
   const updateParagraphTableCell = (
+
     paragraphId: string,
     rowIndex: number,
     columnIndex: number,
     value: string
   ) => {
+    if (!isEditable) return;
     updateParagraphTable(paragraphId, (table) => ({
       ...table,
       rows: table.rows.map((row, currentRowIndex) =>
@@ -2542,6 +2619,7 @@ function OfferJoiningLetterGeneratorPage() {
     columnIndex: number,
     value: string
   ) => {
+    if (!isEditable) return;
     updateParagraphTable(paragraphId, (table) => ({
       ...table,
       columns: table.columns.map((column, index) =>
@@ -2550,7 +2628,7 @@ function OfferJoiningLetterGeneratorPage() {
     }));
   };
 
-  const addParagraphTableRow = (paragraphId: string) => {
+  const addParagraphTableRow = (paragraphId: string) => {if (!isEditable) return;
     updateParagraphTable(paragraphId, (table) => ({
       ...table,
       rows: [...table.rows, table.columns.map(() => "")],
@@ -2558,7 +2636,7 @@ function OfferJoiningLetterGeneratorPage() {
     }));
   };
 
-  const addParagraphTableColumn = (paragraphId: string) => {
+  const addParagraphTableColumn = (paragraphId: string) => {if (!isEditable) return;
     updateParagraphTable(paragraphId, (table) => {
       const widths = getNormalizedTableColumnWidths(table);
       const newColumnWidth = 100 / (table.columns.length + 1);
@@ -2572,7 +2650,7 @@ function OfferJoiningLetterGeneratorPage() {
     });
   };
 
-  const removeParagraphTableRow = (paragraphId: string, rowIndex: number) => {
+  const removeParagraphTableRow = (paragraphId: string, rowIndex: number) => {if (!isEditable) return;
     updateParagraphTable(paragraphId, (table) => {
       if (table.rows.length <= 1) return table;
       const heights = getNormalizedTableRowHeights(table);
@@ -2584,7 +2662,7 @@ function OfferJoiningLetterGeneratorPage() {
     });
   };
 
-  const removeParagraphTableColumn = (paragraphId: string, columnIndex: number) => {
+  const removeParagraphTableColumn = (paragraphId: string, columnIndex: number) => {if (!isEditable) return;
     updateParagraphTable(paragraphId, (table) => {
       if (table.columns.length <= 1) return table;
       const widths = getNormalizedTableColumnWidths(table);
@@ -2616,7 +2694,7 @@ function OfferJoiningLetterGeneratorPage() {
       return Number.isFinite(height) && height > 0 ? height : undefined;
     });
 
-  const updatePreviewTable = (letterType: TemplateType, paragraphId: string, updater: (table: CustomTable) => CustomTable) => {
+  const updatePreviewTable = (letterType: TemplateType, paragraphId: string, updater: (table: CustomTable) => CustomTable) => { if (!isEditable) return;
     setTemplates((current) => ({
       ...current,
       [letterType]: {
@@ -2638,7 +2716,7 @@ function OfferJoiningLetterGeneratorPage() {
     deltaPx: number,
     tableWidthPx: number,
     startWidths: number[]
-  ) => {
+  ) => {if (!isEditable) return;
     if (tableWidthPx <= 0 || columnIndex < 0 || nextColumnIndex < 0) return;
     const deltaPercent = (deltaPx / tableWidthPx) * 100;
     const minWidth = 8;
@@ -2658,7 +2736,7 @@ function OfferJoiningLetterGeneratorPage() {
     rowIndex: number,
     deltaPx: number,
     startHeight: number
-  ) => {
+  ) => {if (!isEditable) return;
     const nextHeight = Math.max(28, Math.min(240, startHeight + deltaPx));
     updatePreviewTable(letterType, paragraphId, (table) => {
       const heights = getNormalizedTableRowHeights(table).map((height, index) =>
@@ -2674,8 +2752,9 @@ function OfferJoiningLetterGeneratorPage() {
     paragraphId: string,
     columnIndex: number
   ) => {
-    if (!previewEditMode) return;
-    const table = event.currentTarget.closest("table");
+    if (!isEditable) return;
+
+const table = event.currentTarget.closest("table");
     if (!(table instanceof HTMLElement)) return;
     const nextIndex = columnIndex + 1;
     if (nextIndex >= table.querySelectorAll("th").length) return;
@@ -2708,8 +2787,9 @@ function OfferJoiningLetterGeneratorPage() {
     paragraphId: string,
     rowIndex: number
   ) => {
-    if (!previewEditMode) return;
-    const row = event.currentTarget.closest("tr");
+    if (!isEditable) return;
+
+const row = event.currentTarget.closest("tr");
     if (!(row instanceof HTMLElement)) return;
     const sourceTable = templates[letterType].paragraphs.find((item) => item.id === paragraphId)?.table;
     if (!sourceTable) return;
@@ -2738,7 +2818,7 @@ function OfferJoiningLetterGeneratorPage() {
     tableResizeRef.current = null;
   };
 
-  const resetPreviewTableWidths = (letterType: TemplateType, paragraphId: string) => {
+  const resetPreviewTableWidths = (letterType: TemplateType, paragraphId: string) => {if (!isEditable) return;
     updatePreviewTable(letterType, paragraphId, (table) => ({
       ...table,
       columnWidths: Array.from({ length: Math.max(1, table.columns.length) }, () => 100 / Math.max(1, table.columns.length)),
@@ -3242,6 +3322,7 @@ const response = await fetch(pdfEndpoint, {
     if (!validateCandidateDynamicFields(candidate, getDynamicValuesForCandidate(candidate))) {
       return;
     }
+    setDownloadStatus("downloading");
 
     try {
       const pdfBlob = await generateVectorPdf(candidate);
@@ -3261,6 +3342,7 @@ const response = await fetch(pdfEndpoint, {
       link.download = `${safeName}_${letterLabel}.pdf`;
       document.body.appendChild(link);
       link.click();
+      setDownloadStatus("complete");
       link.remove();
       URL.revokeObjectURL(url);
     } catch (error) {
@@ -3291,6 +3373,7 @@ const response = await fetch(pdfEndpoint, {
       showWarning("Preview All Candidates has been opened. Please click Download All Letters again to generate the ZIP.");
       return;
     }
+    setDownloadStatus("downloading");
 
     const zip = new JSZip();
 
@@ -3326,6 +3409,7 @@ const response = await fetch(pdfEndpoint, {
       link.download = "Noorado_Letters.zip";
       document.body.appendChild(link);
       link.click();
+      setDownloadStatus("complete");
       link.remove();
       URL.revokeObjectURL(url);
     } catch (error) {
@@ -3510,16 +3594,24 @@ const response = await fetch(pdfEndpoint, {
     setCompany((current) => ({ ...current, [field]: value }));
   };
 
-  const renderLetterPage = (
-    candidate: Candidate,
-    pageIndex?: number,
-    dynamicValues?: DynamicValues
-  ) => {
-    const resolvedDynamicValues =
-      dynamicValues || getDynamicValuesForCandidate(candidate);
-    const candidateTemplate =
-      templates[candidate.letterType];
-    const isSingleEditablePreview = previewEditMode && !previewAll && pageIndex === undefined;
+const renderLetterPage = (
+  candidate: Candidate,
+  pageIndex?: number,
+  dynamicValues?: DynamicValues
+) => {
+  const resolvedDynamicValues =
+    dynamicValues || getDynamicValuesForCandidate(candidate);
+
+  const candidateTemplate =
+    candidate.id === editingCandidateId || candidate.id === "draft-candidate"
+      ? templates[candidate.letterType]
+      : candidateTemplatesById[candidate.id]?.[candidate.letterType] ||
+        templates[candidate.letterType];
+
+  const isSingleEditablePreview =
+    isEditable &&
+    !previewAll &&
+    pageIndex === undefined;
 
     return (
       <div
@@ -4848,7 +4940,8 @@ const response = await fetch(pdfEndpoint, {
               </div>
 
               {/* CANDIDATE FORM */}
-              <div className="offer-generator-candidate-form">
+{isEditable && (
+  <div className="offer-generator-candidate-form">
 
                 {editingCandidateId && (
                   <div className="offer-generator-edit-banner">
@@ -5077,7 +5170,7 @@ const response = await fetch(pdfEndpoint, {
                     onClick={() => setCandidateCustomizeOpen((value) => !value)}
                     aria-expanded={candidateCustomizeOpen}
                   >
-                    {candidateCustomizeOpen ? "Customize Fields −" : "Customize Fields +"}
+                    {candidateCustomizeOpen ? "Customize Fields " : "Customize Fields "}
                   </button>
 
                   {candidateCustomizeOpen && (
@@ -5193,48 +5286,54 @@ const response = await fetch(pdfEndpoint, {
                   )}
                 </div>
               </div>
+              )}
 
               {/* CANDIDATE LIST */}
-              <div className="offer-generator-candidate-list">
+             <div className="offer-generator-candidate-list">
 
-                <div className="offer-generator-candidate-list-header">
+  <div className="offer-generator-candidate-list-header">
 
-                  <div>
-                    <strong>
-                      Candidate List
-                    </strong>
+    <div>
+      <strong>
+        Candidate List
+      </strong>
 
-                    <span>
-                      {candidates.length}{" "}
-                      candidate
-                      {candidates.length !==
-                      1
-                        ? "s"
-                        : ""}
-                    </span>
-                  </div>
+      <span>
+        {candidates.length}{" "}
+        candidate
+        {candidates.length !== 1
+          ? "s"
+          : ""}
+      </span>
+    </div>
 
-                  <div className="offer-generator-list-actions">
-                    <button
-                      type="button"
-                      onClick={
-                        selectAllCandidates
-                      }
-                    >
-                      Select All
-                    </button>
+    <div className="offer-generator-list-actions">
 
-                    <button
-                      type="button"
-                      onClick={
-                        deselectAllCandidates
-                      }
-                    >
-                      Clear All
-                    </button>
-                  </div>
-                </div>
+      <button
+        type="button"
+        className="offer-generator-button offer-generator-button-primary"
+        onClick={startNewCandidate}
+      >
+        + Create New Candidate
+      </button>
 
+      <button
+        type="button"
+        onClick={selectAllCandidates}
+      >
+        Select All
+      </button>
+
+      <button
+        type="button"
+        onClick={deselectAllCandidates}
+      >
+        Clear All
+      </button>
+
+    </div>
+
+  </div>
                 {/* SEARCH */}
                 <div className="offer-generator-search">
                   <span className="offer-generator-search-icon">
@@ -5406,7 +5505,7 @@ const response = await fetch(pdfEndpoint, {
                                       />
                                     </div>
 
-                                   
+
 
                                     <div className="offer-generator-field offer-generator-field-full">
                                       <label>Address</label>
@@ -5934,7 +6033,7 @@ const response = await fetch(pdfEndpoint, {
                             placeholder="Enter paragraph text..."
                             minHeight={120}
                             ariaLabel={`Paragraph ${index + 1}`}
-                          
+
                                             selectionRef={previewSelectionRef}
                                           />
 
@@ -6099,13 +6198,25 @@ const response = await fetch(pdfEndpoint, {
             ) : (
               <div className="offer-generator-preview-scroll-shell">
                 <div className="offer-generator-preview-sticky-toolbar">
-                  <PreviewFormattingToolbar selectionRef={previewSelectionRef} disabled={false} />
-                  <div className="offer-generator-preview-edit-banner">
-                    <span>{previewEditMode ? "A4 is editable — type directly on the letter." : "A4 preview is locked."}</span>
-                    <button type="button" onClick={() => setPreviewEditMode((current) => !current)}>
-                      {previewEditMode ? "Lock Preview" : "Edit Preview"}
-                    </button>
-                  </div>
+                  <PreviewFormattingToolbar selectionRef={previewSelectionRef} disabled={!isEditable} />
+                 <div className="offer-generator-preview-edit-banner">
+  <span>
+    {candidateViewMode === "preview"
+      ? "Viewing — read only"
+      : candidateViewMode === "edit"
+        ? "Editing"
+        : "New candidate"}
+  </span>
+
+  {candidateViewMode === "preview" && previewCandidate && (
+    <button
+      type="button"
+      onClick={() => editCandidate(previewCandidate)}
+    >
+      Edit
+    </button>
+  )}
+</div>
                 </div>
                 <div className="offer-generator-a4-wrapper">
                   {previewCandidate ? (
@@ -6206,9 +6317,58 @@ const response = await fetch(pdfEndpoint, {
         </div>
       )}
 
+      {downloadStatus !== "idle" && (
+        <div className="offer-generator-download-overlay">
+          <div className="offer-generator-download-popup">
+            <div className="offer-generator-download-icon">
+              {downloadStatus === "downloading" ? (
+                <span className="offer-generator-download-spinner">↓</span>
+              ) : (
+                <span className="offer-generator-download-check">✓</span>
+              )}
+            </div>
+
+            <div className="offer-generator-download-title">
+              {downloadStatus === "downloading"
+                ? "Downloading..."
+                : "Download Complete"}
+            </div>
+
+            <div className="offer-generator-download-progress">
+              <div
+                className={
+                  downloadStatus === "complete"
+                    ? "offer-generator-download-progress-bar complete"
+                    : "offer-generator-download-progress-bar"
+                }
+              />
+            </div>
+
+            <div className="offer-generator-download-percent">
+              {downloadStatus === "downloading" ? "Processing..." : "100%"}
+            </div>
+
+            <div className="offer-generator-download-file">
+              {downloadStatus === "downloading"
+                ? "Preparing your PDF..."
+                : "Your file is ready"}
+            </div>
+
+            <button
+              type="button"
+              className="offer-generator-download-cancel"
+              onClick={() => setDownloadStatus("idle")}
+            >
+              CLOSE
+            </button>
+          </div>
+        </div>
+      )}
+
     </div>
     </>
   );
 }
+
 
 export default OfferJoiningLetterGeneratorPage;

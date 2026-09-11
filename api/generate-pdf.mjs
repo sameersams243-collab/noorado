@@ -4,38 +4,20 @@ import { chromium as playwrightChromium } from "playwright-core";
 const MAX_BODY_BYTES = 12 * 1024 * 1024;
 
 /*
- * Read the same margins used by the React preview.
- */
-function getPreviewMargins(html) {
-  const readMargin = (side) => {
-    const match = html.match(
-      new RegExp(
-        `--letter-margin-${side}\\s*:\\s*([0-9.]+)mm`,
-        "i"
-      )
-    );
-
-    return match ? `${match[1]}mm` : "15mm";
-  };
-
-  return {
-    top: readMargin("top"),
-    right: readMargin("right"),
-    bottom: readMargin("bottom"),
-    left: readMargin("left"),
-  };
-}
-
-/*
  * PDF-only CSS.
- * This does not modify the actual React preview.
+ *
+ * Important:
+ * The React preview already defines the A4 page geometry,
+ * margins, padding, spacing and page-break behavior.
+ *
+ * This stylesheet must NOT override those layout values.
  */
-function buildPdfPrintCss(margins) {
+function buildPdfPrintCss() {
   return `
     <style id="noorado-pdf-print-rules">
       @page {
         size: A4;
-        margin: ${margins.top} ${margins.right} ${margins.bottom} ${margins.left};
+        margin: 0;
       }
 
       html,
@@ -43,38 +25,8 @@ function buildPdfPrintCss(margins) {
         margin: 0 !important;
         padding: 0 !important;
         background: #ffffff !important;
-      }
-
-      .offer-generator-a4-page {
-        box-sizing: border-box !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        height: auto !important;
-        min-height: 0 !important;
-        max-height: none !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        break-inside: auto !important;
-        page-break-inside: auto !important;
-        break-after: auto !important;
-        page-break-after: auto !important;
-      }
-
-      .offer-generator-letter-closing,
-      .offer-generator-signature,
-      .offer-generator-signature-space,
-      .offer-generator-signature-image {
-        break-inside: avoid !important;
-        page-break-inside: avoid !important;
-      }
-
-      table,
-      tr,
-      td,
-      th,
-      img {
-        break-inside: avoid !important;
-        page-break-inside: avoid !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
 
       *,
@@ -82,6 +34,40 @@ function buildPdfPrintCss(margins) {
       *::after {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
+      }
+
+      /*
+       * Do NOT override the A4 preview geometry:
+       *
+       * - width
+       * - height
+       * - min-height
+       * - padding
+       * - margins
+       * - position
+       * - page-break behavior
+       *
+       * Those values come from the real React preview.
+       */
+
+      .offer-generator-preview-table-actions,
+      .offer-generator-table-column-resize-handle,
+      .offer-generator-table-row-resize-handle,
+      .offer-generator-preview-format-toolbar,
+      .offer-generator-rich-toolbar {
+        display: none !important;
+      }
+
+      [contenteditable] {
+        outline: none !important;
+        cursor: default !important;
+      }
+
+      .offer-generator-preview-inline-editor,
+      .offer-generator-preview-block-editor,
+      .offer-generator-preview-table-cell-editor,
+      .offer-generator-preview-table-title-editor {
+        cursor: default !important;
       }
     </style>
   `;
@@ -91,14 +77,15 @@ function buildPdfPrintCss(margins) {
  * IMPORTANT:
  * Do not cache the browser between requests.
  *
- * Vercel can reuse a serverless function instance after Chromium
- * has already been closed. Reusing that stale browser causes:
+ * Vercel may reuse a serverless function instance after the previous
+ * Chromium process has already been closed. Reusing that stale browser
+ * can cause:
  *
  * browser.newContext:
  * Target page, context or browser has been closed
  *
- * We therefore launch a fresh Chromium instance for every PDF request
- * and close it after that request finishes.
+ * Therefore a fresh Chromium browser is launched for every PDF request
+ * and closed after that request is finished.
  */
 async function getBrowser() {
   const executablePath = await chromium.executablePath();
@@ -282,19 +269,31 @@ async function createPdf(html) {
 
   try {
     const context = await browser.newContext({
-      viewport: {
-        width: 794,
-        height: 1123,
-      },
-      deviceScaleFactor: 1,
-    });
+  viewport: {
+    width: 794,
+    height: 1000,
+  },
+  deviceScaleFactor: 1,
+});
 
     try {
       const page = await context.newPage();
 
-      const margins = getPreviewMargins(html);
-      const printCss = buildPdfPrintCss(margins);
+      const printCss = buildPdfPrintCss();
 
+      /*
+       * Inject the PDF-only rules into the existing document.
+       *
+       * The React-generated HTML already contains:
+       * - A4 page dimensions
+       * - preview margins
+       * - preview spacing
+       * - typography
+       * - table sizing
+       * - page structure
+       *
+       * We keep all of that intact.
+       */
       const pdfHtml = /<\/head>/i.test(html)
         ? html.replace(
             /<\/head>/i,
@@ -307,10 +306,45 @@ async function createPdf(html) {
         timeout: 30_000,
       });
 
-      await page.emulateMedia({
-        media: "print",
-      });
+      const pageInfo = await page.evaluate(() => {
+  const page = document.querySelector(".offer-generator-a4-page");
+  const logo = document.querySelector(".offer-generator-letter-logo");
 
+  if (!page || !logo) {
+    return {
+      pageFound: !!page,
+      logoFound: !!logo,
+    };
+  }
+
+  const pageRect = page.getBoundingClientRect();
+  const logoRect = logo.getBoundingClientRect();
+
+  return {
+    pageFound: true,
+    logoFound: true,
+    page: {
+      top: pageRect.top,
+      left: pageRect.left,
+      width: pageRect.width,
+      height: pageRect.height,
+    },
+    logo: {
+      top: logoRect.top,
+      left: logoRect.left,
+      width: logoRect.width,
+      height: logoRect.height,
+      right: logoRect.right,
+      bottom: logoRect.bottom,
+    },
+  };
+});
+
+console.log("PDF PAGE/LOGO GEOMETRY:", pageInfo);
+
+      /*
+       * Wait for fonts and images used by the preview.
+       */
       await page.evaluate(async () => {
         if (document.fonts?.ready) {
           await document.fonts.ready;
@@ -339,8 +373,7 @@ async function createPdf(html) {
             }
 
             if (
-              typeof image.decode ===
-              "function"
+              typeof image.decode === "function"
             ) {
               try {
                 await image.decode();
@@ -352,6 +385,10 @@ async function createPdf(html) {
         );
       });
 
+      /*
+       * Keep the PDF background white without changing the
+       * preview's actual content geometry.
+       */
       await page.evaluate(() => {
         document.documentElement.style.background =
           "#ffffff";
@@ -360,33 +397,49 @@ async function createPdf(html) {
           "#ffffff";
       });
 
+      /*
+       * IMPORTANT:
+       *
+       * The preview document owns the actual A4 layout.
+       * The PDF itself uses zero external page margins so
+       * Chromium does not add another layer of spacing.
+       */
       const pdf = await page.pdf({
         format: "A4",
         printBackground: true,
-        preferCSSPageSize: true,
+        preferCSSPageSize: false,
         scale: 1,
         margin: {
-          top: margins.top,
-          right: margins.right,
-          bottom: margins.bottom,
-          left: margins.left,
+          top: "0mm",
+          right: "0mm",
+          bottom: "0mm",
+          left: "0mm",
         },
       });
 
       return pdf;
     } finally {
+      /*
+       * Always close the BrowserContext.
+       */
       await context.close().catch(() => {});
     }
   } finally {
     /*
      * Always close Chromium after this request.
-     * This prevents stale browser reuse on Vercel.
+     *
+     * This prevents stale browser reuse and fixes:
+     *
+     * "Target page, context or browser has been closed"
      */
     await browser.close().catch(() => {});
   }
 }
 
 export default async function handler(req, res) {
+  /*
+   * Handle CORS preflight.
+   */
   if (req.method === "OPTIONS") {
     res.status(204);
 
@@ -410,6 +463,9 @@ export default async function handler(req, res) {
     return;
   }
 
+  /*
+   * Only POST is supported.
+   */
   if (req.method !== "POST") {
     sendJson(res, 405, {
       error: "Method not allowed.",
@@ -419,6 +475,9 @@ export default async function handler(req, res) {
   }
 
   try {
+    /*
+     * Read the JSON request body.
+     */
     const payload = await readJsonBody(req);
 
     const html =
@@ -426,6 +485,9 @@ export default async function handler(req, res) {
         ? payload.html
         : "";
 
+    /*
+     * Validate HTML payload.
+     */
     if (!html.trim()) {
       sendJson(res, 400, {
         error:
@@ -435,14 +497,23 @@ export default async function handler(req, res) {
       return;
     }
 
+    /*
+     * Generate PDF using Chromium.
+     */
     const pdf = await createPdf(html);
 
+    /*
+     * Resolve the requested filename.
+     */
     const fileName =
       typeof payload?.fileName === "string" &&
       payload.fileName.trim()
         ? payload.fileName.trim()
         : "Noorado-Letter.pdf";
 
+    /*
+     * Return the PDF.
+     */
     sendPdf(res, pdf, fileName);
   } catch (error) {
     console.error(

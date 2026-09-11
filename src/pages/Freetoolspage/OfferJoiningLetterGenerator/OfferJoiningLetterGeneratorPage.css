@@ -1,5 +1,5 @@
 /* =========================================================================
-   Offer / Joining Letter Generator — premium stationery theme
+   Offer / Joining Letter Generator ΓÇö premium stationery theme
    Palette: warm paper + ink navy + brass accent, editorial serif headings,
    Inter for all functional UI. The A4 preview is treated like real paper
    resting on a desk; the editor stays quiet and gets out of its way.
@@ -111,8 +111,10 @@
 }
 
 .offer-generator-header h1 {
-  font-size: 30px;
-  font-weight: 600;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.035em;
   line-height: 1.15;
 }
 
@@ -1107,7 +1109,7 @@
 }
 
 .offer-generator-candidate-details-toggle::before {
-  content: "＋";
+  content: "✎";
 
   display: inline-flex;
   align-items: center;
@@ -1148,7 +1150,7 @@
   transform: translateY(1px);
 }
 
-/* Open state: "+ Add / Edit details" → "− Hide details" */
+/* Open state: "+ Add / Edit details" ΓåÆ "ΓêÆ Hide details" */
 .offer-generator-candidate-details-toggle[aria-expanded="true"] {
   border-color: var(--brass);
   background: var(--brass-tint);
@@ -1156,7 +1158,7 @@
 }
 
 .offer-generator-candidate-details-toggle[aria-expanded="true"]::before {
-  content: "−";
+  content: "↓";
   background: var(--brass);
   color: #fff;
 }
@@ -1213,7 +1215,7 @@
 }
 
 .offer-generator-candidate-customize-toggle[aria-expanded="true"]::after {
-  content: "−";
+  content: "↓";
   background: var(--brass);
   color: #fff;
 }
@@ -1378,6 +1380,18 @@
   padding: 6px 12px;
   border-radius: var(--radius-s);
   cursor: pointer;
+}
+.offer-generator-list-actions .offer-generator-button-primary {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+  font-weight: 700;
+}
+
+.offer-generator-list-actions .offer-generator-button-primary:hover {
+  background: #2a3350;
+  color: #fff;
+  border-color: #2a3350;
 }
 
 .offer-generator-list-actions button:hover {
@@ -2737,7 +2751,7 @@
 }
 
 /* ---------------------------------------------------------------------- */
-/* A4 preview — treated as real paper                                     */
+/* A4 preview ΓÇö treated as real paper                                     */
 /* ---------------------------------------------------------------------- */
 
 .offer-generator-a4-wrapper {
@@ -3151,7 +3165,7 @@
 }
 
 /* ---------------------------------------------------------------------- */
-/* Scrollbars (webkit) — keep them quiet on paper surfaces                 */
+/* Scrollbars (webkit) ΓÇö keep them quiet on paper surfaces                 */
 /* ---------------------------------------------------------------------- */
 
 .offer-generator-a4-wrapper::-webkit-scrollbar,
@@ -3207,7 +3221,7 @@
   }
 }
 /* =========================================================
-   TABLE EDITOR — CLEAN CONTROLS
+   TABLE EDITOR ΓÇö CLEAN CONTROLS
    ========================================================= */
 .offer-generator-custom-table-toolbar {
   display: grid;
@@ -3833,7 +3847,7 @@
 
 
 /* =========================================================
-   TABLE EDITOR — KEEP EVERYTHING INSIDE THE TABLE/CARD
+   TABLE EDITOR ΓÇö KEEP EVERYTHING INSIDE THE TABLE/CARD
    The rich toolbar inside narrow table cells must not push
    the table beyond its parent. It scrolls horizontally when
    necessary instead of overflowing the cell.
@@ -3982,7 +3996,7 @@
 }
 
 /* ========================================================================
-   TABLE EDITOR — MS WORD STYLE RESIZE CURSORS + FONT FAMILY
+   TABLE EDITOR ΓÇö MS WORD STYLE RESIZE CURSORS + FONT FAMILY
    ======================================================================== */
 
 .offer-generator-rich-font-compact {
@@ -4226,7 +4240,7 @@
 
 
 /* =========================================================
-   PREVIEW TOOLBAR COLOR LIST — FINAL OVERRIDE
+   PREVIEW TOOLBAR COLOR LIST ΓÇö FINAL OVERRIDE
    The earlier color-control rule used a 30px icon width for
    the native color picker. Now that the control is a named
    <select>, that width would clip "Color" to "or".
@@ -4302,7 +4316,7 @@
 }
 
 /* ========================================================================
-   SINGLE A4 PREVIEW — SHARED SCROLL CONTAINER
+   SINGLE A4 PREVIEW ΓÇö SHARED SCROLL CONTAINER
    Toolbar/banner stay pinned while the physical A4 sheet can scroll all the
    way upward underneath them. The scrollbar belongs to this whole preview
    area, not only to the lower paper wrapper.
@@ -4496,4 +4510,345 @@
 .offer-generator-preview-format-toolbar > *,
 .offer-generator-rich-toolbar > * {
   flex-shrink: 0;
+}
+/* ========================================================================
+   WARNING MODAL — FINAL MOBILE FIX
+   ======================================================================== */
+
+@media (max-width: 640px) {
+
+  .offer-generator-warning-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100dvh !important;
+
+    padding: 12px !important;
+    margin: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    box-sizing: border-box !important;
+
+    overflow: hidden !important;
+  }
+
+  .offer-generator-warning-modal {
+    position: relative !important;
+
+    width: calc(100vw - 24px) !important;
+    max-width: 440px !important;
+
+    height: auto !important;
+    max-height: calc(100dvh - 24px) !important;
+
+    margin: 0 !important;
+    padding: 24px 16px 16px !important;
+
+    box-sizing: border-box !important;
+
+    display: block !important;
+
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+
+    border-radius: 16px !important;
+  }
+
+  .offer-generator-warning-icon {
+    width: 38px !important;
+    height: 38px !important;
+
+    margin: 0 0 14px 0 !important;
+
+    box-sizing: border-box !important;
+  }
+
+  .offer-generator-warning-content {
+    display: block !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    box-sizing: border-box !important;
+
+    overflow: hidden !important;
+  }
+
+  .offer-generator-warning-content h3 {
+    display: block !important;
+
+    width: 100% !important;
+    max-width: calc(100% - 24px) !important;
+
+    margin: 0 24px 8px 0 !important;
+
+    box-sizing: border-box !important;
+
+    font-size: 16px !important;
+    line-height: 1.35 !important;
+  }
+
+  .offer-generator-warning-content p {
+    display: block !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin: 0 !important;
+
+    box-sizing: border-box !important;
+
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+
+    white-space: pre-line !important;
+
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+  }
+
+  .offer-generator-warning-close {
+    position: absolute !important;
+
+    top: 10px !important;
+    right: 10px !important;
+
+    width: 28px !important;
+    height: 28px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    box-sizing: border-box !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    z-index: 10 !important;
+  }
+
+  /* IMPORTANT:
+     The normal OK button is NOT inside .warning-actions,
+     so explicitly restore it here.
+  */
+
+  .offer-generator-warning-modal >
+  .offer-generator-warning-button {
+    display: flex !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    height: 42px !important;
+    min-height: 42px !important;
+
+    margin: 18px 0 0 0 !important;
+    padding: 11px 12px !important;
+
+    box-sizing: border-box !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    overflow: hidden !important;
+
+    font-size: 13.5px !important;
+  }
+
+  /* Change Letter Type buttons */
+  .offer-generator-warning-actions {
+    display: flex !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin: 18px 0 0 0 !important;
+
+    box-sizing: border-box !important;
+
+    gap: 10px !important;
+  }
+
+  .offer-generator-warning-actions > * {
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .offer-generator-warning-actions .offer-generator-warning-button {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    margin-top: 0 !important;
+  }
+}
+
+
+/* ========================================================================
+   VERY SMALL PHONES
+   ======================================================================== */
+
+@media (max-width: 380px) {
+
+  .offer-generator-warning-overlay {
+    padding: 8px !important;
+  }
+
+  .offer-generator-warning-modal {
+    width: calc(100vw - 16px) !important;
+    max-height: calc(100dvh - 16px) !important;
+
+    padding: 22px 14px 14px !important;
+
+    border-radius: 14px !important;
+  }
+
+  .offer-generator-warning-content h3 {
+    font-size: 15.5px !important;
+  }
+
+  .offer-generator-warning-content p {
+    font-size: 12.5px !important;
+    line-height: 1.5 !important;
+  }
+
+  .offer-generator-warning-close {
+    top: 9px !important;
+    right: 9px !important;
+  }
+
+  .offer-generator-warning-modal >
+  .offer-generator-warning-button {
+    width: 100% !important;
+    margin-top: 16px !important;
+  }
+}
+/* DOWNLOAD POPUP */
+.offer-generator-download-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 20px;
+}
+
+.offer-generator-download-popup {
+  width: min(420px, 100%);
+  background: #fff;
+  border-radius: 18px;
+  padding: 32px 28px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.offer-generator-download-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f3f8;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.offer-generator-download-spinner {
+  display: inline-block;
+  animation: offer-generator-download-bounce 0.9s ease-in-out infinite;
+}
+
+.offer-generator-download-check {
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.offer-generator-download-title {
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.offer-generator-download-progress {
+  width: 100%;
+  height: 8px;
+  background: #e8eaf0;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.offer-generator-download-progress-bar {
+  width: 65%;
+  height: 100%;
+  background: var(--ink);
+  border-radius: 999px;
+  animation: offer-generator-download-progress 1.5s ease-in-out infinite;
+}
+
+.offer-generator-download-progress-bar.complete {
+  width: 100%;
+  animation: none;
+}
+
+.offer-generator-download-percent {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.offer-generator-download-file {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 24px;
+}
+
+.offer-generator-download-cancel {
+  min-width: 110px;
+  padding: 10px 20px;
+  border: 1px solid #d7d9e0;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.offer-generator-download-cancel:hover {
+  background: #f5f6f8;
+}
+
+@keyframes offer-generator-download-progress {
+  0% {
+    width: 15%;
+  }
+  50% {
+    width: 80%;
+  }
+  100% {
+    width: 15%;
+  }
+}
+
+@keyframes offer-generator-download-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
 }
