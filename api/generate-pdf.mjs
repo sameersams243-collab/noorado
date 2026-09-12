@@ -2,6 +2,25 @@ import chromium from "@sparticuz/chromium";
 import { chromium as playwrightChromium } from "playwright-core";
 
 const MAX_BODY_BYTES = 12 * 1024 * 1024;
+function getPreviewMargins(html) {
+  const readMargin = (side) => {
+    const match = html.match(
+      new RegExp(
+        `--letter-margin-${side}\\s*:\\s*([0-9.]+)mm`,
+        "i"
+      )
+    );
+
+    return match ? `${match[1]}mm` : "15mm";
+  };
+
+  return {
+    top: readMargin("top"),
+    right: readMargin("right"),
+    bottom: readMargin("bottom"),
+    left: readMargin("left"),
+  };
+}
 
 /*
  * PDF-only CSS.
@@ -12,12 +31,12 @@ const MAX_BODY_BYTES = 12 * 1024 * 1024;
  *
  * This stylesheet must NOT override those layout values.
  */
-function buildPdfPrintCss() {
+function buildPdfPrintCss(margins) {
   return `
     <style id="noorado-pdf-print-rules">
       @page {
         size: A4;
-        margin: 0;
+        margin: ${margins.top} ${margins.right} ${margins.bottom} ${margins.left};
       }
 
       html,
@@ -29,26 +48,60 @@ function buildPdfPrintCss() {
         print-color-adjust: exact !important;
       }
 
+      /*
+       * Match the working local PDF renderer.
+       * The application preview owns the content layout,
+       * while @page owns the physical PDF margins.
+       */
+      .offer-generator-a4-page {
+        box-sizing: border-box !important;
+
+        width: 100% !important;
+        min-width: 0 !important;
+
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+
+        break-after: auto !important;
+        page-break-after: auto !important;
+      }
+
+      /*
+       * Keep closing/signature together.
+       */
+      .offer-generator-letter-closing,
+      .offer-generator-signature,
+      .offer-generator-signature-space,
+      .offer-generator-signature-image {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      /*
+       * Keep table rows/cells and images intact where possible.
+       */
+      table,
+      tr,
+      td,
+      th,
+      img {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
       *,
       *::before,
       *::after {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
-
-      /*
-       * Do NOT override the A4 preview geometry:
-       *
-       * - width
-       * - height
-       * - min-height
-       * - padding
-       * - margins
-       * - position
-       * - page-break behavior
-       *
-       * Those values come from the real React preview.
-       */
 
       .offer-generator-preview-table-actions,
       .offer-generator-table-column-resize-handle,
@@ -271,15 +324,19 @@ async function createPdf(html) {
     const context = await browser.newContext({
   viewport: {
     width: 794,
-    height: 1000,
+    height: 1123,
   },
   deviceScaleFactor: 1,
 });
 
     try {
       const page = await context.newPage();
+      await page.emulateMedia({
+  media: "print",
+});
 
-      const printCss = buildPdfPrintCss();
+      const margins = getPreviewMargins(html);
+const printCss = buildPdfPrintCss(margins);
 
       /*
        * Inject the PDF-only rules into the existing document.
@@ -404,18 +461,19 @@ console.log("PDF PAGE/LOGO GEOMETRY:", pageInfo);
        * The PDF itself uses zero external page margins so
        * Chromium does not add another layer of spacing.
        */
-      const pdf = await page.pdf({
-        format: "A4",
-        printBackground: true,
-        preferCSSPageSize: false,
-        scale: 1,
-        margin: {
-          top: "0mm",
-          right: "0mm",
-          bottom: "0mm",
-          left: "0mm",
-        },
-      });
+     const pdf = await page.pdf({
+  format: "A4",
+  printBackground: true,
+  preferCSSPageSize: true,
+  scale: 1,
+  margin: {
+    top: margins.top,
+    right: margins.right,
+    bottom: margins.bottom,
+    left: margins.left,
+  },
+  tagged: true,
+});
 
       return pdf;
     } finally {
