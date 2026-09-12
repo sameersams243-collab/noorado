@@ -32,7 +32,7 @@ const slides: Slide[] = [
   {
     id: "hr-letter-generator",
     status: "NOW LIVE",
-    title: "Offer & Joining Letter Generator",
+    title: "Letter Suite",
     description:
       "Create professional Offer, Appointment, Joining and Internship Letters quickly with Noorado's HR Letter Generator.",
     buttonText: "Create Letter ",

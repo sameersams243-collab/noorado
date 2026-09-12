@@ -2961,7 +2961,7 @@
 }
 
 .offer-generator-letter-body {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.65;
 }
 
@@ -3380,15 +3380,16 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 4px;
-  padding: 7px 9px;
+  gap: 6px;
+  padding: 9px 12px;
   margin-bottom: 0;
-  border: 1px solid var(--line);
-  border-radius: 10px 10px 0 0;
-  background: #fff;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, .06);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px 12px 0 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 6px 18px rgba(15, 23, 42, 0.06);
 }
-
 .offer-generator-preview-format-label {
   padding: 0 6px 0 2px;
   font-size: 11px;
@@ -3404,16 +3405,33 @@
 }
 
 .offer-generator-preview-tool {
-  min-width: 30px;
-  height: 30px;
-  padding: 0 7px;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 9px;
   border: 1px solid transparent;
-  border-radius: 6px;
+  border-radius: 8px;
   background: transparent;
-  color: var(--ink);
+  color: #334155;
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.offer-generator-preview-tool:hover:not(:disabled) {
+  background: #f1f5f9;
+  border-color: #dbe2ea;
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.offer-generator-preview-tool:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.offer-generator-preview-tool:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
 }
 
 .offer-generator-preview-tool:hover:not(:disabled) {
@@ -4851,4 +4869,24 @@
   50% {
     transform: translateY(5px);
   }
+}
+/* Hide formatting toolbar inside Left Editor table cells only */
+.offer-generator-table-cell-rich-editor .offer-generator-rich-toolbar,
+.offer-generator-paragraph-table-editor .offer-generator-rich-toolbar {
+  display: none !important;
+}
+/* Hide formatting toolbar inside Left Editor paragraphs only */
+.offer-generator-paragraph-field .offer-generator-rich-toolbar {
+  display: none !important;
+}
+/* Premium focus style for A4 Preview toolbar controls */
+.offer-generator-preview-format-toolbar select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(22, 35, 61, 0.12);
+  border-color: #b8c1ce;
+}
+
+.offer-generator-preview-format-toolbar button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(22, 35, 61, 0.12);
 }

@@ -31,9 +31,9 @@ const TOOLS: Tool[] = [
   },
 
   {
-  title: "Offer & Joining Letter Generator",
+  title: "Letter Suite",
   description:
-    "Create professional offer, appointment, joining and internship letters as PDF.",
+    "Create professional employment letters quickly, accurately, and beautifully.",
   category: "HR Tools",
   path: "/tools/offer-joining-letter-generator",
   available: true,

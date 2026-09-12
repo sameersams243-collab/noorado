@@ -707,7 +707,7 @@ const RichTextEditor = ({
 
   const getEditorHtml = (nextValue: string) => {
     if (!nextValue.trim()) return "";
-    return /<(strong|b|em|i|u|br|p|div|span|font|ul|ol|li)(\s|>)/i.test(nextValue)
+    return /<(strong|b|em|i|u|br|p|div|span|font|ul|ol|li)(\s|>)|&(amp|lt|gt|quot|#39);/i.test(nextValue)
       ? sanitizeRichHtml(nextValue)
       : plainTextToRichHtml(nextValue);
   };
@@ -1045,7 +1045,7 @@ const PreviewInlineEditor = ({
 
   const normalize = (nextValue: string) => {
     if (!nextValue.trim()) return "";
-    return /<(strong|b|em|i|u|br|p|div|span|font|ul|ol|li)(\s|>)/i.test(nextValue)
+    return /<(strong|b|em|i|u|br|p|div|span|font|ul|ol|li)(\s|>)|&(amp|lt|gt|quot|#39);/i.test(nextValue)
       ? sanitizeRichHtml(nextValue)
       : plainTextToRichHtml(nextValue);
   };
@@ -1660,6 +1660,10 @@ const isEditable =
   const getTemplatesForCandidate = (
   candidateId: string | null
 ): Record<TemplateType, LetterTemplate> => {
+  if (editingCandidateId && editingCandidateId === candidateId) {
+    return templates;
+  }
+
   if (candidateId && candidateTemplatesById[candidateId]) {
     return candidateTemplatesById[candidateId];
   }
@@ -4243,16 +4247,11 @@ const renderLetterPage = (
         {/* HEADER */}
         <div className="offer-generator-header">
           <div>
-            <h1>
-              AI Offer &amp; Joining Letter
-              Generator
-            </h1>
-
-            <p>
-              Create professional offer,
-              appointment, joining and
-              internship letters in minutes.
-            </p>
+          <h1>Letter Suite</h1>
+<p className="letter-suite-tagline">Every Letter. One Suite.</p>
+<p className="letter-suite-description">
+  Create professional employment letters quickly, accurately, and beautifully.
+</p>
           </div>
 
           <div className="offer-generator-header-badge">
@@ -6209,13 +6208,22 @@ const renderLetterPage = (
   </span>
 
   {candidateViewMode === "preview" && previewCandidate && (
-    <button
-      type="button"
-      onClick={() => editCandidate(previewCandidate)}
-    >
-      Edit
-    </button>
-  )}
+  <button
+    type="button"
+    onClick={() => editCandidate(previewCandidate)}
+  >
+    Edit
+  </button>
+)}
+
+{candidateViewMode === "edit" && previewCandidate && (
+  <button
+    type="button"
+    onClick={addCandidate}
+  >
+    Save
+  </button>
+)}
 </div>
                 </div>
                 <div className="offer-generator-a4-wrapper">
